@@ -1,0 +1,86 @@
+---
+title: "Building IndexLayer On Astro And GitHub Pages"
+description: "Why IndexLayer uses a static Astro stack, GitHub Pages, clean canonicals, and a simple image/content workflow as its own proof of concept."
+pubDate: 2026-05-19
+updatedDate: 2026-05-19
+slug: "building-indexlayer-on-astro-github-pages"
+category: "Build In Public"
+tags:
+  - Astro
+  - GitHub Pages
+  - sitemap
+  - canonicals
+pillar: "Build-In-Public Infrastructure"
+heroImage: "/favicon.svg"
+draft: false
+---
+
+import ArchitectureDiagram from "../../components/mdx/ArchitectureDiagram.astro";
+import Callout from "../../components/mdx/Callout.astro";
+import CodeConfig from "../../components/mdx/CodeConfig.astro";
+
+IndexLayer should be proof of its own philosophy.
+
+That means the site does not need a complicated backend just to publish technical writing. It needs static pages, repeatable templates, strong metadata, and a workflow that makes publishing hard to break.
+
+## The Stack
+
+<ArchitectureDiagram
+  title="IndexLayer publishing path"
+  steps={[
+    "MDX content",
+    "Astro templates",
+    "static HTML",
+    "GitHub Pages",
+    "indexlayer.pro",
+    "Googlebot"
+  ]}
+/>
+
+This stack is intentionally small:
+
+- Astro for static page generation
+- MDX for technical writing and reusable components
+- GitHub Pages for free static hosting
+- Namecheap DNS for the domain
+- A sitemap, robots file, canonical URLs, and JSON-LD as the SEO baseline
+
+## Why Not Overbuild
+
+<Callout>
+The point is deterministic publishing, not infrastructure theater.
+</Callout>
+
+IndexLayer is not starting as a SaaS app. It is a publishing lab, a case-study library, and an educational surface for the kind of search infrastructure we want to build for clients.
+
+The simplest thing that reliably publishes clean HTML is the right thing.
+
+## The Content Workflow
+
+<CodeConfig label="Publishing workflow">
+
+```txt
+write MDX
+commit to GitHub
+build static HTML
+deploy to GitHub Pages
+submit sitemap
+watch Search Console
+turn lessons into the next note
+```
+
+</CodeConfig>
+
+That last line matters. The content strategy is not separate from the work. The work creates the content.
+
+## Image Discipline
+
+Screenshots and diagrams should live under predictable folders:
+
+- `/images/lab/`
+- `/images/case-studies/`
+- `/images/guides/`
+- `/images/gsc/`
+- `/images/diagrams/`
+
+That keeps future GSC screenshots, crawl maps, and before/after diagrams organized as the content library grows.

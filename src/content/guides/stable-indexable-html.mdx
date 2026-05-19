@@ -1,0 +1,85 @@
+---
+title: "Stable Indexable HTML"
+description: "The core IndexLayer doctrine: SSR is not the goal. Stable crawler-visible HTML is the goal."
+pubDate: 2026-05-19
+updatedDate: 2026-05-19
+slug: "stable-indexable-html"
+category: "Indexing Guide"
+tags:
+  - stable HTML
+  - technical SEO
+  - crawlability
+  - publishing systems
+pillar: "GSC And Indexing Education"
+heroImage: "/favicon.svg"
+draft: false
+---
+
+import ArchitectureDiagram from "../../components/mdx/ArchitectureDiagram.astro";
+import Callout from "../../components/mdx/Callout.astro";
+import GscSignalTable from "../../components/mdx/GscSignalTable.astro";
+
+Stable indexable HTML is the core IndexLayer doctrine.
+
+It is the idea that a page should not merely look complete in a browser. It should resolve to a stable, crawlable, internally linked HTML document with consistent metadata and one clear canonical identity.
+
+## SSR Is Not The Goal
+
+SSR can be useful. Static generation can be useful. Prerendering can be useful. But none of those are the final goal.
+
+<Callout>
+The goal is that Google receives a trustworthy page every time it crawls the route.
+</Callout>
+
+For many local service websites, that can be achieved with static HTML and a disciplined publishing system.
+
+## What Stable Means
+
+<ArchitectureDiagram
+  title="Stable page identity"
+  steps={[
+    "Route exists",
+    "HTML exists",
+    "canonical matches",
+    "sitemap includes it",
+    "internal links point to it",
+    "schema describes it"
+  ]}
+/>
+
+If one of those pieces drifts, the page becomes less trustworthy as a search asset.
+
+## Search Console Signals
+
+Many GSC issues are easier to understand when you read them as architecture feedback.
+
+<GscSignalTable rows={[
+  {
+    signal: "Discovered currently not indexed",
+    cause: "Google found the URL but may not trust the page enough to crawl deeply",
+    fix: "Improve internal links, sitemap parity, and page substance"
+  },
+  {
+    signal: "Crawled currently not indexed",
+    cause: "Google crawled the URL but did not find enough stable value or confidence",
+    fix: "Verify complete HTML, canonical clarity, and unique page purpose"
+  },
+  {
+    signal: "Alternate canonical",
+    cause: "Google chose another version of the page identity",
+    fix: "Remove conflicting canonical and internal link signals"
+  }
+]} />
+
+## The Practical Standard
+
+Every indexable page should answer six questions:
+
+1. Does this route exist as real HTML?
+2. Is the canonical self-consistent?
+3. Is it in the sitemap if it should be indexed?
+4. Do internal links point to the canonical version?
+5. Does the metadata describe the actual page?
+6. Does the page have enough visible substance to deserve indexing?
+
+That is the baseline. Everything else comes after.

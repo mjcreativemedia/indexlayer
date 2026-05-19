@@ -1,0 +1,31 @@
+---
+export interface Props {
+  title?: string;
+}
+
+const { title = "IndexLayer Lesson" } = Astro.props;
+---
+
+<aside class="callout">
+  <strong>{title}</strong>
+  <slot />
+</aside>
+
+<style>
+  .callout {
+    margin: 30px 0;
+    border-left: 4px solid var(--green);
+    background: var(--green-soft);
+    padding: 18px 20px;
+  }
+
+  .callout strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--green-dark);
+  }
+
+  .callout :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

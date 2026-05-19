@@ -1,0 +1,8 @@
+---
+import ListingLayout from "../../layouts/ListingLayout.astro";
+import { getPublishedCollection } from "../../lib/content";
+
+const entries = await getPublishedCollection("case-studies");
+---
+
+<ListingLayout collection="case-studies" entries={entries} />

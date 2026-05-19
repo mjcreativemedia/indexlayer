@@ -1,0 +1,347 @@
+---
+import type { AnyContentEntry, ContentCollection } from "../lib/content";
+import { collectionMeta, formatDate, getEntryPath } from "../lib/content";
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+export interface Props {
+  entry: AnyContentEntry;
+  collection: ContentCollection;
+  related: AnyContentEntry[];
+}
+
+const { entry, collection, related } = Astro.props;
+const meta = collectionMeta[collection];
+const canonicalPath = getEntryPath(collection, entry.data.slug);
+const site = Astro.site ?? new URL("https://indexlayer.pro");
+const canonicalUrl = new URL(canonicalPath, site).href;
+const title = `${entry.data.title} | IndexLayer`;
+const heroImage = entry.data.heroImage;
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.pubDate.toISOString(),
+  dateModified: (entry.data.updatedDate ?? entry.data.pubDate).toISOString(),
+  mainEntityOfPage: canonicalUrl,
+  url: canonicalUrl,
+  image: heroImage ? new URL(heroImage, site).href : new URL("/favicon.svg", site).href,
+  author: {
+    "@type": "Organization",
+    name: "IndexLayer",
+    url: new URL("/", site).href,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "IndexLayer",
+    url: new URL("/", site).href,
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.svg", site).href,
+    },
+  },
+};
+
+const breadcrumbsJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: new URL("/", site).href,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: meta.label,
+      item: new URL(meta.path, site).href,
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: entry.data.title,
+      item: canonicalUrl,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title={title}
+  description={entry.data.description}
+  canonicalPath={canonicalPath}
+  ogImage={heroImage}
+  ogType="article"
+  jsonLd={[articleJsonLd, breadcrumbsJsonLd]}
+>
+  <SiteHeader />
+
+  <main class="article-shell">
+    <a class="back-link" href={meta.path}>{meta.label}</a>
+    <article>
+      <header class="article-hero">
+        <p class="eyebrow">{entry.data.category}</p>
+        <h1>{entry.data.title}</h1>
+        <p class="description">{entry.data.description}</p>
+        <div class="meta-row">
+          <span>{formatDate(entry.data.pubDate)}</span>
+          {entry.data.updatedDate && <span>Updated {formatDate(entry.data.updatedDate)}</span>}
+          <span>{entry.data.pillar}</span>
+        </div>
+        <div class="tag-row">
+          {entry.data.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </header>
+
+      {"client" in entry.data && (
+        <aside class="case-summary" aria-label="Case study summary">
+          <div>
+            <span>Client</span>
+            <strong>{entry.data.client}</strong>
+          </div>
+          <div>
+            <span>Project</span>
+            <strong>{entry.data.projectType}</strong>
+          </div>
+          <div>
+            <span>Problem</span>
+            <strong>{entry.data.problem}</strong>
+          </div>
+          <div>
+            <span>Outcome</span>
+            <strong>{entry.data.outcome}</strong>
+          </div>
+        </aside>
+      )}
+
+      <div class="article-body">
+        <slot />
+      </div>
+    </article>
+
+    {related.length > 0 && (
+      <section class="related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related reading</h2>
+        <div class="related-grid">
+          {related.map((item) => (
+            <a href={getEntryPath(item.collection, item.data.slug)}>
+              <span>{collectionMeta[item.collection].label}</span>
+              <strong>{item.data.title}</strong>
+              <p>{item.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .article-shell {
+    width: min(900px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 58px 0 86px;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 44px;
+    color: var(--green-dark);
+    font-weight: 650;
+  }
+
+  .article-hero {
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    margin: 0 0 16px;
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(2.6rem, 6vw, 5.1rem);
+    line-height: 1;
+    letter-spacing: 0;
+    font-weight: 680;
+  }
+
+  .description {
+    max-width: 760px;
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 1.24rem;
+    line-height: 1.62;
+  }
+
+  .meta-row,
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .meta-row {
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .meta-row span:not(:last-child)::after {
+    content: "/";
+    margin-left: 10px;
+    color: var(--line);
+  }
+
+  .tag-row {
+    margin-top: 18px;
+  }
+
+  .tag-row span {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 6px 10px;
+    color: var(--green-dark);
+    font-size: 0.86rem;
+  }
+
+  .case-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: 34px 0 0;
+    border: 1px solid var(--line);
+    background: var(--line);
+  }
+
+  .case-summary div {
+    background: var(--paper);
+    padding: 18px;
+  }
+
+  .case-summary span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .case-summary strong {
+    display: block;
+    line-height: 1.35;
+  }
+
+  .article-body {
+    padding-top: 38px;
+    color: var(--ink);
+    font-size: 1.08rem;
+    line-height: 1.76;
+  }
+
+  .article-body :global(h2) {
+    margin: 54px 0 18px;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.08;
+  }
+
+  .article-body :global(h3) {
+    margin: 36px 0 14px;
+    font-size: 1.34rem;
+  }
+
+  .article-body :global(p),
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin: 0 0 22px;
+  }
+
+  .article-body :global(a) {
+    color: var(--green-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-body :global(code) {
+    border: 1px solid var(--line);
+    background: var(--soft);
+    padding: 2px 5px;
+    font-size: 0.92em;
+  }
+
+  .article-body :global(pre code) {
+    border: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  .related {
+    margin-top: 72px;
+    padding-top: 42px;
+    border-top: 1px solid var(--line);
+  }
+
+  .related h2 {
+    margin: 0 0 20px;
+    font-size: 1.4rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .related-grid a {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 18px;
+  }
+
+  .related-grid span {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .related-grid strong {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1.26;
+  }
+
+  .related-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 760px) {
+    .article-shell {
+      width: min(100% - 28px, 900px);
+      padding-top: 42px;
+    }
+
+    .case-summary,
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+import { render } from "astro:content";
+import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import { getAllPublishedContent, getPublishedCollection, getRelatedEntries } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const entries = await getPublishedCollection("guides");
+  const allEntries = await getAllPublishedContent();
+
+  return entries.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: {
+      entry,
+      related: getRelatedEntries(entry, allEntries),
+    },
+  }));
+}
+
+const { entry, related } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ArticleLayout entry={entry} collection="guides" related={related}>
+  <Content />
+</ArticleLayout>

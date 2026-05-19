@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import { getEntryPath, getPublishedCollection } from "../lib/content";
 
 const title = "IndexLayer | Stable Indexing Infrastructure";
 const description =
@@ -77,20 +80,13 @@ const checks = [
   "Crawler-visible links",
   "Clean publishing workflow",
 ];
+
+const latestLab = (await getPublishedCollection("lab")).slice(0, 3);
+const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0, 2);
 ---
 
 <BaseLayout title={title} description={description} jsonLd={[businessJsonLd, websiteJsonLd]}>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="IndexLayer home">
-        <span class="brand-mark"></span>
-        IndexLayer
-      </a>
-      <nav aria-label="Primary navigation">
-        <a href="#method">Method</a>
-        <a href="#services">Services</a>
-        <a href="#lab">Lab Notes</a>
-      </nav>
-    </header>
+    <SiteHeader />
 
     <main>
       <section class="hero">
@@ -103,8 +99,8 @@ const checks = [
             transparent SEO engineering.
           </p>
           <div class="actions">
-            <a class="button primary" href="#case-study">View Case Study</a>
-            <a class="button secondary" href="#lab">Read Lab Notes</a>
+            <a class="button primary" href="/case-studies/">View Case Studies</a>
+            <a class="button secondary" href="/lab/">Read Lab Notes</a>
           </div>
         </div>
 
@@ -214,17 +210,27 @@ const checks = [
           <h2>Public learning becomes the trust engine.</h2>
         </div>
         <div class="note-list">
-          <a href="/">Canonical drift in AI-generated sites</a>
-          <a href="/">Route parity: the local SEO checklist people skip</a>
-          <a href="/">Why Search Console is a publishing diagnostics platform</a>
+          {latestLab.map((entry) => (
+            <a href={getEntryPath("lab", entry.data.slug)}>{entry.data.title}</a>
+          ))}
+          <a href="/guides/stable-indexable-html/">Stable Indexable HTML</a>
+        </div>
+      </section>
+
+      <section class="section lab" id="case-studies">
+        <div>
+          <p class="eyebrow">Case studies</p>
+          <h2>Real projects become the proof layer.</h2>
+        </div>
+        <div class="note-list">
+          {latestCaseStudies.map((entry) => (
+            <a href={getEntryPath("case-studies", entry.data.slug)}>{entry.data.title}</a>
+          ))}
         </div>
       </section>
     </main>
 
-    <footer>
-      <span>IndexLayer</span>
-      <span>HTML-first publishing infrastructure for local business.</span>
-    </footer>
+    <SiteFooter />
 </BaseLayout>
 
 <style>

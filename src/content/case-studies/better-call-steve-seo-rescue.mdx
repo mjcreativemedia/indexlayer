@@ -1,0 +1,123 @@
+---
+title: "Better Call Steve SEO Rescue"
+description: "How a polished local business website exposed the gap between frontend quality and stable search publishing infrastructure."
+pubDate: 2026-05-19
+updatedDate: 2026-05-19
+slug: "better-call-steve-seo-rescue"
+category: "SEO Rescue Case Study"
+tags:
+  - GSC
+  - canonical drift
+  - route parity
+  - stable HTML
+pillar: "SEO Rescue Case Studies"
+heroImage: "/favicon.svg"
+draft: false
+client: "Better Call Steve"
+projectType: "SEO rescue and indexing stabilization"
+problem: "A visually strong site was leaking crawl confidence through route, rendering, and canonical drift."
+outcome: "The project became the foundation for IndexLayer's stable publishing methodology."
+stack:
+  - React SPA
+  - Google Search Console
+  - prerender diagnostics
+  - canonical review
+---
+
+import ArchitectureDiagram from "../../components/mdx/ArchitectureDiagram.astro";
+import BeforeAfter from "../../components/mdx/BeforeAfter.astro";
+import Callout from "../../components/mdx/Callout.astro";
+import GscSignalTable from "../../components/mdx/GscSignalTable.astro";
+import ScreenshotFigure from "../../components/mdx/ScreenshotFigure.astro";
+
+Better Call Steve was the turning point.
+
+Before that project, it was easy to believe a beautiful website was automatically a strong SEO foundation. The site looked modern, fast, clean, and polished to humans. Google was seeing a different layer underneath.
+
+## The Core Realization
+
+The biggest lesson was simple:
+
+<Callout>
+SEO problems are often publishing architecture problems.
+</Callout>
+
+Not keyword problems. Not backlink problems. Not vague content quality problems. In this case, the visible frontend was only one part of the system. The search layer depended on route identity, HTML output, metadata, canonical consistency, and sitemap parity.
+
+## What Search Console Was Actually Saying
+
+Google Search Console started showing issues that looked like separate SEO problems. They were really connected publishing signals.
+
+<GscSignalTable rows={[
+  {
+    signal: "Alternate canonical",
+    cause: "Inconsistent canonical logic across route variants",
+    fix: "Choose one canonical identity and make every route agree"
+  },
+  {
+    signal: "Crawled currently not indexed",
+    cause: "Weak confidence in crawler-visible output",
+    fix: "Serve stable HTML with complete metadata and internal links"
+  },
+  {
+    signal: "Soft 404",
+    cause: "Thin or incomplete crawler output for routes that looked fine to users",
+    fix: "Verify every indexable route has real page content in the HTML"
+  },
+  {
+    signal: "Duplicate canonical",
+    cause: "Conflicting page identity across generated and manual publishing layers",
+    fix: "Centralize canonical generation and route manifests"
+  }
+]} />
+
+## The Architecture Drift
+
+The real problem was not React by itself. The issue was that the site had evolved into multiple publishing systems layered together.
+
+<ArchitectureDiagram
+  title="The fragile publishing path"
+  steps={[
+    "SPA route",
+    "prerender layer",
+    "metadata injection",
+    "manual route logic",
+    "sitemap output",
+    "Googlebot"
+  ]}
+/>
+
+Each piece could be locally reasonable and globally inconsistent. That is where indexing instability starts.
+
+## Canonical Drift Was The Sharpest Lesson
+
+Google was seeing multiple variants of the same identity. Some references pointed at one host. Others pointed at another. Some routes were discoverable without being represented cleanly in the sitemap.
+
+<BeforeAfter beforeTitle="Before stabilization" afterTitle="After stabilization">
+  <div slot="before">
+    <ul>
+      <li>www and non-www identity drift</li>
+      <li>Routes visible to users but not aligned in publishing outputs</li>
+      <li>Metadata behavior dependent on multiple layers</li>
+    </ul>
+  </div>
+  <div slot="after">
+    <ul>
+      <li>One canonical identity for every route</li>
+      <li>Sitemap, metadata, and internal links treated as one system</li>
+      <li>Stable crawler-visible output became the target</li>
+    </ul>
+  </div>
+</BeforeAfter>
+
+## The IndexLayer Lesson
+
+<Callout>
+SSR is not the goal. Stable indexable HTML is the goal.
+</Callout>
+
+That distinction matters. Many local service sites do not need complicated server rendering systems. They need consistent routes, complete HTML, clean metadata, deterministic canonicals, and a publishing workflow that does not drift.
+
+<ScreenshotFigure caption="Future Better Call Steve GSC screenshots belong here, with issue dates, status, and the specific architectural fix attached to each signal." />
+
+Better Call Steve became the proof that Search Console can be read as a publishing diagnostics platform. That idea is now part of the IndexLayer operating system.

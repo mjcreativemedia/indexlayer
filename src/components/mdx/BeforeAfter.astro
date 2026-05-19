@@ -1,0 +1,51 @@
+---
+export interface Props {
+  beforeTitle?: string;
+  afterTitle?: string;
+}
+
+const { beforeTitle = "Before", afterTitle = "After" } = Astro.props;
+---
+
+<div class="before-after">
+  <section>
+    <h3>{beforeTitle}</h3>
+    <slot name="before" />
+  </section>
+  <section>
+    <h3>{afterTitle}</h3>
+    <slot name="after" />
+  </section>
+</div>
+
+<style>
+  .before-after {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 30px 0;
+  }
+
+  section {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 20px;
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    color: var(--green-dark);
+    font-size: 1rem;
+  }
+
+  section :global(p:last-child),
+  section :global(ul:last-child) {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 720px) {
+    .before-after {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

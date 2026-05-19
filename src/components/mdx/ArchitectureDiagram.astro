@@ -1,0 +1,55 @@
+---
+export interface Props {
+  title?: string;
+  steps: string[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<figure class="architecture-diagram">
+  {title && <figcaption>{title}</figcaption>}
+  <div class="steps">
+    {steps.map((step) => (
+      <span>{step}</span>
+    ))}
+  </div>
+</figure>
+
+<style>
+  .architecture-diagram {
+    margin: 32px 0;
+  }
+
+  figcaption {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--line);
+    background: var(--line);
+    overflow: hidden;
+  }
+
+  span {
+    min-height: 84px;
+    display: grid;
+    place-items: center;
+    background: var(--paper);
+    padding: 16px;
+    color: var(--green-dark);
+    text-align: center;
+    font-weight: 650;
+  }
+
+  @media (max-width: 720px) {
+    .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

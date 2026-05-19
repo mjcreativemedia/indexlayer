@@ -1,0 +1,66 @@
+---
+export interface Props {
+  rows: Array<{
+    signal: string;
+    cause: string;
+    fix: string;
+  }>;
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="signal-table" role="region" aria-label="GSC signals table">
+  <table>
+    <thead>
+      <tr>
+        <th>GSC signal</th>
+        <th>Architecture cause</th>
+        <th>Publishing fix</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td>{row.signal}</td>
+          <td>{row.cause}</td>
+          <td>{row.fix}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .signal-table {
+    margin: 30px 0;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  table {
+    width: 100%;
+    min-width: 680px;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--line);
+    padding: 15px 16px;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+</style>
