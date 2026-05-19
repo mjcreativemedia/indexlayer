@@ -28,7 +28,7 @@ const articleJsonLd = {
   dateModified: (entry.data.updatedDate ?? entry.data.pubDate).toISOString(),
   mainEntityOfPage: canonicalUrl,
   url: canonicalUrl,
-  image: heroImage ? new URL(heroImage, site).href : new URL("/favicon.svg", site).href,
+  image: heroImage ? new URL(heroImage, site).href : new URL("/images/brand/indexlayer-og.png", site).href,
   author: {
     "@type": "Organization",
     name: "IndexLayer",
@@ -40,7 +40,7 @@ const articleJsonLd = {
     url: new URL("/", site).href,
     logo: {
       "@type": "ImageObject",
-      url: new URL("/favicon.svg", site).href,
+      url: new URL("/images/brand/indexlayer-mark.png", site).href,
     },
   },
 };

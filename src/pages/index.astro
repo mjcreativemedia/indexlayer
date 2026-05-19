@@ -14,7 +14,7 @@ const businessJsonLd = {
   "@id": "https://indexlayer.pro/#business",
   name: "IndexLayer",
   url: "https://indexlayer.pro/",
-  logo: "https://indexlayer.pro/favicon.svg",
+  logo: "https://indexlayer.pro/images/brand/indexlayer-mark.png",
   description,
   areaServed: {
     "@type": "Country",
@@ -234,53 +234,6 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
 </BaseLayout>
 
 <style>
-  .site-header {
-    width: min(1180px, calc(100% - 40px));
-    margin: 0 auto;
-    min-height: 78px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .brand,
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .brand {
-    font-weight: 650;
-    letter-spacing: 0;
-  }
-
-  .brand-mark {
-    width: 19px;
-    height: 19px;
-    border: 2px solid var(--green);
-    display: inline-block;
-    position: relative;
-  }
-
-  .brand-mark::after {
-    content: "";
-    position: absolute;
-    inset: 4px;
-    background: var(--green);
-  }
-
-  nav {
-    gap: 24px;
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
-
-  nav a:hover {
-    color: var(--green-dark);
-  }
-
   main {
     width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
@@ -394,8 +347,7 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
 
   .panel-head,
   .route-card,
-  .signal-row,
-  footer {
+  .signal-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -574,19 +526,6 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
     color: var(--green-dark);
   }
 
-  footer {
-    width: min(1180px, calc(100% - 40px));
-    min-height: 104px;
-    margin: 0 auto;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-  }
-
-  footer span:first-child {
-    color: var(--ink);
-    font-weight: 700;
-  }
-
   @media (max-width: 940px) {
     .hero,
     .problem,
@@ -608,25 +547,8 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
   }
 
   @media (max-width: 640px) {
-    .site-header,
-    main,
-    footer {
+    main {
       width: min(100% - 28px, 1180px);
-    }
-
-    .site-header {
-      align-items: flex-start;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-      padding: 18px 0;
-    }
-
-    nav {
-      width: 100%;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.88rem;
     }
 
     h1 {
@@ -658,8 +580,7 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
 
     .panel-head,
     .route-card,
-    .signal-row,
-    footer {
+    .signal-row {
       align-items: flex-start;
       flex-direction: column;
     }
