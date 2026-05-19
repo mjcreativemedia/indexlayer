@@ -1,0 +1,661 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "IndexLayer | Stable Indexing Infrastructure";
+const description =
+  "IndexLayer builds and stabilizes AI-generated local business websites with HTML-first publishing infrastructure.";
+
+const businessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://indexlayer.pro/#business",
+  name: "IndexLayer",
+  url: "https://indexlayer.pro/",
+  logo: "https://indexlayer.pro/favicon.svg",
+  description,
+  areaServed: {
+    "@type": "Country",
+    name: "United States",
+  },
+  knowsAbout: [
+    "Technical SEO",
+    "Local SEO",
+    "AI-generated websites",
+    "HTML-first publishing infrastructure",
+    "Search Console diagnostics",
+  ],
+  serviceType: [
+    "SEO-safe local website builds",
+    "AI website indexing stabilization",
+    "Search Console architecture audits",
+    "Publishing infrastructure implementation",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://indexlayer.pro/#website",
+  name: "IndexLayer",
+  url: "https://indexlayer.pro/",
+  publisher: {
+    "@id": "https://indexlayer.pro/#business",
+  },
+};
+
+const services = [
+  {
+    name: "Replit SEO Rescue",
+    text: "Stabilize AI-built sites that look finished but are leaking crawl confidence through rendering, canonical, or route drift.",
+  },
+  {
+    name: "SEO-Safe Local Builds",
+    text: "Launch HTML-first local business sites with deterministic routes, metadata, schema, and publishing checks from day one.",
+  },
+  {
+    name: "GSC Architecture Audits",
+    text: "Translate Search Console symptoms into the publishing systems that created them, then prioritize the repair path.",
+  },
+  {
+    name: "Publishing Infrastructure",
+    text: "Build the sitemap, canonical, internal link, and content workflows that keep local pages stable as the site grows.",
+  },
+];
+
+const signals = [
+  ["Alternate canonical", "inconsistent identity"],
+  ["Crawled not indexed", "weak HTML confidence"],
+  ["Soft 404", "thin crawler output"],
+  ["Duplicate canonical", "conflicting page logic"],
+];
+
+const checks = [
+  "Sitemap parity",
+  "Canonical determinism",
+  "Stable indexable HTML",
+  "Local schema coverage",
+  "Crawler-visible links",
+  "Clean publishing workflow",
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={[businessJsonLd, websiteJsonLd]}>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="IndexLayer home">
+        <span class="brand-mark"></span>
+        IndexLayer
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#method">Method</a>
+        <a href="#services">Services</a>
+        <a href="#lab">Lab Notes</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">AI publishing infrastructure for local business</p>
+          <h1>AI-built websites. Stable indexing infrastructure from day one.</h1>
+          <p class="lede">
+            We build and stabilize AI-generated websites for local service brands using
+            HTML-first architecture, clean route systems, deterministic canonicals, and
+            transparent SEO engineering.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#case-study">View Case Study</a>
+            <a class="button secondary" href="#lab">Read Lab Notes</a>
+          </div>
+        </div>
+
+        <aside class="diagnostic-panel" aria-label="Publishing diagnostics diagram">
+          <div class="panel-head">
+            <span>crawler-output.check</span>
+            <span class="status">stable</span>
+          </div>
+          <div class="route-card">
+            <span class="route">/roof-repair-austin/</span>
+            <span class="html-pill">HTML</span>
+          </div>
+          <div class="signal-grid">
+            <div>
+              <span class="label">canonical</span>
+              <strong>self-referential</strong>
+            </div>
+            <div>
+              <span class="label">sitemap</span>
+              <strong>matched</strong>
+            </div>
+            <div>
+              <span class="label">schema</span>
+              <strong>LocalBusiness</strong>
+            </div>
+            <div>
+              <span class="label">links</span>
+              <strong>crawlable</strong>
+            </div>
+          </div>
+          <div class="flow">
+            <span>GSC signal</span>
+            <span>architecture cause</span>
+            <span>publishing fix</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section problem" id="method">
+        <div>
+          <p class="eyebrow">The shift</p>
+          <h2>Modern SEO is becoming a publishing systems problem.</h2>
+        </div>
+        <p>
+          Beautiful frontends are easy to generate now. Durable search visibility is
+          harder. Google still needs consistent page identity, crawlable links, complete
+          HTML, stable metadata, and a publishing workflow that does not drift as the site
+          evolves.
+        </p>
+      </section>
+
+      <section class="section split" id="case-study">
+        <div>
+          <p class="eyebrow">Better Call Steve case study</p>
+          <h2>Good frontend. Fragile publishing layer.</h2>
+          <p>
+            The site looked fast, polished, and modern to humans, but Search Console was
+            exposing infrastructure signals underneath: canonical conflicts, soft 404s,
+            discovered-not-indexed pages, and route parity gaps.
+          </p>
+        </div>
+        <div class="table-card">
+          {signals.map(([signal, cause]) => (
+            <div class="signal-row">
+              <span>{signal}</span>
+              <strong>{cause}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="section quote-band">
+        <p>SSR is not the goal.</p>
+        <h2>Stable indexable HTML is the goal.</h2>
+      </section>
+
+      <section class="section services" id="services">
+        <div class="section-intro">
+          <p class="eyebrow">What we build</p>
+          <h2>Infrastructure-first services for local search visibility.</h2>
+        </div>
+        <div class="service-grid">
+          {services.map((service) => (
+            <article>
+              <h3>{service.name}</h3>
+              <p>{service.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section checklist">
+        <div>
+          <p class="eyebrow">Publishing baseline</p>
+          <h2>Every discoverable route should resolve to the same truth everywhere.</h2>
+        </div>
+        <div class="check-grid">
+          {checks.map((check) => (
+            <span>{check}</span>
+          ))}
+        </div>
+      </section>
+
+      <section class="section lab" id="lab">
+        <div>
+          <p class="eyebrow">Lab notes</p>
+          <h2>Public learning becomes the trust engine.</h2>
+        </div>
+        <div class="note-list">
+          <a href="/">Canonical drift in AI-generated sites</a>
+          <a href="/">Route parity: the local SEO checklist people skip</a>
+          <a href="/">Why Search Console is a publishing diagnostics platform</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>IndexLayer</span>
+      <span>HTML-first publishing infrastructure for local business.</span>
+    </footer>
+</BaseLayout>
+
+<style>
+  .site-header {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand,
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand {
+    font-weight: 650;
+    letter-spacing: 0;
+  }
+
+  .brand-mark {
+    width: 19px;
+    height: 19px;
+    border: 2px solid var(--green);
+    display: inline-block;
+    position: relative;
+  }
+
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--green);
+  }
+
+  nav {
+    gap: 24px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  nav a:hover {
+    color: var(--green-dark);
+  }
+
+  main {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+    gap: 64px;
+    align-items: center;
+    padding: 30px 0 30px;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+    color: var(--green-dark);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin-bottom: 28px;
+    max-width: 920px;
+    font-size: clamp(3.2rem, 6.2vw, 5.85rem);
+    line-height: 1;
+    letter-spacing: 0;
+    font-weight: 680;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 4vw, 4.45rem);
+    line-height: 1.02;
+    letter-spacing: 0;
+    font-weight: 650;
+  }
+
+  h3 {
+    margin-bottom: 12px;
+    font-size: 1.08rem;
+    line-height: 1.25;
+  }
+
+  .lede {
+    max-width: 680px;
+    margin-bottom: 34px;
+    color: var(--muted);
+    font-size: clamp(1.08rem, 2vw, 1.32rem);
+    line-height: 1.55;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .button {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ink);
+    padding: 0 18px;
+    font-weight: 650;
+    transition:
+      background 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease;
+  }
+
+  .button.primary {
+    background: var(--ink);
+    color: white;
+  }
+
+  .button.primary:hover {
+    background: var(--green-dark);
+    border-color: var(--green-dark);
+  }
+
+  .button.secondary:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  .diagnostic-panel,
+  .table-card,
+  .service-grid article {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .diagnostic-panel {
+    padding: 22px;
+  }
+
+  .panel-head,
+  .route-card,
+  .signal-row,
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .panel-head {
+    margin-bottom: 18px;
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.82rem;
+  }
+
+  .status,
+  .html-pill {
+    color: var(--green-dark);
+    background: var(--green-soft);
+    padding: 4px 8px;
+    font-family: inherit;
+  }
+
+  .route-card {
+    margin-bottom: 14px;
+    border: 1px solid var(--line);
+    background: var(--soft);
+    padding: 18px;
+  }
+
+  .route {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+  }
+
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .signal-grid div {
+    border: 1px solid var(--line);
+    padding: 16px;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .flow span {
+    min-height: 70px;
+    display: grid;
+    place-items: center;
+    padding: 12px;
+    background: var(--paper);
+    color: var(--green-dark);
+    text-align: center;
+    font-size: 0.87rem;
+    font-weight: 650;
+  }
+
+  .section {
+    padding: 92px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .problem,
+  .checklist,
+  .lab {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+    gap: 58px;
+    align-items: start;
+  }
+
+  .problem > p,
+  .split p {
+    color: var(--muted);
+    font-size: 1.16rem;
+    line-height: 1.7;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(340px, 0.72fr);
+    gap: 56px;
+    align-items: center;
+  }
+
+  .table-card {
+    padding: 8px;
+  }
+
+  .signal-row {
+    min-height: 68px;
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .signal-row:last-child {
+    border-bottom: 0;
+  }
+
+  .signal-row span {
+    color: var(--muted);
+  }
+
+  .quote-band {
+    padding: 86px 0 94px;
+    text-align: center;
+  }
+
+  .quote-band p {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+
+  .quote-band h2 {
+    max-width: 840px;
+    margin: 0 auto;
+  }
+
+  .section-intro {
+    max-width: 760px;
+    margin-bottom: 40px;
+  }
+
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .service-grid article {
+    min-height: 260px;
+    padding: 24px;
+  }
+
+  .service-grid p {
+    color: var(--muted);
+  }
+
+  .check-grid,
+  .note-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .check-grid span,
+  .note-list a {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 14px 16px;
+    font-weight: 650;
+  }
+
+  .note-list a:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  footer {
+    width: min(1180px, calc(100% - 40px));
+    min-height: 104px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  footer span:first-child {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  @media (max-width: 940px) {
+    .hero,
+    .problem,
+    .split,
+    .checklist,
+    .lab {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      min-height: auto;
+      gap: 42px;
+      padding-top: 54px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-header,
+    main,
+    footer {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      padding: 18px 0;
+    }
+
+    nav {
+      width: 100%;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    h1 {
+      font-size: 2.72rem;
+    }
+
+    .hero,
+    .section {
+      padding: 48px 0;
+    }
+
+    .diagnostic-panel {
+      display: none;
+    }
+
+    .diagnostic-panel {
+      padding: 14px;
+    }
+
+    .signal-grid,
+    .service-grid,
+    .flow {
+      grid-template-columns: 1fr;
+    }
+
+    .service-grid article {
+      min-height: 0;
+    }
+
+    .panel-head,
+    .route-card,
+    .signal-row,
+    footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>

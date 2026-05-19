@@ -1,0 +1,174 @@
+## IndexLayer Aesthetic
+
+Minimal.
+Technical.
+Readable.
+Calm.
+
+The design philosophy is:
+
+```text id="9jlwm9"
+clarity over decoration
+```
+
+We want the site to feel:
+
+* stable
+* modern
+* intelligent
+* trustworthy
+* highly legible
+
+Not like a marketing agency.
+
+More like:
+
+```text id="q6o29h"
+a modern publishing infrastructure lab
+```
+
+---
+
+# Visual Direction
+
+## Typography First
+
+Large fonts.
+Generous spacing.
+Strong hierarchy.
+
+Reading should feel effortless.
+
+We want:
+
+* oversized headlines
+* readable paragraph widths
+* high line-height
+* clean sans-serif typography
+* minimal visual noise
+
+Very content-focused.
+
+---
+
+# Minimal UI
+
+No heavy gradients.
+No flashy animations.
+No clutter.
+
+Just:
+
+* whitespace
+* typography
+* subtle dividers
+* structured layouts
+* clean cards
+* soft green accents
+
+The interface should disappear behind the content.
+
+---
+
+# OpenAI-Inspired Simplicity
+
+The inspiration is modern AI product design:
+
+* simple layouts
+* quiet confidence
+* restrained colors
+* minimal chrome
+* clean spacing
+* highly readable content blocks
+
+The site should feel:
+
+```text id="0v4vxb"
+engineered
+not decorated
+```
+
+---
+
+# Color System
+
+Primary palette:
+
+* white backgrounds
+* soft gray structure
+* muted green accents
+* dark neutral text
+
+Very light theme.
+
+Green should feel:
+
+* calm
+* technical
+* infrastructure-oriented
+
+Not neon.
+Not startup-hype green.
+
+---
+
+# Motion Philosophy
+
+Minimal motion.
+
+Only subtle:
+
+* fades
+* hover transitions
+* small layout shifts
+
+No excessive:
+
+* parallax
+* complex animations
+* heavy interactions
+
+The site should feel fast and stable.
+
+---
+
+# Content Presentation
+
+The content itself is the design.
+
+We want:
+
+* diagrams
+* architecture notes
+* audit screenshots
+* GSC screenshots
+* code snippets
+* publishing breakdowns
+* case studies
+
+Presented very cleanly.
+
+Almost like:
+
+```text id="k0zxt0"
+technical research notes
+```
+
+---
+
+# Overall Feeling
+
+The aesthetic should communicate:
+
+```text id="u7gdc4"
+we understand the internet deeply
+```
+
+without needing to say it directly.
+
+Simple.
+Precise.
+Highly readable.
+Technically calm.
+Modern.
+Unbreakable.

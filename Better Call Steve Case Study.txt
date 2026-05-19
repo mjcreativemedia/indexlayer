@@ -1,0 +1,339 @@
+# What We Learned From Better Call Steve
+
+Better Call Steve was the turning point.
+
+Before that project, it was easy to believe:
+
+```text id="6f3tvi"
+beautiful website
+=
+good SEO foundation
+```
+
+But that project exposed the gap between:
+
+## frontend quality
+
+and
+
+## publishing stability
+
+The site looked fantastic to humans.
+
+Modern.
+Fast.
+Clean.
+Interactive.
+
+But Google was seeing something very different underneath. 
+
+---
+
+# The Core Realization
+
+The biggest lesson was:
+
+## SEO problems are often publishing architecture problems.
+
+Not “keyword problems.”
+
+Not “content problems.”
+
+Not “backlink problems.”
+
+Architecture problems.
+
+That was the breakthrough.
+
+---
+
+# What Actually Happened
+
+The site was built primarily as a React SPA.
+
+Which meant:
+
+* JavaScript-heavy rendering
+* client-side route behavior
+* layered prerender systems
+* metadata injection logic
+* multiple publishing mechanisms evolving over time
+
+The site worked great visually.
+
+But Google Search Console started showing signals like:
+
+* alternate canonical issues
+* crawled not indexed
+* discovered not indexed
+* soft 404s
+* duplicate canonical behavior 
+
+At first glance those look like “SEO issues.”
+
+But they were actually:
+
+## infrastructure signals.
+
+---
+
+# The Huge Mindset Shift
+
+We realized:
+
+## Google Search Console is basically a publishing diagnostics platform.
+
+Not just an SEO dashboard.
+
+Every issue mapped back to a technical publishing problem:
+
+| GSC Signal             | Underlying Cause             |
+| ---------------------- | ---------------------------- |
+| Alternate canonical    | inconsistent canonical logic |
+| Crawled not indexed    | weak or unstable rendering   |
+| Soft 404               | thin/incomplete crawler HTML |
+| Duplicate canonical    | conflicting page identity    |
+| Discovered not indexed | weak crawl confidence        |
+
+That changed how we think about SEO entirely. 
+
+---
+
+# The Real Problem
+
+The real issue was not React itself.
+
+The issue was:
+
+## fragile publishing architecture.
+
+Over time the site evolved into:
+
+```text id="vhjif2"
+SPA app
++
+crawler prerender layer
++
+metadata injection
++
+manual publishing logic
++
+route manifests
++
+middleware
+```
+
+All partially disconnected.
+
+That creates drift.
+
+And drift is dangerous for indexing.
+
+---
+
+# Canonical Drift Was A Major Lesson
+
+One of the biggest discoveries was how destructive inconsistent canonicals can become.
+
+Google was seeing:
+
+* www variants
+* non-www variants
+* inconsistent references
+* duplicate route identities
+
+That weakens trust.
+
+And once Google loses confidence in page identity, indexing stability starts degrading.
+
+This taught us:
+
+## canonical systems must be deterministic.
+
+Not “mostly correct.”
+Not “usually fine.”
+
+Deterministic.
+
+---
+
+# Route Parity Became A Huge Concept
+
+Another major lesson:
+
+## every discoverable route must have stable HTML parity.
+
+Some routes:
+
+* existed in React
+* but not in the sitemap
+* or not in prerender manifests
+* or fell back to SPA shell behavior
+
+Humans could still navigate them.
+
+But Googlebot received inconsistent outputs.
+
+That introduced indexing instability. 
+
+This became one of the foundational concepts behind IndexLayer:
+
+```text id="qjrq2l"
+route parity
+```
+
+If a route exists:
+
+* sitemap must know it
+* canonicals must know it
+* metadata must know it
+* HTML output must know it
+* internal links must know it
+
+Everything must align.
+
+---
+
+# SSR Was NOT The Real Lesson
+
+Initially it looked like:
+
+```text id="x75jvu"
+“we need SSR”
+```
+
+But eventually we realized:
+
+## SSR is not the goal.
+
+Stable indexable HTML is the goal. 
+
+That was a massive conceptual shift.
+
+Because many local business sites do not actually need complex SSR systems.
+
+They need:
+
+* stable HTML
+* stable routes
+* clean canonicals
+* structured metadata
+* sitemap parity
+* crawlable architecture
+
+That’s it.
+
+---
+
+# Retrofitting SSR Taught Another Lesson
+
+We attempted to migrate toward a more unified SSR architecture.
+
+That introduced:
+
+* hydration conflicts
+* mount issues
+* duplicate bundle behavior
+* rendering inconsistencies
+* blank page failures
+
+Which taught another important lesson:
+
+## retrofitting SSR into an evolved SPA is difficult.
+
+Especially when the original architecture was never designed for deterministic publishing.
+
+That’s why for new projects we now strongly prefer:
+
+```text id="1y2z98"
+HTML-first architecture from day one
+```
+
+---
+
+# The Industry-Wide Problem
+
+The deeper realization was:
+
+## AI-generated frontend quality has outpaced publishing quality.
+
+Modern tools can generate beautiful interfaces extremely quickly.
+
+But they often produce fragile foundations:
+
+* weak crawlability
+* weak route systems
+* weak canonical systems
+* inconsistent rendering
+* unstable publishing pipelines
+
+This is becoming an entire category of technical debt. 
+
+---
+
+# What Better Call Steve Created
+
+Better Call Steve became:
+
+* our first real publishing architecture case study
+* our first indexing stabilization project
+* the origin of the IndexLayer methodology
+
+It shifted our thinking away from:
+
+```text id="es28q9"
+traditional SEO
+```
+
+toward:
+
+```text id="4h4h2j"
+publishing infrastructure engineering
+```
+
+---
+
+# The New Workflow
+
+The project helped define a much clearer process:
+
+```text id="itjlwm"
+GSC symptoms
+↓
+map to architecture causes
+↓
+stabilize publishing systems
+↓
+verify crawler output
+↓
+monitor indexing recovery
+```
+
+That workflow became foundational to how we approach every future project. 
+
+---
+
+# The Most Important Lesson
+
+The single biggest lesson from Better Call Steve was this:
+
+## Modern SEO is increasingly a systems engineering problem.
+
+Not just:
+
+* keywords
+* blogs
+* backlinks
+* metadata
+
+But:
+
+* rendering consistency
+* route determinism
+* crawl confidence
+* publishing integrity
+* HTML stability
+* canonical alignment
+* infrastructure trust
+
+That realization became the foundation of IndexLayer.
