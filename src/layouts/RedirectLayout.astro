@@ -1,0 +1,74 @@
+---
+export interface Props {
+  from: string;
+  to: string;
+  title?: string;
+}
+
+const { from, to, title = "Redirecting | IndexLayer" } = Astro.props;
+const site = Astro.site ?? new URL("https://indexlayer.pro");
+const targetUrl = new URL(to, site).href;
+const fromUrl = new URL(from, site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, follow" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={targetUrl} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <p>This page has moved.</p>
+      <a href={to}>Continue to the new page</a>
+      <small>{fromUrl} -> {targetUrl}</small>
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: light;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  }
+
+  body {
+    display: grid;
+    min-height: 100vh;
+    margin: 0;
+    place-items: center;
+    background: #f7f8f5;
+    color: #141816;
+  }
+
+  main {
+    width: min(520px, calc(100% - 40px));
+    border: 1px solid #dfe5de;
+    background: white;
+    padding: 28px;
+  }
+
+  p {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  a {
+    color: #174d34;
+    font-weight: 700;
+  }
+
+  small {
+    display: block;
+    margin-top: 18px;
+    color: #5f6862;
+    overflow-wrap: anywhere;
+  }
+</style>

@@ -155,9 +155,20 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     color: var(--muted);
   }
 
+  .site-footer div,
+  .site-footer nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
   .site-footer span:first-child {
     color: var(--ink);
     font-weight: 700;
+  }
+
+  .site-footer a:hover {
+    color: var(--green-dark);
   }
 
   @media (max-width: 640px) {
@@ -185,6 +196,13 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
       align-items: flex-start;
       flex-direction: column;
       justify-content: center;
+    }
+
+    .site-footer div,
+    .site-footer nav {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 </style>
