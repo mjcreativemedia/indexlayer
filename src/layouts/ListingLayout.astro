@@ -1,6 +1,6 @@
 ---
 import type { PostEntry } from "../lib/content";
-import { formatDate, getEntryPath } from "../lib/content";
+import { categoryMeta, formatDate, getEntryPath, type PostCategory } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -11,10 +11,23 @@ export interface Props {
   canonicalPath: string;
   entries: PostEntry[];
   eyebrow?: string;
+  showCategoryFilters?: boolean;
 }
 
-const { title, description, canonicalPath, entries, eyebrow = "IndexLayer posts" } = Astro.props;
+const {
+  title,
+  description,
+  canonicalPath,
+  entries,
+  eyebrow = "IndexLayer posts",
+  showCategoryFilters = false,
+} = Astro.props;
 const pageTitle = `${title} | IndexLayer`;
+const categoryCounts = entries.reduce(
+  (counts, entry) => counts.set(entry.data.category, (counts.get(entry.data.category) ?? 0) + 1),
+  new Map<PostCategory, number>(),
+);
+const categories = Object.values(categoryMeta).filter((meta) => categoryCounts.has(meta.label));
 ---
 
 <BaseLayout title={pageTitle} description={description} canonicalPath={canonicalPath}>
@@ -27,15 +40,31 @@ const pageTitle = `${title} | IndexLayer`;
       <p>{description}</p>
     </section>
 
+    {showCategoryFilters && categories.length > 0 && (
+      <section class="category-filter" aria-label="Filter posts by category">
+        <button type="button" class="active" data-filter="all">
+          All <span>{entries.length}</span>
+        </button>
+        {categories.map((category) => (
+          <button type="button" data-filter={category.label}>
+            {category.label} <span>{categoryCounts.get(category.label)}</span>
+          </button>
+        ))}
+      </section>
+    )}
+
     <section class="entry-grid" aria-label={title}>
       {entries.map((entry) => (
-        <a class="entry-card" href={getEntryPath(entry)}>
+        <a class="entry-card" href={getEntryPath(entry)} data-category={entry.data.category}>
           <span>{entry.data.category}</span>
           <h2>{entry.data.title}</h2>
-          <p>{entry.data.description}</p>
+          <p>{entry.data.preview ?? entry.data.description}</p>
           <div>
             <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
-            {entry.data.pillar && <strong>{entry.data.pillar}</strong>}
+            <div class="author-line">
+              <img src={entry.data.authorImage ?? "/images/authors/mitch-argamasilla.jpeg"} alt="" width="28" height="28" />
+              <strong>{entry.data.authorName}</strong>
+            </div>
           </div>
         </a>
       ))}
@@ -43,6 +72,25 @@ const pageTitle = `${title} | IndexLayer`;
   </main>
 
   <SiteFooter />
+
+  {showCategoryFilters && (
+    <script>
+      const filterButtons = Array.from(document.querySelectorAll("[data-filter]"));
+      const postCards = Array.from(document.querySelectorAll("[data-category]"));
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.getAttribute("data-filter");
+
+          filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+          postCards.forEach((card) => {
+            const shouldShow = filter === "all" || card.getAttribute("data-category") === filter;
+            card.toggleAttribute("hidden", !shouldShow);
+          });
+        });
+      });
+    </script>
+  )}
 </BaseLayout>
 
 <style>
@@ -79,6 +127,41 @@ const pageTitle = `${title} | IndexLayer`;
     line-height: 1.62;
   }
 
+  .category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: -22px 0 34px;
+  }
+
+  .category-filter button {
+    min-height: 38px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--muted);
+    padding: 0 13px;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 680;
+    cursor: pointer;
+    transition:
+      background 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .category-filter button:hover,
+  .category-filter button.active {
+    border-color: var(--green-dark);
+    background: var(--ink);
+    color: white;
+  }
+
+  .category-filter span {
+    margin-left: 6px;
+    opacity: 0.68;
+  }
+
   .entry-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -100,6 +183,10 @@ const pageTitle = `${title} | IndexLayer`;
   .entry-card:hover {
     border-color: var(--green);
     transform: translateY(-2px);
+  }
+
+  .entry-card[hidden] {
+    display: none;
   }
 
   .entry-card span {
@@ -133,6 +220,28 @@ const pageTitle = `${title} | IndexLayer`;
 
   .entry-card strong {
     color: var(--ink);
+  }
+
+  .author-line {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+  }
+
+  .author-line img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 1px solid var(--line);
+  }
+
+  .author-line strong {
+    display: block;
+    min-width: 0;
+    line-height: 1.15;
   }
 
   @media (max-width: 940px) {

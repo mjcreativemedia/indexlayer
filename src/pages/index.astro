@@ -46,13 +46,6 @@ const websiteJsonLd = {
   },
 };
 
-const painPoints = [
-  "what you do",
-  "where you work",
-  "which services matter most",
-  "what customers should do next",
-];
-
 const outcomes = [
   {
     label: "More calls",
@@ -124,20 +117,6 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
           height="1024"
         />
       </aside>
-    </section>
-
-    <section class="section problem">
-      <div>
-        <h2>Most local websites do not clearly show:</h2>
-      </div>
-      <div class="pain-list">
-        {painPoints.map((point) => (
-          <div class="pain-item">
-            <span></span>
-            <p>{point}</p>
-          </div>
-        ))}
-      </div>
     </section>
 
     <section class="section outcomes">
@@ -338,42 +317,12 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     border-top: 1px solid var(--line);
   }
 
-  .problem,
   .proof,
   .posts-strip {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
     gap: 58px;
     align-items: start;
-  }
-
-  .pain-list {
-    display: grid;
-    gap: 10px;
-  }
-
-  .pain-item {
-    min-height: 68px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    padding: 16px;
-  }
-
-  .pain-item span {
-    width: 8px;
-    height: 8px;
-    flex: 0 0 auto;
-    background: var(--green);
-    border-radius: 999px;
-  }
-
-  .pain-item p {
-    margin-bottom: 0;
-    color: var(--muted);
-    font-weight: 650;
   }
 
   .section-intro {
@@ -540,7 +489,6 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   @media (max-width: 980px) {
     .hero,
-    .problem,
     .proof,
     .posts-strip {
       grid-template-columns: 1fr;
