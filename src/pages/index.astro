@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getEntryPath, getPublishedCollection } from "../lib/content";
+import { formatDate, getAllPublishedContent, getEntryPath } from "../lib/content";
 
 const title = "IndexLayer | Local Business Websites Built for Search Visibility";
 const description =
@@ -24,14 +24,14 @@ const businessJsonLd = {
     "Local SEO",
     "Service business websites",
     "Search visibility",
-    "Website indexing",
-    "Technical SEO",
+    "Website performance",
+    "Google visibility",
   ],
   serviceType: [
     "Local business website builds",
-    "Website indexing audits",
-    "SEO stabilization",
-    "Search-ready publishing systems",
+    "Website audits",
+    "Local SEO cleanup",
+    "Search-ready service pages",
   ],
 };
 
@@ -47,32 +47,28 @@ const websiteJsonLd = {
 };
 
 const painPoints = [
-  "Important pages do not show up in Google.",
-  "The site looks nice, but calls are still slow.",
-  "Search Console issues keep coming back.",
-  "Nobody can explain what is wrong in plain English.",
+  "what you do",
+  "where you work",
+  "which services matter most",
+  "what customers should do next",
 ];
 
 const outcomes = [
   {
-    label: "More local visibility",
-    text: "Service pages, locations, and offers organized so Google can understand what you do and where you do it.",
-    metric: "+ Local reach",
-  },
-  {
-    label: "More qualified calls",
-    text: "Clear pages that help nearby customers recognize the right service and take the next step.",
-    metric: "+ Better leads",
+    label: "More calls",
+    text: "Clear service pages built around real searches.",
   },
   {
     label: "Faster websites",
-    text: "Lightweight pages that load quickly on phones and feel easy to use when customers are ready to act.",
-    metric: "+ Speed",
+    text: "Pages that load quickly and feel easy to use.",
   },
   {
-    label: "Stable indexing",
-    text: "A clean publishing foundation that keeps pages consistent instead of confusing search engines.",
-    metric: "+ Trust",
+    label: "Better visibility",
+    text: "Help Google understand your business clearly.",
+  },
+  {
+    label: "Easier growth",
+    text: "A clean foundation that is easy to expand later.",
   },
 ];
 
@@ -80,37 +76,26 @@ const caseStudies = [
   {
     name: "Better Call Steve",
     type: "SEO rescue",
-    before: "Indexing instability, canonical conflicts, and soft 404 signals.",
-    after: "Cleaner page identity, stronger crawl consistency, and a stabilized publishing structure.",
-    href: "/case-studies/better-call-steve-seo-rescue/",
+    text: "Fixed confusing page signals so the site could be easier for Google to understand.",
+    href: "/posts/better-call-steve-seo-rescue/",
   },
   {
     name: "MyCornerstonePlan",
     type: "New build",
-    before: "Needed a simple local-service funnel with a search-ready foundation.",
-    after: "Fast static pages, clear service paths, clean metadata, and room for future content.",
-    href: "/case-studies/mycornerstoneplan-seo-ready-life-insurance-funnel/",
+    text: "Built a fast local-service funnel with clear pages and room to grow.",
+    href: "/posts/mycornerstoneplan-seo-ready-life-insurance-funnel/",
   },
 ];
 
-const difference = [
-  "Clear page structure",
-  "Fast HTML-first output",
-  "Consistent titles and descriptions",
-  "Clean internal links",
-  "Accurate sitemap and canonicals",
-  "Simple publishing workflow",
-];
-
 const process = [
-  ["Audit", "Find the search, structure, and indexing problems holding the site back."],
-  ["Stabilize", "Fix the foundation so important pages stop sending mixed signals."],
-  ["Build", "Create clean service pages and conversion paths around real customer intent."],
-  ["Publish", "Launch with a simple system that can keep growing without drifting."],
-  ["Monitor", "Watch the signals that matter and keep the site healthy over time."],
+  ["Audit", "Find what is holding the site back."],
+  ["Fix", "Clean up structure and visibility issues."],
+  ["Build", "Create clear service and location pages."],
+  ["Launch", "Publish fast, stable pages."],
+  ["Grow", "Add content and improve over time."],
 ];
 
-const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
+const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 ---
 
 <BaseLayout title={title} description={description} jsonLd={[businessJsonLd, websiteJsonLd]}>
@@ -120,48 +105,30 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow">Websites for local service businesses</p>
-        <h1>Beautiful websites are easy. Getting found on Google is harder.</h1>
+        <h1>Beautiful websites. Clear Google visibility.</h1>
         <p class="lede">
-          IndexLayer builds fast, trustworthy local business websites that help Google
-          understand your services and help nearby customers know exactly what to do next.
+          We build local business websites that load fast, explain your services clearly,
+          and help nearby customers find you.
         </p>
         <div class="actions">
-          <a class="button primary" href="/case-studies/">View Case Studies</a>
-          <a class="button secondary" href="/guides/stable-indexable-html/">Get A Site Audit</a>
+          <a class="button primary" href="#contact">Get A Site Audit</a>
+          <a class="button secondary" href="/work/">View Work</a>
         </div>
       </div>
 
       <aside class="outcome-visual" aria-label="Local search outcome graphic">
-        <div class="search-card">
-          <span class="search-label">Google local result</span>
-          <strong>Emergency roof repair near me</strong>
-          <div class="result-line wide"></div>
-          <div class="result-line medium"></div>
-          <div class="result-actions">
-            <span>Call</span>
-            <span>Directions</span>
-            <span>Website</span>
-          </div>
-        </div>
-        <div class="phone-card">
-          <span>New call</span>
-          <strong>Local customer</strong>
-          <p>Service page answered the question.</p>
-        </div>
-        <div class="signal-card">
-          <span class="signal-dot"></span>
-          <div>
-            <strong>Pages Google can trust</strong>
-            <p>Clear services, locations, links, and page identity.</p>
-          </div>
-        </div>
+        <img
+          src="/images/home/hero-search-visibility.png"
+          alt="A local business website turning into a Google search result and a new customer call."
+          width="1536"
+          height="1024"
+        />
       </aside>
     </section>
 
     <section class="section problem">
       <div>
-        <p class="eyebrow">The problem</p>
-        <h2>Most modern websites look good. Many are fragile underneath.</h2>
+        <h2>Most local websites do not clearly show:</h2>
       </div>
       <div class="pain-list">
         {painPoints.map((point) => (
@@ -175,13 +142,11 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
 
     <section class="section outcomes">
       <div class="section-intro">
-        <p class="eyebrow">What you actually need</p>
-        <h2>Clear outcomes for local owners.</h2>
+        <h2>Better outcomes.</h2>
       </div>
       <div class="outcome-grid">
         {outcomes.map((outcome) => (
           <article>
-            <span>{outcome.metric}</span>
             <h3>{outcome.label}</h3>
             <p>{outcome.text}</p>
           </article>
@@ -191,45 +156,22 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
 
     <section class="section proof">
       <div>
-        <p class="eyebrow">Proof layer</p>
-        <h2>Rescue work and clean builds.</h2>
+        <h2>Built clean from day one. Or fixed after things broke.</h2>
       </div>
       <div class="case-grid">
         {caseStudies.map((study) => (
           <a class="case-card" href={study.href}>
             <span>{study.type}</span>
             <h3>{study.name}</h3>
-            <div>
-              <p><strong>Before:</strong> {study.before}</p>
-              <p><strong>After:</strong> {study.after}</p>
-            </div>
+            <p>{study.text}</p>
           </a>
         ))}
       </div>
     </section>
 
-    <section class="section difference">
-      <div class="difference-copy">
-        <p class="eyebrow">The difference</p>
-        <h2>We treat local SEO as a website system, not a checklist.</h2>
-        <p>
-          Your site needs to be easy for customers and easy for Google. That means every
-          service page, location page, link, and search result should point to the same
-          clear story about your business.
-        </p>
-        <a class="text-link" href="/technology/">See the technology behind the method</a>
-      </div>
-      <div class="system-visual" aria-label="Website system graphic">
-        {difference.map((item) => (
-          <span>{item}</span>
-        ))}
-      </div>
-    </section>
-
-    <section class="section process">
+    <section id="about" class="section process">
       <div class="section-intro">
-        <p class="eyebrow">Simple process</p>
-        <h2>From confusing website problems to a calmer search foundation.</h2>
+        <h2>Simple process.</h2>
       </div>
       <div class="process-row">
         {process.map(([name, text], index) => (
@@ -242,23 +184,29 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
       </div>
     </section>
 
-    <section class="section lab-strip">
+    <section class="section posts-strip">
       <div>
-        <p class="eyebrow">Lab notes</p>
-        <h2>Public notes for the technical buyer.</h2>
+        <h2>Latest posts.</h2>
       </div>
-      <div class="note-list">
-        {latestLab.map((entry) => (
-          <a href={getEntryPath("lab", entry.data.slug)}>{entry.data.title}</a>
+      <div class="post-list">
+        {latestPosts.map((entry) => (
+          <a class="post-card" href={getEntryPath(entry)}>
+            <div class="post-thumb">
+              <span>{entry.data.category}</span>
+            </div>
+            <div class="post-card-copy">
+              <h3>{entry.data.title}</h3>
+              <p>{entry.data.description}</p>
+              <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+            </div>
+          </a>
         ))}
-        <a href="/technology/">Technology and methodology</a>
       </div>
     </section>
 
-    <section class="final-cta">
-      <p class="eyebrow">Ready when the site needs to start pulling its weight</p>
-      <h2>Built for local businesses that want durable search visibility.</h2>
-      <a class="button primary" href="/case-studies/">Start With The Proof</a>
+    <section id="contact" class="final-cta">
+      <h2>Ready for a website that actually helps your business grow?</h2>
+      <a class="button primary" href="mailto:hello@indexlayer.pro?subject=Site%20Audit">Get A Site Audit</a>
     </section>
   </main>
 
@@ -280,8 +228,8 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
 
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
-    gap: 64px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(500px, 0.75fr);
+    gap: 48px;
     align-items: center;
     padding: 42px 0 58px;
   }
@@ -360,131 +308,29 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
     border-color: var(--green-dark);
   }
 
-  .button.secondary:hover,
-  .text-link:hover {
+  .button.secondary:hover {
     border-color: var(--green);
     color: var(--green-dark);
   }
 
   .outcome-visual {
-    position: relative;
-    min-height: 520px;
+    width: min(620px, calc(100% + 100px));
+    margin-left: -36px;
   }
 
-  .search-card,
-  .phone-card,
-  .signal-card,
   .outcome-grid article,
   .case-card,
-  .process-row article {
+  .process-row article,
+  .post-card {
     background: var(--paper);
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
   }
 
-  .search-card {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: min(100%, 430px);
-    padding: 24px;
-  }
-
-  .search-label,
-  .search-card strong,
-  .phone-card span,
-  .phone-card strong {
+  .outcome-visual img {
     display: block;
-  }
-
-  .search-label {
-    margin-bottom: 18px;
-    color: var(--muted);
-    font-size: 0.84rem;
-  }
-
-  .search-card strong {
-    margin-bottom: 18px;
-    font-size: 1.28rem;
-  }
-
-  .result-line {
-    height: 10px;
-    margin-bottom: 10px;
-    background: var(--soft);
-  }
-
-  .result-line.wide {
-    width: 90%;
-  }
-
-  .result-line.medium {
-    width: 64%;
-  }
-
-  .result-actions {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
-    margin-top: 22px;
-  }
-
-  .result-actions span {
-    min-height: 42px;
-    display: grid;
-    place-items: center;
-    background: var(--green-soft);
-    color: var(--green-dark);
-    font-weight: 700;
-  }
-
-  .phone-card {
-    position: absolute;
-    left: 0;
-    top: 190px;
-    width: 270px;
-    padding: 22px;
-    border-color: #cbd8cf;
-  }
-
-  .phone-card span {
-    margin-bottom: 10px;
-    color: var(--green-dark);
-    font-size: 0.82rem;
-    font-weight: 760;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .phone-card strong {
-    margin-bottom: 8px;
-    font-size: 1.42rem;
-  }
-
-  .phone-card p,
-  .signal-card p {
-    margin-bottom: 0;
-    color: var(--muted);
-  }
-
-  .signal-card {
-    position: absolute;
-    right: 34px;
-    bottom: 26px;
-    width: min(360px, calc(100% - 34px));
-    display: flex;
-    gap: 14px;
-    padding: 20px;
-  }
-
-  .signal-dot {
-    width: 14px;
-    height: 14px;
-    flex: 0 0 auto;
-    margin-top: 5px;
-    background: var(--green);
-    border-radius: 999px;
-    box-shadow: 0 0 0 8px var(--green-soft);
+    width: 100%;
+    height: auto;
   }
 
   .section {
@@ -494,8 +340,7 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
 
   .problem,
   .proof,
-  .difference,
-  .lab-strip {
+  .posts-strip {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
     gap: 58px;
@@ -543,11 +388,10 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
   }
 
   .outcome-grid article {
-    min-height: 280px;
+    min-height: 190px;
     padding: 24px;
   }
 
-  .outcome-grid span,
   .case-card > span,
   .process-row span {
     display: inline-flex;
@@ -561,7 +405,6 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
 
   .outcome-grid p,
   .case-card p,
-  .difference-copy p,
   .process-row p {
     color: var(--muted);
   }
@@ -592,46 +435,64 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
     margin-bottom: 0;
   }
 
-  .case-card strong {
-    color: var(--ink);
-  }
-
-  .difference-copy {
-    max-width: 720px;
-  }
-
-  .difference-copy p {
-    margin: 24px 0;
-    font-size: 1.12rem;
-    line-height: 1.7;
-  }
-
-  .text-link {
-    display: inline-flex;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 4px;
-    font-weight: 700;
-  }
-
-  .system-visual,
-  .note-list {
+  .post-list {
     display: grid;
-    gap: 10px;
+    gap: 12px;
   }
 
-  .system-visual span,
-  .note-list a {
-    min-height: 58px;
+  .post-card {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    min-height: 156px;
+    overflow: hidden;
+    transition:
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .post-thumb {
+    min-height: 156px;
     display: flex;
-    align-items: center;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    padding: 14px 16px;
-    font-weight: 680;
+    align-items: flex-start;
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(217, 234, 223, 0.9), rgba(237, 242, 237, 0.7)),
+      var(--soft);
   }
 
-  .system-visual span:nth-child(2n) {
-    margin-left: 34px;
+  .post-thumb span {
+    display: inline-flex;
+    color: var(--green-dark);
+    background: rgba(255, 255, 255, 0.72);
+    padding: 5px 8px;
+    font-size: 0.7rem;
+    font-weight: 760;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .post-card-copy {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .post-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  .post-card p {
+    margin-bottom: 18px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .post-card time {
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 0.84rem;
   }
 
   .process-row {
@@ -649,9 +510,10 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
     margin-bottom: 34px;
   }
 
-  .note-list a:hover {
+  .post-card:hover {
     border-color: var(--green);
     color: var(--green-dark);
+    transform: translateY(-2px);
   }
 
   .final-cta {
@@ -665,12 +527,22 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
     margin: 0 auto 28px;
   }
 
+  @media (max-width: 1100px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .outcome-visual {
+      width: min(100%, 760px);
+      margin-left: 0;
+    }
+  }
+
   @media (max-width: 980px) {
     .hero,
     .problem,
     .proof,
-    .difference,
-    .lab-strip {
+    .posts-strip {
       grid-template-columns: 1fr;
     }
 
@@ -678,6 +550,11 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
       min-height: auto;
       gap: 42px;
       padding-top: 54px;
+    }
+
+    .outcome-visual {
+      width: min(100%, 760px);
+      margin-left: 0;
     }
 
     .outcome-grid,
@@ -713,35 +590,17 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
       font-size: 1rem;
     }
 
-    .outcome-visual {
-      min-height: 0;
-    }
-
-    .search-card,
-    .phone-card,
-    .signal-card {
-      position: static;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    .search-card {
-      padding: 18px;
-    }
-
-    .search-label,
-    .search-card strong {
-      margin-bottom: 12px;
-    }
-
-    .phone-card,
-    .signal-card {
-      display: none;
-    }
-
     .outcome-grid,
     .process-row {
       grid-template-columns: 1fr;
+    }
+
+    .post-card {
+      grid-template-columns: 1fr;
+    }
+
+    .post-thumb {
+      min-height: 86px;
     }
 
     .outcome-grid article,
@@ -749,8 +608,5 @@ const latestLab = (await getPublishedCollection("lab")).slice(0, 2);
       min-height: 0;
     }
 
-    .system-visual span:nth-child(2n) {
-      margin-left: 0;
-    }
   }
 </style>

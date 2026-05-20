@@ -1,58 +1,78 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
-export type ContentCollection = "lab" | "case-studies" | "guides";
-export type AnyContentEntry =
-  | CollectionEntry<"lab">
-  | CollectionEntry<"case-studies">
-  | CollectionEntry<"guides">;
+export type PostEntry = CollectionEntry<"posts">;
+export type PostCategory = PostEntry["data"]["category"];
 
-export const collectionMeta: Record<
-  ContentCollection,
-  { label: string; path: string; description: string }
+export const categoryMeta: Record<
+  PostCategory,
+  { label: PostCategory; slug: string; path: string; description: string }
 > = {
-  lab: {
-    label: "Lab Notes",
-    path: "/lab/",
-    description: "Fast technical notes from IndexLayer builds, rescues, and publishing experiments.",
+  Work: {
+    label: "Work",
+    slug: "work",
+    path: "/posts/category/work/",
+    description: "Rebuilds, rescues, audits, and local business website examples.",
   },
-  "case-studies": {
-    label: "Case Studies",
-    path: "/case-studies/",
-    description: "Proof-focused breakdowns of real indexing rescues and SEO-ready builds.",
+  Guide: {
+    label: "Guide",
+    slug: "guide",
+    path: "/posts/category/guide/",
+    description: "Practical guides for local business websites and search visibility.",
   },
-  guides: {
-    label: "Guides",
-    path: "/guides/",
-    description: "Evergreen education on stable HTML, indexing systems, and local service SEO.",
+  "Lab Note": {
+    label: "Lab Note",
+    slug: "lab-note",
+    path: "/posts/category/lab-note/",
+    description: "Build notes and operating lessons from IndexLayer.",
+  },
+  Audit: {
+    label: "Audit",
+    slug: "audit",
+    path: "/posts/category/audit/",
+    description: "Website and search visibility audits from real local business examples.",
   },
 };
 
-export function getEntryPath(collection: ContentCollection, slug: string) {
-  return `${collectionMeta[collection].path}${slug}/`;
+export const postIndexMeta = {
+  label: "Posts",
+  path: "/posts/",
+  description: "Case studies, guides, lessons, audits, and updates from local business website work.",
+};
+
+export function getEntryPath(entryOrSlug: PostEntry | string, slug?: string) {
+  const postSlug = typeof entryOrSlug === "string" ? (slug ?? entryOrSlug) : entryOrSlug.data.slug;
+  return `/posts/${postSlug}/`;
 }
 
-export function byNewest(a: AnyContentEntry, b: AnyContentEntry) {
+export function getCategoryPath(category: PostCategory) {
+  return categoryMeta[category].path;
+}
+
+export function getCategoryBySlug(slug: string) {
+  return Object.values(categoryMeta).find((meta) => meta.slug === slug)?.label;
+}
+
+export function byNewest(a: PostEntry, b: PostEntry) {
   return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
 }
 
-export async function getPublishedCollection(collection: ContentCollection) {
-  const entries = await getCollection(collection, ({ data }) => !data.draft);
+export async function getAllPublishedPosts() {
+  const entries = await getCollection("posts", ({ data }) => !data.draft);
   return entries.sort(byNewest);
 }
 
 export async function getAllPublishedContent() {
-  const entries = await Promise.all([
-    getPublishedCollection("case-studies"),
-    getPublishedCollection("lab"),
-    getPublishedCollection("guides"),
-  ]);
+  return getAllPublishedPosts();
+}
 
-  return entries.flat().sort(byNewest);
+export async function getPostsByCategory(category: PostCategory) {
+  const entries = await getAllPublishedPosts();
+  return entries.filter((entry) => entry.data.category === category);
 }
 
 export function getRelatedEntries(
-  current: AnyContentEntry,
-  entries: AnyContentEntry[],
+  current: PostEntry,
+  entries: PostEntry[],
   limit = 3,
 ) {
   const currentTags = new Set(current.data.tags);
@@ -60,8 +80,8 @@ export function getRelatedEntries(
     .filter((entry) => entry.id !== current.id)
     .map((entry) => {
       const tagMatches = entry.data.tags.filter((tag) => currentTags.has(tag)).length;
-      const pillarMatch = entry.data.pillar === current.data.pillar ? 1 : 0;
-      return { entry, score: tagMatches + pillarMatch };
+      const categoryMatch = entry.data.category === current.data.category ? 1 : 0;
+      return { entry, score: tagMatches + categoryMatch };
     })
     .sort((a, b) => b.score - a.score || byNewest(a.entry, b.entry));
 

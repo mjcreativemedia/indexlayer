@@ -1,39 +1,41 @@
 ---
-import type { AnyContentEntry, ContentCollection } from "../lib/content";
-import { collectionMeta, formatDate, getEntryPath } from "../lib/content";
+import type { PostEntry } from "../lib/content";
+import { formatDate, getEntryPath } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
 export interface Props {
-  collection: ContentCollection;
-  entries: AnyContentEntry[];
+  title: string;
+  description: string;
+  canonicalPath: string;
+  entries: PostEntry[];
+  eyebrow?: string;
 }
 
-const { collection, entries } = Astro.props;
-const meta = collectionMeta[collection];
-const title = `${meta.label} | IndexLayer`;
+const { title, description, canonicalPath, entries, eyebrow = "IndexLayer posts" } = Astro.props;
+const pageTitle = `${title} | IndexLayer`;
 ---
 
-<BaseLayout title={title} description={meta.description} canonicalPath={meta.path}>
+<BaseLayout title={pageTitle} description={description} canonicalPath={canonicalPath}>
   <SiteHeader />
 
   <main class="listing-shell">
     <section class="listing-hero">
-      <p class="eyebrow">IndexLayer publishing stream</p>
-      <h1>{meta.label}</h1>
-      <p>{meta.description}</p>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
     </section>
 
-    <section class="entry-grid" aria-label={meta.label}>
+    <section class="entry-grid" aria-label={title}>
       {entries.map((entry) => (
-        <a class="entry-card" href={getEntryPath(collection, entry.data.slug)}>
+        <a class="entry-card" href={getEntryPath(entry)}>
           <span>{entry.data.category}</span>
           <h2>{entry.data.title}</h2>
           <p>{entry.data.description}</p>
           <div>
             <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
-            <strong>{entry.data.pillar}</strong>
+            {entry.data.pillar && <strong>{entry.data.pillar}</strong>}
           </div>
         </a>
       ))}

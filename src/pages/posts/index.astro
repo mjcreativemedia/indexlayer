@@ -1,0 +1,13 @@
+---
+import ListingLayout from "../../layouts/ListingLayout.astro";
+import { getAllPublishedPosts, postIndexMeta } from "../../lib/content";
+
+const entries = await getAllPublishedPosts();
+---
+
+<ListingLayout
+  title={postIndexMeta.label}
+  description={postIndexMeta.description}
+  canonicalPath={postIndexMeta.path}
+  entries={entries}
+/>

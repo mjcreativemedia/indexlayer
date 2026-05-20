@@ -1,25 +1,15 @@
 ---
-import { render } from "astro:content";
-import ArticleLayout from "../../layouts/ArticleLayout.astro";
-import { getAllPublishedContent, getPublishedCollection, getRelatedEntries } from "../../lib/content";
+import RedirectLayout from "../../layouts/RedirectLayout.astro";
+import { legacyPostRedirects } from "../../lib/legacyRedirects";
 
-export async function getStaticPaths() {
-  const entries = await getPublishedCollection("case-studies");
-  const allEntries = await getAllPublishedContent();
-
-  return entries.map((entry) => ({
-    params: { slug: entry.data.slug },
-    props: {
-      entry,
-      related: getRelatedEntries(entry, allEntries),
-    },
+export function getStaticPaths() {
+  return legacyPostRedirects["case-studies"].map((slug) => ({
+    params: { slug },
+    props: { slug },
   }));
 }
 
-const { entry, related } = Astro.props;
-const { Content } = await render(entry);
+const { slug } = Astro.props;
 ---
 
-<ArticleLayout entry={entry} collection="case-studies" related={related}>
-  <Content />
-</ArticleLayout>
+<RedirectLayout from={`/case-studies/${slug}/`} to={`/posts/${slug}/`} />

@@ -6,5 +6,11 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://indexlayer.pro',
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/case-studies/') && !page.includes('/guides/') && !page.includes('/lab/'),
+    }),
+  ],
 });

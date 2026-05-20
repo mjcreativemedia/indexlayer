@@ -1,23 +1,30 @@
 ---
-import type { AnyContentEntry, ContentCollection } from "../lib/content";
-import { collectionMeta, formatDate, getEntryPath } from "../lib/content";
+import type { PostEntry } from "../lib/content";
+import { formatDate, getEntryPath, postIndexMeta } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
 export interface Props {
-  entry: AnyContentEntry;
-  collection: ContentCollection;
-  related: AnyContentEntry[];
+  entry: PostEntry;
+  related: PostEntry[];
 }
 
-const { entry, collection, related } = Astro.props;
-const meta = collectionMeta[collection];
-const canonicalPath = getEntryPath(collection, entry.data.slug);
+const { entry, related } = Astro.props;
+const canonicalPath = getEntryPath(entry);
 const site = Astro.site ?? new URL("https://indexlayer.pro");
 const canonicalUrl = new URL(canonicalPath, site).href;
 const title = `${entry.data.title} | IndexLayer`;
 const heroImage = entry.data.heroImage;
+const authorName = entry.data.authorName;
+const authorImage = entry.data.authorImage;
+const authorImageUrl = new URL(authorImage, site).href;
+const workSummaryItems = [
+  ["Client", entry.data.client],
+  ["Project", entry.data.projectType],
+  ["Problem", entry.data.problem],
+  ["Outcome", entry.data.outcome],
+].filter((item): item is [string, string] => Boolean(item[1]));
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -30,8 +37,9 @@ const articleJsonLd = {
   url: canonicalUrl,
   image: heroImage ? new URL(heroImage, site).href : new URL("/images/brand/indexlayer-og.png", site).href,
   author: {
-    "@type": "Organization",
-    name: "IndexLayer",
+    "@type": "Person",
+    name: authorName,
+    image: authorImageUrl,
     url: new URL("/", site).href,
   },
   publisher: {
@@ -58,8 +66,8 @@ const breadcrumbsJsonLd = {
     {
       "@type": "ListItem",
       position: 2,
-      name: meta.label,
-      item: new URL(meta.path, site).href,
+      name: postIndexMeta.label,
+      item: new URL(postIndexMeta.path, site).href,
     },
     {
       "@type": "ListItem",
@@ -82,40 +90,37 @@ const breadcrumbsJsonLd = {
   <SiteHeader />
 
   <main class="article-shell">
-    <a class="back-link" href={meta.path}>{meta.label}</a>
+    <a class="back-link" href={postIndexMeta.path}>{postIndexMeta.label}</a>
     <article>
       <header class="article-hero">
         <p class="eyebrow">{entry.data.category}</p>
         <h1>{entry.data.title}</h1>
         <p class="description">{entry.data.description}</p>
+        <div class="author-row">
+          <img src={authorImage} alt="" width="44" height="44" />
+          <div>
+            <span>Written by</span>
+            <strong>{authorName}</strong>
+          </div>
+        </div>
         <div class="meta-row">
           <span>{formatDate(entry.data.pubDate)}</span>
           {entry.data.updatedDate && <span>Updated {formatDate(entry.data.updatedDate)}</span>}
-          <span>{entry.data.pillar}</span>
+          {entry.data.pillar && <span>{entry.data.pillar}</span>}
         </div>
         <div class="tag-row">
           {entry.data.tags.map((tag) => <span>{tag}</span>)}
         </div>
       </header>
 
-      {"client" in entry.data && (
-        <aside class="case-summary" aria-label="Case study summary">
-          <div>
-            <span>Client</span>
-            <strong>{entry.data.client}</strong>
-          </div>
-          <div>
-            <span>Project</span>
-            <strong>{entry.data.projectType}</strong>
-          </div>
-          <div>
-            <span>Problem</span>
-            <strong>{entry.data.problem}</strong>
-          </div>
-          <div>
-            <span>Outcome</span>
-            <strong>{entry.data.outcome}</strong>
-          </div>
+      {workSummaryItems.length > 0 && (
+        <aside class="case-summary" aria-label="Work summary">
+          {workSummaryItems.map(([label, value]) => (
+            <div>
+              <span>{label}</span>
+              <strong>{value}</strong>
+            </div>
+          ))}
         </aside>
       )}
 
@@ -129,8 +134,8 @@ const breadcrumbsJsonLd = {
         <h2 id="related-heading">Related reading</h2>
         <div class="related-grid">
           {related.map((item) => (
-            <a href={getEntryPath(item.collection, item.data.slug)}>
-              <span>{collectionMeta[item.collection].label}</span>
+            <a href={getEntryPath(item)}>
+              <span>{item.data.category}</span>
               <strong>{item.data.title}</strong>
               <p>{item.data.description}</p>
             </a>
@@ -185,6 +190,36 @@ const breadcrumbsJsonLd = {
     color: var(--muted);
     font-size: 1.24rem;
     line-height: 1.62;
+  }
+
+  .author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .author-row img {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    object-fit: cover;
+  }
+
+  .author-row span,
+  .author-row strong {
+    display: block;
+  }
+
+  .author-row span {
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .author-row strong {
+    color: var(--ink);
+    line-height: 1.2;
   }
 
   .meta-row,

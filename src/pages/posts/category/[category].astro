@@ -1,0 +1,28 @@
+---
+import ListingLayout from "../../../layouts/ListingLayout.astro";
+import { categoryMeta, getAllPublishedPosts } from "../../../lib/content";
+
+export async function getStaticPaths() {
+  const entries = await getAllPublishedPosts();
+  const usedCategories = new Set(entries.map((entry) => entry.data.category));
+
+  return Object.values(categoryMeta)
+    .filter((meta) => usedCategories.has(meta.label))
+    .map((meta) => ({
+      params: { category: meta.slug },
+      props: { category: meta.label },
+    }));
+}
+
+const { category } = Astro.props;
+const meta = categoryMeta[category];
+const entries = (await getAllPublishedPosts()).filter((entry) => entry.data.category === category);
+---
+
+<ListingLayout
+  title={meta.label}
+  description={meta.description}
+  canonicalPath={meta.path}
+  entries={entries}
+  eyebrow="IndexLayer category"
+/>

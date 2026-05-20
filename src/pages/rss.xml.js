@@ -7,13 +7,13 @@ export async function GET(context) {
   return rss({
     title: "IndexLayer",
     description:
-      "Technical publishing notes, indexing case studies, and stable HTML guides from IndexLayer.",
+      "Work examples, guides, lab notes, and website visibility posts from IndexLayer.",
     site: context.site,
     items: entries.map((entry) => ({
       title: entry.data.title,
       description: entry.data.description,
       pubDate: entry.data.pubDate,
-      link: getEntryPath(entry.collection, entry.data.slug),
+      link: getEntryPath(entry),
     })),
     customData: "<language>en-us</language>",
   });

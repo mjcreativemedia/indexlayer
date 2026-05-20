@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { getEntryPath, getPublishedCollection } from "../lib/content";
+import { getAllPublishedPosts, getEntryPath } from "../lib/content";
 
 const title = "IndexLayer Technology | Stable Indexing Infrastructure";
 const description =
@@ -81,8 +81,9 @@ const checks = [
   "Clean publishing workflow",
 ];
 
-const latestLab = (await getPublishedCollection("lab")).slice(0, 3);
-const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0, 2);
+const latestPosts = await getAllPublishedPosts();
+const latestLab = latestPosts.filter((entry) => entry.data.category === "Lab Note").slice(0, 3);
+const latestWork = latestPosts.filter((entry) => entry.data.category === "Work").slice(0, 2);
 ---
 
 <BaseLayout title={title} description={description} jsonLd={[businessJsonLd, websiteJsonLd]}>
@@ -99,8 +100,8 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
             transparent SEO engineering.
           </p>
           <div class="actions">
-            <a class="button primary" href="/case-studies/">View Case Studies</a>
-            <a class="button secondary" href="/lab/">Read Lab Notes</a>
+            <a class="button primary" href="/work/">View Work</a>
+            <a class="button secondary" href="/posts/category/lab-note/">Read Lab Notes</a>
           </div>
         </div>
 
@@ -211,9 +212,9 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
         </div>
         <div class="note-list">
           {latestLab.map((entry) => (
-            <a href={getEntryPath("lab", entry.data.slug)}>{entry.data.title}</a>
+            <a href={getEntryPath(entry)}>{entry.data.title}</a>
           ))}
-          <a href="/guides/stable-indexable-html/">Stable Indexable HTML</a>
+          <a href="/posts/stable-indexable-html/">Stable Indexable HTML</a>
         </div>
       </section>
 
@@ -223,8 +224,8 @@ const latestCaseStudies = (await getPublishedCollection("case-studies")).slice(0
           <h2>Real projects become the proof layer.</h2>
         </div>
         <div class="note-list">
-          {latestCaseStudies.map((entry) => (
-            <a href={getEntryPath("case-studies", entry.data.slug)}>{entry.data.title}</a>
+          {latestWork.map((entry) => (
+            <a href={getEntryPath(entry)}>{entry.data.title}</a>
           ))}
         </div>
       </section>

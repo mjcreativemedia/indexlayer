@@ -1,8 +1,6 @@
 ---
-import ListingLayout from "../../layouts/ListingLayout.astro";
-import { getPublishedCollection } from "../../lib/content";
-
-const entries = await getPublishedCollection("lab");
+import RedirectLayout from "../../layouts/RedirectLayout.astro";
+import { legacyListingRedirects } from "../../lib/legacyRedirects";
 ---
 
-<ListingLayout collection="lab" entries={entries} />
+<RedirectLayout from="/lab/" to={legacyListingRedirects.lab} />

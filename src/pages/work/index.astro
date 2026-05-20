@@ -1,0 +1,14 @@
+---
+import ListingLayout from "../../layouts/ListingLayout.astro";
+import { getPostsByCategory } from "../../lib/content";
+
+const entries = await getPostsByCategory("Work");
+---
+
+<ListingLayout
+  title="Work"
+  description="Rebuilds, rescues, audits, and local business website examples."
+  canonicalPath="/work/"
+  entries={entries}
+  eyebrow="IndexLayer work"
+/>
