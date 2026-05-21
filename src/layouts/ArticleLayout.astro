@@ -16,6 +16,8 @@ const site = Astro.site ?? new URL("https://indexlayer.pro");
 const canonicalUrl = new URL(canonicalPath, site).href;
 const title = `${entry.data.title} | IndexLayer`;
 const heroImage = entry.data.heroImage ?? "/images/brand/indexlayer-og.png";
+const showHeroImage =
+  entry.data.slug !== "chicago-fight-team-homepage-rebuild" && !entry.data.hideHeroImage;
 const authorName = entry.data.authorName;
 const authorImage = entry.data.authorImage;
 const authorImageUrl = new URL(authorImage, site).href;
@@ -102,9 +104,11 @@ const breadcrumbsJsonLd = {
             <strong>{authorName}</strong>
           </span>
         </div>
-        <figure class="featured-image">
-          <img src={heroImage} alt="" width="1200" height="630" />
-        </figure>
+        {showHeroImage && (
+          <figure class="featured-image">
+            <img src={heroImage} alt="" width="1200" height="630" />
+          </figure>
+        )}
         <div class="tag-row">
           {entry.data.tags.map((tag) => <span>{tag}</span>)}
         </div>
