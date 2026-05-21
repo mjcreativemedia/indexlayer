@@ -1,0 +1,501 @@
+---
+const imageBase = "/images/work/chicago-fight-team";
+---
+
+<section class="cft-preview" aria-label="Chicago Fight Team homepage rebuild preview">
+  <header class="preview-frame">
+    <nav class="preview-nav" aria-label="Preview navigation">
+      <a class="brand" href="https://chicagofightteam.org/">
+        <img src={`${imageBase}/cft-logo.jpeg`} alt="" loading="lazy" />
+        <span>Chicago Fight Team</span>
+      </a>
+      <div class="nav-links" aria-hidden="true">
+        <span>Programs</span>
+        <span>Coaches</span>
+        <span>Schedule</span>
+      </div>
+      <a class="nav-cta" href="https://chicagofightteam.org/">Start Training</a>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">Justice, Illinois</p>
+        <h2>Built Through Discipline. Forged In Chicago.</h2>
+        <p>
+          Chicago Fight Team trains fighters, competitors, and everyday people
+          through serious MMA, Brazilian Jiu-Jitsu, and Muay Thai instruction.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:+17738855700">Call The Gym</a>
+          <a href="https://www.google.com/maps/place/Chicago+Fight+Team/">View Location</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src={`${imageBase}/training-room-wide.jpeg`} alt="Chicago Fight Team training room" loading="lazy" />
+        <figcaption>7750 Archer Rd, Justice, IL 60458</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="credibility-strip" aria-label="Chicago Fight Team credibility highlights">
+    <div>
+      <span>Legacy</span>
+      <strong>20+ years of martial arts history</strong>
+    </div>
+    <div>
+      <span>Training</span>
+      <strong>MMA, BJJ, Muay Thai, and competition prep</strong>
+    </div>
+    <div>
+      <span>Pedigree</span>
+      <strong>Home to world-class fighters and coaches</strong>
+    </div>
+  </div>
+
+  <section class="programs" aria-labelledby="programs-heading">
+    <div>
+      <p class="kicker">Programs</p>
+      <h3 id="programs-heading">A clearer path into the gym.</h3>
+    </div>
+    <div class="program-grid">
+      <article>
+        <img src={`${imageBase}/jiu-jitsu-training.jpeg`} alt="Jiu-Jitsu training at Chicago Fight Team" loading="lazy" />
+        <h4>Brazilian Jiu-Jitsu</h4>
+        <p>Structured fundamentals, live training, self-defense, kids classes, and competition preparation.</p>
+      </article>
+      <article>
+        <img src={`${imageBase}/cloud-training.jpeg`} alt="Chicago Fight Team striking and conditioning training" loading="lazy" />
+        <h4>MMA & Muay Thai</h4>
+        <p>Stand-up, grappling, conditioning, and fight-team training without burying the visitor in long copy.</p>
+      </article>
+      <article>
+        <img src={`${imageBase}/about-header.jpeg`} alt="Chicago Fight Team training environment" loading="lazy" />
+        <h4>Start Training</h4>
+        <p>One simple next step for beginners, competitors, and anyone ready to visit the gym.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="fighter-proof" aria-labelledby="proof-heading">
+    <div class="proof-copy">
+      <p class="kicker">Proof</p>
+      <h3 id="proof-heading">The authority was already there. The page just needed to show it faster.</h3>
+      <p>
+        The redesign keeps the gym's authentic history, fight pedigree, and local
+        relevance close to the surface instead of hiding it behind app complexity.
+      </p>
+    </div>
+    <div class="proof-people" aria-label="Featured fighter and coach credibility">
+      <figure>
+        <img src={`${imageBase}/belal-muhammad.jpeg`} alt="Belal Muhammad associated with Chicago Fight Team" loading="lazy" />
+        <figcaption>Belal Muhammad</figcaption>
+      </figure>
+      <figure>
+        <img src={`${imageBase}/horacio-gutierrez.jpeg`} alt="Horacio Gutierrez" loading="lazy" />
+        <figcaption>Horacio Gutierrez</figcaption>
+      </figure>
+      <figure>
+        <img src={`${imageBase}/nicasio-sanchez.jpeg`} alt="Nicasio Sanchez" loading="lazy" />
+        <figcaption>Nicasio Sanchez</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="video-location" aria-label="Chicago Fight Team video and location">
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/NGYfM8yBRB0?controls=1"
+        title="Chicago Fight Team Jiu-Jitsu video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="location-panel">
+      <p class="kicker">Visit</p>
+      <h3>Train in Justice, Illinois.</h3>
+      <p>7750 Archer Rd, Justice, IL 60458</p>
+      <a href="tel:+17738855700">1 (773) 885-5700</a>
+    </div>
+  </section>
+</section>
+
+<style>
+  .cft-preview {
+    --cft-ink: #f6f2e9;
+    --cft-muted: #bdb5a8;
+    --cft-panel: #171717;
+    --cft-line: rgba(246, 242, 233, 0.16);
+    --cft-red: #d0392d;
+    margin: 36px 0 46px;
+    overflow: hidden;
+    border: 1px solid #23201d;
+    border-radius: 8px;
+    background: #080808;
+    color: var(--cft-ink);
+    box-shadow: 0 26px 70px rgba(16, 18, 17, 0.22);
+  }
+
+  .preview-frame {
+    min-height: 640px;
+    padding: 22px;
+    background:
+      linear-gradient(90deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.84) 45%, rgba(8, 8, 8, 0.28) 100%),
+      url("/images/work/chicago-fight-team/training-room-wide.jpeg") center / cover;
+  }
+
+  .preview-nav,
+  .hero-grid,
+  .credibility-strip,
+  .programs,
+  .fighter-proof,
+  .video-location {
+    width: min(100%, 1120px);
+    margin-inline: auto;
+  }
+
+  .preview-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 58px;
+    border-bottom: 1px solid var(--cft-line);
+  }
+
+  .brand,
+  .hero-actions,
+  .nav-links,
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .brand {
+    gap: 12px;
+    color: var(--cft-ink);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 760;
+    text-transform: uppercase;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .nav-links {
+    gap: 22px;
+    color: var(--cft-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+
+  .nav-cta,
+  .hero-actions a,
+  .location-panel a {
+    min-height: 42px;
+    border: 1px solid var(--cft-line);
+    border-radius: 4px;
+    padding: 10px 14px;
+    color: var(--cft-ink);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 760;
+    text-transform: uppercase;
+  }
+
+  .nav-cta,
+  .hero-actions a:first-child {
+    border-color: var(--cft-red);
+    background: var(--cft-red);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
+    align-items: end;
+    gap: 34px;
+    padding: 96px 0 22px;
+  }
+
+  .hero-copy h2 {
+    max-width: 700px;
+    margin: 0 0 22px;
+    color: var(--cft-ink);
+    font-size: clamp(3rem, 8vw, 6.8rem);
+    line-height: 0.9;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .hero-copy p {
+    max-width: 610px;
+    margin: 0 0 24px;
+    color: #d8d1c7;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
+  }
+
+  .kicker {
+    margin: 0 0 12px;
+    color: var(--cft-red);
+    font-size: 0.76rem;
+    font-weight: 820;
+    text-transform: uppercase;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero-media {
+    margin: 0;
+  }
+
+  .hero-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.08);
+  }
+
+  .hero-media figcaption,
+  .proof-people figcaption {
+    margin-top: 10px;
+    color: var(--cft-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .credibility-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--cft-line);
+    border-bottom: 1px solid var(--cft-line);
+  }
+
+  .credibility-strip div {
+    padding: 24px;
+  }
+
+  .credibility-strip div + div {
+    border-left: 1px solid var(--cft-line);
+  }
+
+  .credibility-strip span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cft-red);
+    font-size: 0.72rem;
+    font-weight: 820;
+    text-transform: uppercase;
+  }
+
+  .credibility-strip strong {
+    display: block;
+    color: var(--cft-ink);
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .programs,
+  .fighter-proof,
+  .video-location {
+    padding: 48px 22px;
+  }
+
+  .programs {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .programs h3,
+  .fighter-proof h3,
+  .location-panel h3 {
+    margin: 0 0 16px;
+    color: var(--cft-ink);
+    font-size: clamp(1.7rem, 4vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .program-grid article {
+    overflow: hidden;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    background: var(--cft-panel);
+  }
+
+  .program-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.05);
+  }
+
+  .program-grid h4,
+  .program-grid p {
+    margin-inline: 16px;
+  }
+
+  .program-grid h4 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: var(--cft-ink);
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .program-grid p,
+  .proof-copy p,
+  .location-panel p {
+    color: var(--cft-muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .program-grid p {
+    margin-bottom: 18px;
+  }
+
+  .fighter-proof {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1fr);
+    gap: 28px;
+    border-top: 1px solid var(--cft-line);
+  }
+
+  .proof-copy p {
+    max-width: 520px;
+  }
+
+  .proof-people {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .proof-people figure {
+    margin: 0;
+  }
+
+  .proof-people img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.08);
+  }
+
+  .video-location {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
+    gap: 18px;
+    border-top: 1px solid var(--cft-line);
+  }
+
+  .video-wrap {
+    overflow: hidden;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    background: #000;
+  }
+
+  .video-wrap iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+  }
+
+  .location-panel {
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    background: var(--cft-panel);
+    padding: 24px;
+  }
+
+  .location-panel a {
+    margin-top: 16px;
+  }
+
+  @media (max-width: 840px) {
+    .preview-frame {
+      min-height: auto;
+      padding: 16px;
+    }
+
+    .nav-links {
+      display: none;
+    }
+
+    .hero-grid,
+    .programs,
+    .fighter-proof,
+    .video-location {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-grid {
+      padding-top: 62px;
+    }
+
+    .hero-media img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .credibility-strip,
+    .program-grid,
+    .proof-people {
+      grid-template-columns: 1fr;
+    }
+
+    .credibility-strip div + div {
+      border-top: 1px solid var(--cft-line);
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .cft-preview {
+      margin-inline: -6px;
+    }
+
+    .preview-nav {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-bottom: 14px;
+    }
+
+    .hero-copy h2 {
+      font-size: 2.82rem;
+    }
+
+    .programs,
+    .fighter-proof,
+    .video-location {
+      padding: 34px 16px;
+    }
+  }
+</style>

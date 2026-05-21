@@ -16,6 +16,7 @@ const posts = defineCollection({
     authorName: z.string().default("Mitch Argamasilla"),
     authorImage: z.string().default("/images/authors/mitch-argamasilla.jpeg"),
     heroImage: z.string().optional(),
+    hideHeroImage: z.boolean().default(false),
     draft: z.boolean().default(false),
     client: z.string().optional(),
     projectType: z.string().optional(),
