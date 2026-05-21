@@ -32,15 +32,17 @@ const { title, steps } = Astro.props;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1px;
     border: 1px solid var(--line);
+    border-radius: var(--radius-card);
     background: var(--line);
     overflow: hidden;
+    box-shadow: var(--card-shadow);
   }
 
   span {
     min-height: 84px;
     display: grid;
     place-items: center;
-    background: var(--paper);
+    background: var(--card-bg);
     padding: 16px;
     color: var(--green-dark);
     text-align: center;

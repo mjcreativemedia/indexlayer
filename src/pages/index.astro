@@ -4,9 +4,11 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { formatDate, getAllPublishedContent, getEntryPath } from "../lib/content";
 
-const title = "IndexLayer | Local Business Websites Built for Search Visibility";
+const title = "IndexLayer | Local Business Websites Built for Google Visibility";
 const description =
-  "IndexLayer builds fast, trustworthy local service business websites that help Google understand your business and help customers know what to do next.";
+  "IndexLayer builds calm, fast local business websites with premium design, stable Google indexing, and clear Search Console visibility.";
+
+const auditHref = "mailto:hello@indexlayer.pro?subject=Free%20Website%20Audit";
 
 const businessJsonLd = {
   "@context": "https://schema.org",
@@ -21,17 +23,21 @@ const businessJsonLd = {
     name: "United States",
   },
   knowsAbout: [
+    "Local business websites",
+    "Website rebuilds",
     "Local SEO",
-    "Service business websites",
-    "Search visibility",
+    "Google Search Console",
+    "Stable indexing architecture",
     "Website performance",
-    "Google visibility",
+    "Accessible web design",
   ],
   serviceType: [
     "Local business website builds",
-    "Website audits",
-    "Local SEO cleanup",
-    "Search-ready service pages",
+    "Free website audits",
+    "Website rebuilds",
+    "Google Search Console setup",
+    "Local SEO architecture",
+    "Website performance improvements",
   ],
 };
 
@@ -46,46 +52,68 @@ const websiteJsonLd = {
   },
 };
 
-const outcomes = [
+const proofPoints = [
+  "Fast loading",
+  "Mobile optimized",
+  "Google Search Console setup",
+  "Stable indexing architecture",
+  "Transparent reporting",
+];
+
+const fixes = [
   {
-    label: "More calls",
-    text: "Clear service pages built around real searches.",
+    title: "Fast Pages",
+    text: "Lightweight websites that load quickly and feel polished on every device.",
   },
   {
-    label: "Faster websites",
-    text: "Pages that load quickly and feel easy to use.",
+    title: "Premium Design",
+    text: "Clean, modern interfaces that make local businesses look trustworthy and professional.",
   },
   {
-    label: "Better visibility",
-    text: "Help Google understand your business clearly.",
-  },
-  {
-    label: "Easier growth",
-    text: "A clean foundation that is easy to expand later.",
+    title: "Stable SEO",
+    text: "HTML-first architecture, clean metadata, structured pages, and Google-friendly publishing systems.",
   },
 ];
 
-const caseStudies = [
-  {
-    name: "Better Call Steve",
-    type: "SEO rescue",
-    text: "Fixed confusing page signals so the site could be easier for Google to understand.",
-    href: "/posts/better-call-steve-seo-rescue/",
-  },
-  {
-    name: "MyCornerstonePlan",
-    type: "New build",
-    text: "Built a fast local-service funnel with clear pages and room to grow.",
-    href: "/posts/mycornerstoneplan-seo-ready-life-insurance-funnel/",
-  },
+const visibilityFeatures = [
+  "Google Search Console setup",
+  "Sitemap monitoring",
+  "Structured metadata",
+  "Local SEO pages",
+  "Internal linking",
+  "Schema markup",
+  "Indexing audits",
+  "Reporting transparency",
+];
+
+const fragileSignals = [
+  "Indexing instability",
+  "Duplicate pages",
+  "Weak metadata",
+  "Poor local structure",
+  "Crawlability issues",
+  "Inconsistent publishing systems",
+];
+
+const stableFocus = [
+  "Stable HTML",
+  "Clean architecture",
+  "Predictable indexing",
+  "Transparent systems",
 ];
 
 const process = [
-  ["Audit", "Find what is holding the site back."],
-  ["Fix", "Clean up structure and visibility issues."],
-  ["Build", "Create clear service and location pages."],
-  ["Launch", "Publish fast, stable pages."],
-  ["Grow", "Add content and improve over time."],
+  ["Audit", "We review your current website, Google visibility, speed, and structure."],
+  ["Rebuild or Stabilize", "We improve your current website or build a modern replacement."],
+  ["Launch", "Fast, clean deployment with SEO foundations already in place."],
+  ["Monitor", "Transparent Search Console reporting and ongoing improvements."],
+];
+
+const founderNotes = [
+  "Fast, lightweight websites",
+  "Clean Google indexing",
+  "Modern design without bloated retainers",
+  "Transparent systems owners can understand",
 ];
 
 const latestPosts = (await getAllPublishedContent()).slice(0, 4);
@@ -97,64 +125,167 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Websites for local service businesses</p>
-        <h1>Beautiful websites. Clear Google visibility.</h1>
+        <p class="eyebrow">Websites for contractors, gyms, med spas, roofers, and local teams</p>
+        <h1>Local websites with clear Google visibility.</h1>
+        <p class="hero-line">Premium design. Fast pages. Stable search foundations.</p>
         <p class="lede">
-          We build local business websites that load fast, explain your services clearly,
-          and help nearby customers find you.
+          IndexLayer builds modern websites for local service businesses that need to look
+          trustworthy, load quickly, and give Google a clean story to understand.
         </p>
         <div class="actions">
-          <a class="button primary" href="#contact">Get A Site Audit</a>
-          <a class="button secondary" href="/work/">View Work</a>
+          <a class="button primary" href="/work/">View Our Work</a>
+          <a class="button secondary" href={auditHref}>Free Website Audit</a>
         </div>
+        <ul class="proof-list" aria-label="IndexLayer website foundations">
+          {proofPoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
       </div>
 
-      <aside class="outcome-visual" aria-label="Local search outcome graphic">
-        <img
-          src="/images/home/hero-search-visibility.png"
-          alt="A local business website turning into a Google search result and a new customer call."
-          width="1536"
-          height="1024"
-        />
+      <aside class="visual-panel hero-visual" aria-label="Local business website and visibility system">
+        <p class="panel-label">Website system</p>
+        <div class="mock-browser">
+          <div class="browser-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mock-layout">
+            <div class="mock-site">
+              <span>Local business website mockup</span>
+              <strong>Book more local customers</strong>
+              <div></div>
+            </div>
+            <div class="mock-metrics">
+              <div>
+                <span>Indexed pages</span>
+                <strong>42</strong>
+              </div>
+              <div>
+                <span>Performance</span>
+                <strong>98</strong>
+              </div>
+            </div>
+          </div>
+          <div class="visibility-card">
+            <span>Google visibility graph</span>
+            <div class="mini-chart" aria-hidden="true">
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+        </div>
       </aside>
     </section>
 
-    <section class="section outcomes">
+    <section class="section">
       <div class="section-intro">
-        <h2>Better outcomes.</h2>
+        <p class="eyebrow">What we fix</p>
+        <h2>Modern sites that feel good and hold up underneath.</h2>
       </div>
-      <div class="outcome-grid">
-        {outcomes.map((outcome) => (
-          <article>
-            <h3>{outcome.label}</h3>
-            <p>{outcome.text}</p>
+      <div class="fix-grid">
+        {fixes.map((fix) => (
+          <article class="card fix-card">
+            <h3>{fix.title}</h3>
+            <p>{fix.text}</p>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section proof">
-      <div>
-        <h2>Built clean from day one. Or fixed after things broke.</h2>
+    <section class="section split-section">
+      <div class="section-copy">
+        <p class="eyebrow">Google visibility</p>
+        <h2>Google Visibility Built In</h2>
+        <p class="section-lede">
+          We do not just build websites. We build websites Google can consistently crawl,
+          understand, and index.
+        </p>
+        <div class="feature-grid">
+          {visibilityFeatures.map((feature) => (
+            <span>{feature}</span>
+          ))}
+        </div>
       </div>
-      <div class="case-grid">
-        {caseStudies.map((study) => (
-          <a class="case-card" href={study.href}>
-            <span>{study.type}</span>
-            <h3>{study.name}</h3>
-            <p>{study.text}</p>
-          </a>
-        ))}
+      <aside class="visual-panel gsc-visual" aria-label="Google Search Console visibility snapshot">
+        <p class="panel-label">Visibility snapshot</p>
+        <div class="gsc-shell">
+          <div class="gsc-row">
+            <span>Pages indexed</span>
+            <strong>Growing steadily</strong>
+          </div>
+          <div class="gsc-row">
+            <span>Sitemap status</span>
+            <strong>Clean</strong>
+          </div>
+          <div class="gsc-row">
+            <span>Visibility insights</span>
+            <strong>Transparent</strong>
+          </div>
+          <div class="gsc-line" aria-hidden="true"></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section problem-section">
+      <div class="section-intro">
+        <p class="eyebrow">The problem</p>
+        <h2>Most modern websites look good. But their SEO foundation is fragile.</h2>
+        <p class="section-lede">
+          Many template-driven websites have a clean frontend while the publishing layer sends
+          confusing signals to Google.
+        </p>
+      </div>
+      <div class="problem-grid">
+        <div class="card">
+          <h3>What breaks</h3>
+          <ul class="plain-list">
+            {fragileSignals.map((signal) => (
+              <li>{signal}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="card focus-card">
+          <h3>What we stabilize</h3>
+          <ul class="plain-list">
+            {stableFocus.map((focus) => (
+              <li>{focus}</li>
+            ))}
+          </ul>
+          <blockquote>Beautiful frontend does not equal stable publishing infrastructure.</blockquote>
+        </div>
       </div>
     </section>
 
-    <section id="about" class="section process">
+    <section class="section offer-section">
+      <div class="offer-card">
+        <p class="eyebrow">The offer</p>
+        <h2>Cut Your Website Costs in Half</h2>
+        <p>
+          If you are currently paying for website management, hosting, maintenance, SEO retainers,
+          or outdated web work, there is a good chance we can build something faster, cleaner,
+          and easier to understand for significantly less.
+        </p>
+        <div class="offer-note">
+          <span>Our goal</span>
+          <strong>Deliver a better website experience for around 50% of what many businesses currently pay.</strong>
+          <p>Simple. Transparent. No bloated retainers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="section-intro">
-        <h2>Simple process.</h2>
+        <p class="eyebrow">Process</p>
+        <h2>How It Works</h2>
       </div>
       <div class="process-row">
         {process.map(([name, text], index) => (
-          <article>
+          <article class="card process-card">
             <span>{String(index + 1).padStart(2, "0")}</span>
             <h3>{name}</h3>
             <p>{text}</p>
@@ -163,9 +294,47 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       </div>
     </section>
 
+    <section id="about" class="section founder-section">
+      <div class="founder-card">
+        <div class="founder-photo">
+          <img
+            src="/images/authors/mitch-argamasilla.jpeg"
+            alt="Mitch Argamasilla, founder of IndexLayer"
+            width="640"
+            height="640"
+          />
+        </div>
+        <div class="founder-copy">
+          <p class="eyebrow">Meet the founder</p>
+          <h2>Hey, I’m Mitch.</h2>
+          <p>
+            I started IndexLayer after rebuilding and debugging modern websites that looked good
+            on the surface but were fragile underneath.
+          </p>
+          <p>
+            These days I spend a lot of time driving around Chicago noticing local businesses with
+            outdated websites that deserve better. Sometimes the opportunity is obvious: slow pages,
+            broken mobile layouts, weak Google visibility, and retainers that do not make sense.
+          </p>
+          <div class="founder-note-grid">
+            {founderNotes.map((note) => (
+              <span>{note}</span>
+            ))}
+          </div>
+          <p class="founder-quote">Cleaner. Faster. Simpler. Usually for less money.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="section posts-strip">
-      <div>
-        <h2>Latest posts.</h2>
+      <div class="section-copy">
+        <p class="eyebrow">Lab notes</p>
+        <h2>Where the work gets documented.</h2>
+        <p class="section-lede">
+          We publicly document indexing fixes, SEO architecture lessons, local business rebuilds,
+          practical website workflows, and Google Search Console insights.
+        </p>
+        <a class="text-link" href="/posts/">Read the notes</a>
       </div>
       <div class="post-list">
         {latestPosts.map((entry) => (
@@ -184,8 +353,9 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     </section>
 
     <section id="contact" class="final-cta">
-      <h2>Ready for a website that actually helps your business grow?</h2>
-      <a class="button primary" href="mailto:hello@indexlayer.pro?subject=Site%20Audit">Get A Site Audit</a>
+      <p class="eyebrow">Free website audit</p>
+      <h2>Ready for a website that looks better, loads faster, and gives Google a cleaner story?</h2>
+      <a class="button primary" href={auditHref}>Free Website Audit</a>
     </section>
   </main>
 
@@ -205,12 +375,36 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     margin-top: 0;
   }
 
+  h1 {
+    max-width: 760px;
+    margin-bottom: 18px;
+    font-size: clamp(3.4rem, 7vw, 6.7rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.94;
+  }
+
+  h2 {
+    margin-bottom: 0;
+    font-size: clamp(2.05rem, 4vw, 4.35rem);
+    font-weight: 660;
+    letter-spacing: 0;
+    line-height: 1.02;
+  }
+
+  h3 {
+    margin-bottom: 12px;
+    font-size: 1.08rem;
+    line-height: 1.25;
+  }
+
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(500px, 0.75fr);
-    gap: 48px;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.72fr);
+    gap: 56px;
     align-items: center;
-    padding: 42px 0 58px;
+    min-height: calc(100vh - 78px);
+    padding: 42px 0 72px;
   }
 
   .hero-copy {
@@ -220,61 +414,58 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   .eyebrow {
     margin: 0 0 18px;
     color: var(--green-dark);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 760;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
+    line-height: 1.45;
     text-transform: uppercase;
   }
 
-  h1 {
-    margin-bottom: 26px;
-    max-width: 900px;
-    font-size: clamp(3rem, 5vw, 5rem);
-    font-weight: 690;
-    letter-spacing: 0;
-    line-height: 1;
+  .hero-line {
+    margin-bottom: 22px;
+    color: var(--ink);
+    font-size: clamp(1.42rem, 2.8vw, 2.45rem);
+    font-weight: 620;
+    line-height: 1.1;
   }
 
-  h2 {
-    margin-bottom: 0;
-    font-size: clamp(2rem, 3.8vw, 4.2rem);
-    font-weight: 660;
-    letter-spacing: 0;
-    line-height: 1.03;
-  }
-
-  h3 {
-    margin-bottom: 12px;
-    font-size: 1.08rem;
-    line-height: 1.25;
+  .lede,
+  .section-lede {
+    max-width: 690px;
+    color: var(--muted);
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+    line-height: 1.62;
   }
 
   .lede {
-    max-width: 680px;
-    margin-bottom: 34px;
-    color: var(--muted);
-    font-size: clamp(1.08rem, 2vw, 1.32rem);
-    line-height: 1.55;
+    margin-bottom: 32px;
   }
 
   .actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
+    margin-bottom: 24px;
   }
 
   .button {
-    min-height: 46px;
+    min-height: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--ink);
+    border-radius: 6px;
     padding: 0 18px;
     font-weight: 680;
     transition:
       background 160ms ease,
       border-color 160ms ease,
-      color 160ms ease;
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
   }
 
   .button.primary {
@@ -287,101 +478,423 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     border-color: var(--green-dark);
   }
 
+  .button.secondary {
+    background: rgba(255, 255, 255, 0.42);
+  }
+
   .button.secondary:hover {
     border-color: var(--green);
     color: var(--green-dark);
   }
 
-  .outcome-visual {
-    width: min(620px, calc(100% + 100px));
-    margin-left: -36px;
+  .proof-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    color: var(--muted);
+    list-style: none;
   }
 
-  .outcome-grid article,
-  .case-card,
-  .process-row article,
-  .post-card {
-    background: var(--paper);
+  .proof-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 32px;
     border: 1px solid var(--line);
-    box-shadow: var(--shadow);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.56);
+    padding: 0 11px;
+    font-size: 0.86rem;
   }
 
-  .outcome-visual img {
-    display: block;
-    width: 100%;
-    height: auto;
+  .proof-list li::before,
+  .plain-list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--green);
   }
 
   .section {
-    padding: 92px 0;
+    padding: 94px 0;
     border-top: 1px solid var(--line);
   }
 
-  .proof,
+  .section-intro {
+    max-width: 820px;
+    margin-bottom: 38px;
+  }
+
+  .section-intro .section-lede {
+    margin-top: 22px;
+  }
+
+  .split-section,
   .posts-strip {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.8fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(340px, 0.78fr);
     gap: 58px;
     align-items: start;
   }
 
-  .section-intro {
-    max-width: 760px;
-    margin-bottom: 40px;
+  .section-copy {
+    max-width: 720px;
   }
 
-  .outcome-grid {
+  .section-copy .section-lede {
+    margin-top: 22px;
+    margin-bottom: 28px;
+  }
+
+  .card,
+  .visual-panel,
+  .offer-card,
+  .founder-card,
+  .post-card {
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--card-shadow);
+  }
+
+  .fix-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
   }
 
-  .outcome-grid article {
-    min-height: 190px;
-    padding: 24px;
+  .fix-card {
+    min-height: 230px;
+    padding: 26px;
   }
 
-  .case-card > span,
-  .process-row span {
+  .fix-card p,
+  .process-card p,
+  .post-card p,
+  .founder-copy p,
+  .offer-card p {
+    color: var(--muted);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .feature-grid span,
+  .founder-note-grid span {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.56);
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .visual-panel {
+    padding: 18px;
+  }
+
+  .panel-label {
+    margin-bottom: 14px;
+    color: var(--green-dark);
+    font-size: 0.73rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mock-browser,
+  .gsc-shell {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(237, 242, 237, 0.7), rgba(255, 255, 255, 0.82)),
+      var(--paper);
+    overflow: hidden;
+  }
+
+  .browser-bar {
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid var(--line);
+    padding: 12px;
+  }
+
+  .browser-bar span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+
+  .mock-layout {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .mock-site,
+  .visibility-card,
+  .mock-metrics > div,
+  .gsc-row {
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .mock-site {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px;
+  }
+
+  .mock-site span,
+  .mock-metrics span,
+  .visibility-card span,
+  .gsc-row span,
+  .offer-note span {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .mock-site strong {
+    max-width: 250px;
+    font-size: 1.65rem;
+    line-height: 1.06;
+  }
+
+  .mock-site div {
+    width: 46%;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--green-soft);
+  }
+
+  .mock-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .mock-metrics > div {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .mock-metrics strong {
+    font-size: 1.55rem;
+  }
+
+  .visibility-card {
+    margin: 0 14px 14px;
+    padding: 14px;
+  }
+
+  .mini-chart {
+    height: 92px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    align-items: end;
+    margin-top: 16px;
+  }
+
+  .mini-chart i {
+    display: block;
+    border-radius: 999px 999px 0 0;
+    background: var(--green-soft);
+  }
+
+  .mini-chart i:nth-child(1) {
+    height: 30%;
+  }
+
+  .mini-chart i:nth-child(2) {
+    height: 48%;
+  }
+
+  .mini-chart i:nth-child(3) {
+    height: 42%;
+  }
+
+  .mini-chart i:nth-child(4) {
+    height: 70%;
+  }
+
+  .mini-chart i:nth-child(5) {
+    height: 88%;
+    background: var(--green);
+  }
+
+  .gsc-shell {
+    display: grid;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .gsc-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px;
+  }
+
+  .gsc-line {
+    height: 120px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background:
+      linear-gradient(135deg, transparent 44%, var(--green-soft) 44%, var(--green-soft) 49%, transparent 49%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(237, 242, 237, 0.45));
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .problem-grid .card {
+    padding: 26px;
+  }
+
+  .plain-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    color: var(--muted);
+    list-style: none;
+  }
+
+  .plain-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  blockquote {
+    margin: 28px 0 0;
+    border-left: 2px solid var(--green);
+    padding-left: 16px;
+    color: var(--ink);
+    font-size: 1.24rem;
+    line-height: 1.35;
+  }
+
+  .offer-section {
+    padding: 78px 0;
+  }
+
+  .offer-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 58px);
+  }
+
+  .offer-card > p {
+    max-width: 760px;
+    margin-top: 24px;
+    font-size: 1.1rem;
+    line-height: 1.65;
+  }
+
+  .offer-note {
+    margin-top: 34px;
+    border-top: 1px solid var(--line);
+    padding-top: 26px;
+  }
+
+  .offer-note strong {
+    max-width: 760px;
+    display: block;
+    margin: 8px 0 12px;
+    font-size: clamp(1.35rem, 2.7vw, 2.35rem);
+    font-weight: 640;
+    line-height: 1.12;
+  }
+
+  .offer-note p {
+    margin-bottom: 0;
+  }
+
+  .process-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .process-card {
+    min-height: 230px;
+    padding: 22px;
+  }
+
+  .process-card span {
     display: inline-flex;
-    margin-bottom: 30px;
+    margin-bottom: 34px;
     color: var(--green-dark);
     background: var(--green-soft);
+    border-radius: 5px;
     padding: 5px 8px;
     font-size: 0.78rem;
     font-weight: 760;
   }
 
-  .outcome-grid p,
-  .case-card p,
-  .process-row p {
-    color: var(--muted);
-  }
-
-  .case-grid {
+  .founder-card {
     display: grid;
-    gap: 14px;
+    grid-template-columns: minmax(240px, 0.5fr) minmax(0, 1fr);
+    gap: 38px;
+    align-items: center;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 18px;
   }
 
-  .case-card {
+  .founder-photo {
+    overflow: hidden;
+    border-radius: 6px;
+    background: var(--soft);
+  }
+
+  .founder-photo img {
     display: block;
-    padding: 24px;
-    transition:
-      border-color 160ms ease,
-      transform 160ms ease;
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    object-fit: cover;
   }
 
-  .case-card:hover {
-    border-color: var(--green);
-    transform: translateY(-2px);
+  .founder-copy {
+    padding: 20px 18px 20px 0;
   }
 
-  .case-card p {
-    margin-bottom: 12px;
+  .founder-copy p {
+    line-height: 1.62;
   }
 
-  .case-card p:last-child {
+  .founder-note-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .founder-quote {
     margin-bottom: 0;
+    color: var(--ink);
+    font-weight: 660;
   }
 
   .post-list {
@@ -396,6 +909,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     overflow: hidden;
     transition:
       border-color 160ms ease,
+      color 160ms ease,
       transform 160ms ease;
   }
 
@@ -413,6 +927,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     display: inline-flex;
     color: var(--green-dark);
     background: rgba(255, 255, 255, 0.72);
+    border-radius: 5px;
     padding: 5px 8px;
     font-size: 0.7rem;
     font-weight: 760;
@@ -434,7 +949,6 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .post-card p {
     margin-bottom: 18px;
-    color: var(--muted);
     line-height: 1.5;
   }
 
@@ -444,25 +958,19 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     font-size: 0.84rem;
   }
 
-  .process-row {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .process-row article {
-    min-height: 240px;
-    padding: 22px;
-  }
-
-  .process-row span {
-    margin-bottom: 34px;
-  }
-
   .post-card:hover {
     border-color: var(--green);
     color: var(--green-dark);
     transform: translateY(-2px);
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    border-bottom: 1px solid var(--green);
+    color: var(--green-dark);
+    font-weight: 700;
   }
 
   .final-cta {
@@ -472,42 +980,44 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   }
 
   .final-cta h2 {
-    max-width: 840px;
+    max-width: 900px;
     margin: 0 auto 28px;
   }
 
-  @media (max-width: 1100px) {
-    .hero {
-      grid-template-columns: 1fr;
-    }
-
-    .outcome-visual {
-      width: min(100%, 760px);
-      margin-left: 0;
-    }
+  .final-cta .eyebrow {
+    margin-bottom: 16px;
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1100px) {
     .hero,
-    .proof,
+    .split-section,
     .posts-strip {
       grid-template-columns: 1fr;
     }
 
     .hero {
       min-height: auto;
-      gap: 42px;
-      padding-top: 54px;
     }
 
-    .outcome-visual {
-      width: min(100%, 760px);
-      margin-left: 0;
+    .hero-visual,
+    .gsc-visual {
+      max-width: 760px;
     }
 
-    .outcome-grid,
+    .fix-grid,
     .process-row {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .problem-grid,
+    .founder-card {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-copy {
+      padding: 8px 6px 10px;
     }
   }
 
@@ -517,7 +1027,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     }
 
     h1 {
-      font-size: 2.36rem;
+      font-size: 3rem;
     }
 
     h2 {
@@ -525,22 +1035,41 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     }
 
     .section,
+    .offer-section,
     .final-cta {
-      padding: 48px 0;
+      padding: 52px 0;
     }
 
     .hero {
-      padding: 38px 0 44px;
+      gap: 34px;
+      padding: 38px 0 50px;
     }
 
-    .lede {
-      margin-bottom: 24px;
+    .lede,
+    .section-lede {
       font-size: 1rem;
     }
 
-    .outcome-grid,
-    .process-row {
+    .button {
+      width: 100%;
+    }
+
+    .fix-grid,
+    .feature-grid,
+    .process-row,
+    .founder-note-grid,
+    .mock-metrics {
       grid-template-columns: 1fr;
+    }
+
+    .fix-card,
+    .process-card {
+      min-height: 0;
+    }
+
+    .gsc-row {
+      flex-direction: column;
+      gap: 4px;
     }
 
     .post-card {
@@ -550,11 +1079,5 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     .post-thumb {
       min-height: 86px;
     }
-
-    .outcome-grid article,
-    .process-row article {
-      min-height: 0;
-    }
-
   }
 </style>
