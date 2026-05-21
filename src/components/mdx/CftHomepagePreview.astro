@@ -1,33 +1,37 @@
 ---
+export interface Props {
+  mode?: "article" | "standalone";
+}
+
 const imageBase = "/images/work/chicago-fight-team";
+const { mode = "article" } = Astro.props;
 ---
 
-<section class="cft-preview" aria-label="Chicago Fight Team homepage rebuild preview">
+<section class:list={["cft-preview", mode === "standalone" && "is-standalone"]} aria-label="Chicago Fight Team homepage rebuild preview">
   <header class="preview-frame">
     <nav class="preview-nav" aria-label="Preview navigation">
       <a class="brand" href="https://chicagofightteam.org/">
         <img src={`${imageBase}/cft-logo.jpeg`} alt="" loading="lazy" />
-        <span>Chicago Fight Team</span>
       </a>
       <div class="nav-links" aria-hidden="true">
         <span>Programs</span>
         <span>Coaches</span>
         <span>Schedule</span>
       </div>
-      <a class="nav-cta" href="https://chicagofightteam.org/">Start Training</a>
+      <a class="nav-cta" href="https://chicagofightteam.org/">Start</a>
     </nav>
 
     <div class="hero-grid">
       <div class="hero-copy">
-        <p class="kicker">Justice, Illinois</p>
-        <h2>Built Through Discipline. Forged In Chicago.</h2>
+        <p class="kicker">MMA • BJJ • Muay Thai</p>
+        <h2>Chicago Fight Team</h2>
         <p>
-          Chicago Fight Team trains fighters, competitors, and everyday people
-          through serious MMA, Brazilian Jiu-Jitsu, and Muay Thai instruction.
+          Home of world champions with more than 20 years of fight training and
+          competition prep in Chicago.
         </p>
         <div class="hero-actions">
-          <a href="tel:+17738855700">Call The Gym</a>
-          <a href="https://www.google.com/maps/place/Chicago+Fight+Team/">View Location</a>
+          <a href="tel:+17738855700">Call</a>
+          <a href="https://www.google.com/maps/place/Chicago+Fight+Team/">Visit Gym</a>
         </div>
       </div>
       <figure class="hero-media">
@@ -37,54 +41,27 @@ const imageBase = "/images/work/chicago-fight-team";
     </div>
   </header>
 
-  <div class="credibility-strip" aria-label="Chicago Fight Team credibility highlights">
-    <div>
-      <span>Legacy</span>
-      <strong>20+ years of martial arts history</strong>
-    </div>
-    <div>
-      <span>Training</span>
-      <strong>MMA, BJJ, Muay Thai, and competition prep</strong>
-    </div>
-    <div>
-      <span>Pedigree</span>
-      <strong>Home to world-class fighters and coaches</strong>
-    </div>
-  </div>
-
-  <section class="programs" aria-labelledby="programs-heading">
-    <div>
-      <p class="kicker">Programs</p>
-      <h3 id="programs-heading">A clearer path into the gym.</h3>
-    </div>
+  <section class="programs" aria-label="Chicago Fight Team training programs">
     <div class="program-grid">
       <article>
         <img src={`${imageBase}/jiu-jitsu-training.jpeg`} alt="Jiu-Jitsu training at Chicago Fight Team" loading="lazy" />
         <h4>Brazilian Jiu-Jitsu</h4>
-        <p>Structured fundamentals, live training, self-defense, kids classes, and competition preparation.</p>
+        <p>Fundamentals, live training, self-defense, kids classes, and competition preparation.</p>
       </article>
       <article>
         <img src={`${imageBase}/cloud-training.jpeg`} alt="Chicago Fight Team striking and conditioning training" loading="lazy" />
-        <h4>MMA & Muay Thai</h4>
-        <p>Stand-up, grappling, conditioning, and fight-team training without burying the visitor in long copy.</p>
+        <h4>MMA</h4>
+        <p>Striking, grappling, wrestling, conditioning, and fight-team training.</p>
       </article>
       <article>
-        <img src={`${imageBase}/about-header.jpeg`} alt="Chicago Fight Team training environment" loading="lazy" />
-        <h4>Start Training</h4>
-        <p>One simple next step for beginners, competitors, and anyone ready to visit the gym.</p>
+        <img src={`${imageBase}/about-header.jpeg`} alt="Chicago Fight Team Muay Thai training environment" loading="lazy" />
+        <h4>Muay Thai</h4>
+        <p>Stand-up training, pad work, conditioning, and striking fundamentals.</p>
       </article>
     </div>
   </section>
 
   <section class="fighter-proof" aria-labelledby="proof-heading">
-    <div class="proof-copy">
-      <p class="kicker">Proof</p>
-      <h3 id="proof-heading">The authority was already there. The page just needed to show it faster.</h3>
-      <p>
-        The redesign keeps the gym's authentic history, fight pedigree, and local
-        relevance close to the surface instead of hiding it behind app complexity.
-      </p>
-    </div>
     <div class="proof-people" aria-label="Featured fighter and coach credibility">
       <figure>
         <img src={`${imageBase}/belal-muhammad.jpeg`} alt="Belal Muhammad associated with Chicago Fight Team" loading="lazy" />
@@ -99,6 +76,24 @@ const imageBase = "/images/work/chicago-fight-team";
         <figcaption>Nicasio Sanchez</figcaption>
       </figure>
     </div>
+    <div class="proof-copy">
+      <h3 id="proof-heading">Roberto Ramirez and Chicago Fight Team</h3>
+      <p>
+        Founded by Roberto Ramirez, Chicago Fight Team has trained amateur and
+        professional fighters in Chicago for more than two decades.
+      </p>
+    </div>
+  </section>
+
+  <section class="social-proof" aria-labelledby="social-heading">
+    <a id="social-heading" class="social-link" href="https://www.instagram.com/chicagofightteam/">@chicagofightteam</a>
+    <div class="social-embed">
+      <iframe
+        src="https://www.instagram.com/chicagofightteam/embed"
+        title="Chicago Fight Team Instagram profile"
+        loading="lazy"
+      ></iframe>
+    </div>
   </section>
 
   <section class="video-location" aria-label="Chicago Fight Team video and location">
@@ -111,11 +106,21 @@ const imageBase = "/images/work/chicago-fight-team";
         allowfullscreen
       ></iframe>
     </div>
+  </section>
+
+  <section class="location-section" aria-label="Chicago Fight Team location">
     <div class="location-panel">
-      <p class="kicker">Visit</p>
-      <h3>Train in Justice, Illinois.</h3>
-      <p>7750 Archer Rd, Justice, IL 60458</p>
-      <a href="tel:+17738855700">1 (773) 885-5700</a>
+      <div>
+        <h3>Chicago Fight Team</h3>
+        <p>7750 Archer Rd, Justice, IL 60458</p>
+        <a href="tel:+17738855700">1 (773) 885-5700</a>
+      </div>
+      <iframe
+        class="map-frame"
+        src="https://www.google.com/maps?q=Chicago%20Fight%20Team%2C%207750%20Archer%20Rd%2C%20Justice%2C%20IL%2060458&output=embed"
+        title="Map to Chicago Fight Team"
+        loading="lazy"
+      ></iframe>
     </div>
   </section>
 </section>
@@ -123,10 +128,10 @@ const imageBase = "/images/work/chicago-fight-team";
 <style>
   .cft-preview {
     --cft-ink: #f6f2e9;
-    --cft-muted: #bdb5a8;
+    --cft-muted: #d6cec2;
     --cft-panel: #171717;
     --cft-line: rgba(246, 242, 233, 0.16);
-    --cft-red: #d0392d;
+    --cft-red: #e04436;
     margin: 36px 0 46px;
     overflow: hidden;
     border: 1px solid #23201d;
@@ -136,20 +141,31 @@ const imageBase = "/images/work/chicago-fight-team";
     box-shadow: 0 26px 70px rgba(16, 18, 17, 0.22);
   }
 
+  .cft-preview.is-standalone {
+    min-height: 100vh;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
   .preview-frame {
-    min-height: 640px;
+    min-height: 560px;
     padding: 22px;
     background:
-      linear-gradient(90deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.84) 45%, rgba(8, 8, 8, 0.28) 100%),
+      linear-gradient(180deg, rgba(8, 8, 8, 0) 48%, rgba(10, 10, 9, 0.62) 78%, rgba(8, 8, 8, 0.9) 100%),
+      radial-gradient(circle at 72% 90%, rgba(52, 59, 61, 0.22), rgba(8, 8, 8, 0) 34%),
+      linear-gradient(90deg, rgba(8, 8, 8, 0.97) 0%, rgba(8, 8, 8, 0.88) 48%, rgba(8, 8, 8, 0.42) 100%),
       url("/images/work/chicago-fight-team/training-room-wide.jpeg") center / cover;
   }
 
   .preview-nav,
   .hero-grid,
-  .credibility-strip,
   .programs,
   .fighter-proof,
-  .video-location {
+  .social-proof,
+  .video-location,
+  .location-section {
     width: min(100%, 1120px);
     margin-inline: auto;
   }
@@ -158,8 +174,8 @@ const imageBase = "/images/work/chicago-fight-team";
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
-    min-height: 58px;
+    gap: 24px;
+    min-height: 70px;
     border-bottom: 1px solid var(--cft-line);
   }
 
@@ -172,25 +188,21 @@ const imageBase = "/images/work/chicago-fight-team";
   }
 
   .brand {
-    gap: 12px;
     color: var(--cft-ink);
     text-decoration: none;
-    font-size: 0.88rem;
-    font-weight: 760;
-    text-transform: uppercase;
   }
 
   .brand img {
-    width: 38px;
-    height: 38px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
   }
 
   .nav-links {
-    gap: 22px;
-    color: var(--cft-muted);
-    font-size: 0.78rem;
+    gap: 20px;
+    color: #eee6da;
+    font-size: 0.76rem;
     text-transform: uppercase;
     letter-spacing: 0;
   }
@@ -198,54 +210,65 @@ const imageBase = "/images/work/chicago-fight-team";
   .nav-cta,
   .hero-actions a,
   .location-panel a {
-    min-height: 42px;
-    border: 1px solid var(--cft-line);
+    min-height: 44px;
+    border: 1px solid rgba(246, 242, 233, 0.36);
     border-radius: 4px;
-    padding: 10px 14px;
+    padding: 11px 16px;
     color: var(--cft-ink);
     text-decoration: none;
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     font-weight: 760;
     text-transform: uppercase;
   }
 
-  .nav-cta,
+  .cft-preview .nav-cta,
+  .cft-preview .hero-actions a,
+  .cft-preview .location-panel a {
+    color: var(--cft-ink);
+  }
+
   .hero-actions a:first-child {
     border-color: var(--cft-red);
     background: var(--cft-red);
   }
 
+  .nav-cta {
+    background: transparent;
+    font-size: 0.76rem;
+  }
+
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
-    align-items: end;
-    gap: 34px;
-    padding: 96px 0 22px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.68fr);
+    align-items: center;
+    gap: 42px;
+    padding: 74px 0 30px;
   }
 
   .hero-copy h2 {
-    max-width: 700px;
-    margin: 0 0 22px;
+    max-width: 540px;
+    margin: 0 0 18px;
     color: var(--cft-ink);
-    font-size: clamp(3rem, 8vw, 6.8rem);
-    line-height: 0.9;
+    font-size: clamp(2.25rem, 4.2vw, 3.95rem);
+    font-weight: 620;
+    line-height: 1.04;
     letter-spacing: 0;
-    text-transform: uppercase;
+    text-transform: none;
   }
 
   .hero-copy p {
-    max-width: 610px;
+    max-width: 520px;
     margin: 0 0 24px;
-    color: #d8d1c7;
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #eee6da;
+    font-size: clamp(1rem, 1.45vw, 1.08rem);
     line-height: 1.6;
   }
 
   .kicker {
     margin: 0 0 12px;
-    color: var(--cft-red);
-    font-size: 0.76rem;
-    font-weight: 820;
+    color: #eee6da;
+    font-size: 0.8rem;
+    font-weight: 760;
     text-transform: uppercase;
   }
 
@@ -271,61 +294,30 @@ const imageBase = "/images/work/chicago-fight-team";
   .hero-media figcaption,
   .proof-people figcaption {
     margin-top: 10px;
-    color: var(--cft-muted);
-    font-size: 0.8rem;
+    color: #eee6da;
+    font-size: 0.82rem;
     text-transform: uppercase;
-  }
-
-  .credibility-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid var(--cft-line);
-    border-bottom: 1px solid var(--cft-line);
-  }
-
-  .credibility-strip div {
-    padding: 24px;
-  }
-
-  .credibility-strip div + div {
-    border-left: 1px solid var(--cft-line);
-  }
-
-  .credibility-strip span {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--cft-red);
-    font-size: 0.72rem;
-    font-weight: 820;
-    text-transform: uppercase;
-  }
-
-  .credibility-strip strong {
-    display: block;
-    color: var(--cft-ink);
-    font-size: 1rem;
-    line-height: 1.35;
   }
 
   .programs,
   .fighter-proof,
-  .video-location {
+  .social-proof,
+  .video-location,
+  .location-section {
     padding: 48px 22px;
   }
 
   .programs {
-    display: grid;
-    grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
-    gap: 28px;
+    border-top: 1px solid var(--cft-line);
   }
 
-  .programs h3,
   .fighter-proof h3,
+  .social-proof h3,
   .location-panel h3 {
     margin: 0 0 16px;
     color: var(--cft-ink);
-    font-size: clamp(1.7rem, 4vw, 3.2rem);
-    line-height: 1;
+    font-size: clamp(1.55rem, 3vw, 2.45rem);
+    line-height: 1.06;
     letter-spacing: 0;
     text-transform: uppercase;
   }
@@ -360,15 +352,16 @@ const imageBase = "/images/work/chicago-fight-team";
     margin-top: 16px;
     margin-bottom: 8px;
     color: var(--cft-ink);
-    font-size: 1rem;
+    font-size: 1.02rem;
     text-transform: uppercase;
   }
 
   .program-grid p,
   .proof-copy p,
+  .social-copy p,
   .location-panel p {
-    color: var(--cft-muted);
-    font-size: 0.94rem;
+    color: #ddd5c9;
+    font-size: 0.96rem;
     line-height: 1.55;
   }
 
@@ -378,13 +371,19 @@ const imageBase = "/images/work/chicago-fight-team";
 
   .fighter-proof {
     display: grid;
-    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
+    align-items: center;
+    gap: 34px;
     border-top: 1px solid var(--cft-line);
   }
 
   .proof-copy p {
     max-width: 520px;
+  }
+
+  .fighter-proof h3 {
+    font-weight: 620;
+    text-transform: none;
   }
 
   .proof-people {
@@ -407,10 +406,42 @@ const imageBase = "/images/work/chicago-fight-team";
     filter: grayscale(1) contrast(1.08);
   }
 
+  .social-proof {
+    border-top: 1px solid var(--cft-line);
+  }
+
+  .social-link {
+    display: inline-flex;
+    margin-bottom: 14px;
+    color: #eee6da;
+    font-size: 0.82rem;
+    font-weight: 760;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .social-proof h3 {
+    font-weight: 620;
+    text-transform: none;
+    overflow-wrap: anywhere;
+  }
+
+  .social-embed {
+    overflow: hidden;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    background: #050505;
+  }
+
+  .social-embed iframe {
+    display: block;
+    width: 100%;
+    min-height: 420px;
+    border: 0;
+  }
+
   .video-location {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
-    gap: 18px;
     border-top: 1px solid var(--cft-line);
   }
 
@@ -430,14 +461,21 @@ const imageBase = "/images/work/chicago-fight-team";
   }
 
   .location-panel {
-    border: 1px solid var(--cft-line);
-    border-radius: 6px;
-    background: var(--cft-panel);
-    padding: 24px;
+    display: grid;
+    gap: 18px;
   }
 
   .location-panel a {
     margin-top: 16px;
+  }
+
+  .map-frame {
+    display: block;
+    width: 100%;
+    min-height: 320px;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    filter: grayscale(1) contrast(1.02) brightness(0.9);
   }
 
   @media (max-width: 840px) {
@@ -451,30 +489,28 @@ const imageBase = "/images/work/chicago-fight-team";
     }
 
     .hero-grid,
-    .programs,
     .fighter-proof,
-    .video-location {
+    .location-panel {
       grid-template-columns: 1fr;
     }
 
     .hero-grid {
-      padding-top: 62px;
+      padding-top: 54px;
     }
 
     .hero-media img {
       aspect-ratio: 16 / 10;
     }
 
-    .credibility-strip,
     .program-grid,
     .proof-people {
       grid-template-columns: 1fr;
     }
 
-    .credibility-strip div + div {
-      border-top: 1px solid var(--cft-line);
-      border-left: 0;
+    .social-embed iframe {
+      min-height: 360px;
     }
+
   }
 
   @media (max-width: 560px) {
@@ -489,12 +525,14 @@ const imageBase = "/images/work/chicago-fight-team";
     }
 
     .hero-copy h2 {
-      font-size: 2.82rem;
+      font-size: 2.05rem;
     }
 
     .programs,
     .fighter-proof,
-    .video-location {
+    .social-proof,
+    .video-location,
+    .location-section {
       padding: 34px 16px;
     }
   }

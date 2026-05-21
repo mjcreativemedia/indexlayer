@@ -1,14 +1,264 @@
 ---
-import ListingLayout from "../../layouts/ListingLayout.astro";
-import { getPostsByCategory } from "../../lib/content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { formatDate, getEntryPath, getPostsByCategory } from "../../lib/content";
 
+const title = "Work";
+const description = "Rebuilds, rescues, audits, and local business website examples.";
 const entries = await getPostsByCategory("Work");
 ---
 
-<ListingLayout
-  title="Work"
-  description="Rebuilds, rescues, audits, and local business website examples."
-  canonicalPath="/work/"
-  entries={entries}
-  eyebrow="IndexLayer work"
-/>
+<BaseLayout title={`${title} | IndexLayer`} description={description} canonicalPath="/work/">
+  <SiteHeader />
+
+  <main class="work-shell">
+    <section class="work-hero">
+      <p class="eyebrow">IndexLayer work</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </section>
+
+    <section class="featured-work" aria-labelledby="featured-heading">
+      <div>
+        <p class="eyebrow">Featured rebuild</p>
+        <h2 id="featured-heading">Chicago Fight Team</h2>
+        <p>
+          A standalone homepage preview for an established MMA, BJJ, and Muay Thai
+          gym, built around real imagery, real embeds, and less marketing language.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/work/chicago-fight-team/">View Project</a>
+          <a class="button secondary" href="/preview/chicago-fight-team/">Live Preview</a>
+        </div>
+      </div>
+      <img src="/images/work/chicago-fight-team/training-room-wide.jpeg" alt="Chicago Fight Team training room" />
+    </section>
+
+    <section class="entry-grid" aria-label="Work posts">
+      {entries.map((entry) => (
+        <a class="entry-card" href={getEntryPath(entry)}>
+          <span>{entry.data.category}</span>
+          <h2>{entry.data.title}</h2>
+          <p>{entry.data.preview ?? entry.data.description}</p>
+          <div>
+            <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+            <div class="author-line">
+              <img src={entry.data.authorImage ?? "/images/authors/mitch-argamasilla.jpeg"} alt="" width="28" height="28" />
+              <strong>{entry.data.authorName}</strong>
+            </div>
+          </div>
+        </a>
+      ))}
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .work-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0 94px;
+  }
+
+  .work-hero {
+    max-width: 860px;
+    margin-bottom: 54px;
+  }
+
+  .eyebrow,
+  .entry-card span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.96;
+  }
+
+  .work-hero p,
+  .featured-work p,
+  .entry-card p {
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
+  .work-hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+    line-height: 1.62;
+  }
+
+  .featured-work {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(280px, 0.58fr);
+    gap: 28px;
+    align-items: center;
+    margin-bottom: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 28px;
+  }
+
+  .featured-work h2 {
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .featured-work p {
+    max-width: 620px;
+    margin: 0;
+    font-size: 1.04rem;
+  }
+
+  .featured-work img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.04);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-control);
+    padding: 0 15px;
+    font-weight: 720;
+  }
+
+  .button.primary {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: white;
+  }
+
+  .button.secondary {
+    background: white;
+    color: var(--ink);
+  }
+
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .entry-card {
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 26px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .entry-card:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .entry-card span {
+    margin-bottom: 20px;
+  }
+
+  .entry-card h2 {
+    margin: 0 0 14px;
+    font-size: 1.55rem;
+    line-height: 1.08;
+  }
+
+  .entry-card p {
+    margin: 0 0 24px;
+  }
+
+  .entry-card div {
+    display: grid;
+    gap: 6px;
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .entry-card strong {
+    color: var(--ink);
+  }
+
+  .author-line {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+  }
+
+  .author-line img {
+    display: block;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 940px) {
+    .entry-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 820px) {
+    .featured-work {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .work-shell {
+      width: min(100% - 28px, 1180px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .entry-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

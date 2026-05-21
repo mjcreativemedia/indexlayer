@@ -10,7 +10,10 @@ export default defineConfig({
     mdx(),
     sitemap({
       filter: (page) =>
-        !page.includes('/case-studies/') && !page.includes('/guides/') && !page.includes('/lab/'),
+        !page.includes('/case-studies/') &&
+        !page.includes('/guides/') &&
+        !page.includes('/lab/') &&
+        !page.includes('/preview/'),
     }),
   ],
 });

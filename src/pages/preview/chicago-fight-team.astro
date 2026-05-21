@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CftHomepagePreview from "../../components/mdx/CftHomepagePreview.astro";
+
+const title = "Chicago Fight Team Homepage Preview | IndexLayer";
+const description =
+  "Standalone client preview of a Chicago Fight Team homepage rebuild concept.";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonicalPath="/preview/chicago-fight-team/"
+  ogImage="/images/work/chicago-fight-team/training-room-wide.jpeg"
+  robots="noindex, nofollow"
+>
+  <CftHomepagePreview mode="standalone" />
+</BaseLayout>

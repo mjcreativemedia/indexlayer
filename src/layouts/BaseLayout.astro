@@ -6,6 +6,7 @@ export interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  robots?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   ogImage = "/images/brand/indexlayer-og.png",
   ogType = "website",
   jsonLd,
+  robots,
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://indexlayer.pro");
@@ -32,6 +34,7 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    {robots && <meta name="robots" content={robots} />}
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
