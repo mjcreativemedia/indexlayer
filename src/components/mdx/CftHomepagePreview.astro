@@ -18,6 +18,19 @@ const { mode = "article" } = Astro.props;
         <span>Coaches</span>
         <span>Schedule</span>
       </div>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+        <div>
+          <a href="#programs">Programs</a>
+          <a href="#coaches">Coaches</a>
+          <a href="https://chicagofightteam.org/">Schedule</a>
+          <a href="https://chicagofightteam.org/">Start Training</a>
+        </div>
+      </details>
       <a class="nav-cta" href="https://chicagofightteam.org/">Start</a>
     </nav>
 
@@ -27,7 +40,7 @@ const { mode = "article" } = Astro.props;
         <h2>Chicago Fight Team</h2>
         <p>
           Home of world champions with more than 20 years of fight training and
-          competition prep in Chicago.
+          competition prep.
         </p>
         <div class="hero-actions">
           <a href="tel:+17738855700">Call</a>
@@ -41,51 +54,73 @@ const { mode = "article" } = Astro.props;
     </div>
   </header>
 
-  <section class="programs" aria-label="Chicago Fight Team training programs">
+  <section id="programs" class="programs" aria-label="Chicago Fight Team training programs">
+    <p class="section-label">Programs</p>
     <div class="program-grid">
       <article>
-        <img src={`${imageBase}/jiu-jitsu-training.jpeg`} alt="Jiu-Jitsu training at Chicago Fight Team" loading="lazy" />
+        <img src={`${imageBase}/bjj-training.jpeg`} alt="Brazilian Jiu-Jitsu training at Chicago Fight Team" loading="lazy" />
         <h4>Brazilian Jiu-Jitsu</h4>
         <p>Fundamentals, live training, self-defense, kids classes, and competition preparation.</p>
       </article>
       <article>
-        <img src={`${imageBase}/cloud-training.jpeg`} alt="Chicago Fight Team striking and conditioning training" loading="lazy" />
+        <img src={`${imageBase}/mma-striking-class.png`} alt="MMA striking class at Chicago Fight Team" loading="lazy" />
         <h4>MMA</h4>
         <p>Striking, grappling, wrestling, conditioning, and fight-team training.</p>
       </article>
       <article>
-        <img src={`${imageBase}/about-header.jpeg`} alt="Chicago Fight Team Muay Thai training environment" loading="lazy" />
+        <img src={`${imageBase}/muay-thai-training.jpeg`} alt="Muay Thai pad work at Chicago Fight Team" loading="lazy" />
         <h4>Muay Thai</h4>
         <p>Stand-up training, pad work, conditioning, and striking fundamentals.</p>
       </article>
     </div>
   </section>
 
-  <section class="fighter-proof" aria-labelledby="proof-heading">
-    <div class="proof-people" aria-label="Featured fighter and coach credibility">
-      <figure>
-        <img src={`${imageBase}/belal-muhammad.jpeg`} alt="Belal Muhammad associated with Chicago Fight Team" loading="lazy" />
-        <figcaption>Belal Muhammad</figcaption>
-      </figure>
-      <figure>
-        <img src={`${imageBase}/horacio-gutierrez.jpeg`} alt="Horacio Gutierrez" loading="lazy" />
-        <figcaption>Horacio Gutierrez</figcaption>
-      </figure>
-      <figure>
-        <img src={`${imageBase}/nicasio-sanchez.jpeg`} alt="Nicasio Sanchez" loading="lazy" />
-        <figcaption>Nicasio Sanchez</figcaption>
-      </figure>
-    </div>
-    <div class="proof-copy">
-      <h3 id="proof-heading">Roberto Ramirez and Chicago Fight Team</h3>
+  <section id="coaches" class="coach-section" aria-labelledby="coaches-heading">
+    <div class="coach-copy">
+      <p class="section-label">Leadership</p>
+      <h3 id="coaches-heading">Roberto Ramirez and Chicago Fight Team</h3>
       <p>
         Founded by Roberto Ramirez, Chicago Fight Team has trained amateur and
-        professional fighters in Chicago for more than two decades.
+        professional fighters for more than two decades.
       </p>
+    </div>
+    <div class="coach-grid" aria-label="Chicago Fight Team coaches">
+      <article>
+        <img src={`${imageBase}/roberto-ramirez.png`} alt="Roberto Ramirez" loading="lazy" />
+        <h4>Roberto Ramirez</h4>
+        <p>Founder & Head Coach</p>
+      </article>
+      <article>
+        <img src={`${imageBase}/nicasio-sanchez.jpeg`} alt="Nicasio Sanchez" loading="lazy" />
+        <h4>Nicasio Sanchez</h4>
+        <p>Jiu-Jitsu Black Belt Coach</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="fighters" aria-label="Chicago Fight Team fighters">
+    <p class="section-label">Fighters</p>
+    <div class="fighter-grid">
+      <article>
+        <img src={`${imageBase}/belal-muhammad.jpeg`} alt="Belal Muhammad associated with Chicago Fight Team" loading="lazy" />
+        <h4>Belal Muhammad</h4>
+        <p>Former UFC Welterweight Champion</p>
+      </article>
+      <article>
+        <img src={`${imageBase}/louis-taylor.jpeg`} alt="Louis Taylor" loading="lazy" />
+        <h4>Louis Taylor</h4>
+        <p>PFL Middleweight Champion</p>
+      </article>
+      <article>
+        <img src={`${imageBase}/horacio-gutierrez-ufc.jpeg`} alt="Horacio Gutierrez at a UFC weigh-in" loading="lazy" />
+        <h4>Horacio Gutierrez</h4>
+        <p>UFC Veteran</p>
+      </article>
     </div>
   </section>
 
   <section class="social-proof" aria-labelledby="social-heading">
+    <p class="section-label">Instagram</p>
     <a id="social-heading" class="social-link" href="https://www.instagram.com/chicagofightteam/">@chicagofightteam</a>
     <div class="social-embed">
       <iframe
@@ -97,6 +132,7 @@ const { mode = "article" } = Astro.props;
   </section>
 
   <section class="video-location" aria-label="Chicago Fight Team video and location">
+    <p class="section-label">Video</p>
     <div class="video-wrap">
       <iframe
         src="https://www.youtube.com/embed/NGYfM8yBRB0?controls=1"
@@ -109,6 +145,7 @@ const { mode = "article" } = Astro.props;
   </section>
 
   <section class="location-section" aria-label="Chicago Fight Team location">
+    <p class="section-label">Location</p>
     <div class="location-panel">
       <div>
         <h3>Chicago Fight Team</h3>
@@ -141,6 +178,12 @@ const { mode = "article" } = Astro.props;
     box-shadow: 0 26px 70px rgba(16, 18, 17, 0.22);
   }
 
+  .cft-preview *,
+  .cft-preview *::before,
+  .cft-preview *::after {
+    box-sizing: border-box;
+  }
+
   .cft-preview.is-standalone {
     min-height: 100vh;
     margin: 0;
@@ -150,7 +193,7 @@ const { mode = "article" } = Astro.props;
   }
 
   .preview-frame {
-    min-height: 560px;
+    min-height: 510px;
     padding: 22px;
     background:
       linear-gradient(180deg, rgba(8, 8, 8, 0) 48%, rgba(10, 10, 9, 0.62) 78%, rgba(8, 8, 8, 0.9) 100%),
@@ -162,7 +205,8 @@ const { mode = "article" } = Astro.props;
   .preview-nav,
   .hero-grid,
   .programs,
-  .fighter-proof,
+  .coach-section,
+  .fighters,
   .social-proof,
   .video-location,
   .location-section {
@@ -182,7 +226,8 @@ const { mode = "article" } = Astro.props;
   .brand,
   .hero-actions,
   .nav-links,
-  .nav-cta {
+  .nav-cta,
+  .mobile-menu summary {
     display: inline-flex;
     align-items: center;
   }
@@ -205,6 +250,59 @@ const { mode = "article" } = Astro.props;
     font-size: 0.76rem;
     text-transform: uppercase;
     letter-spacing: 0;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: relative;
+    margin-left: auto;
+  }
+
+  .mobile-menu summary {
+    width: 34px;
+    height: 34px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu summary span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--cft-ink);
+  }
+
+  .mobile-menu div {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 2;
+    display: grid;
+    min-width: 162px;
+    border: 1px solid var(--cft-line);
+    border-radius: 4px;
+    background: #080808;
+  }
+
+  .mobile-menu a {
+    padding: 11px 13px;
+    color: var(--cft-ink);
+    font-size: 0.76rem;
+    font-weight: 760;
+    text-transform: uppercase;
+  }
+
+  .mobile-menu a + a {
+    border-top: 1px solid var(--cft-line);
   }
 
   .nav-cta,
@@ -239,10 +337,10 @@ const { mode = "article" } = Astro.props;
 
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.68fr);
+    grid-template-columns: minmax(320px, 0.82fr) minmax(420px, 1fr);
     align-items: center;
     gap: 42px;
-    padding: 74px 0 30px;
+    padding: 62px 0 28px;
   }
 
   .hero-copy h2 {
@@ -257,7 +355,7 @@ const { mode = "article" } = Astro.props;
   }
 
   .hero-copy p {
-    max-width: 520px;
+    max-width: 38ch;
     margin: 0 0 24px;
     color: #eee6da;
     font-size: clamp(1rem, 1.45vw, 1.08rem);
@@ -267,8 +365,16 @@ const { mode = "article" } = Astro.props;
   .kicker {
     margin: 0 0 12px;
     color: #eee6da;
-    font-size: 0.8rem;
-    font-weight: 760;
+    font-size: 0.72rem;
+    font-weight: 560;
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    margin: 0 0 14px;
+    color: #bfb7ad;
+    font-size: 0.7rem;
+    font-weight: 560;
     text-transform: uppercase;
   }
 
@@ -284,15 +390,15 @@ const { mode = "article" } = Astro.props;
   .hero-media img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 16 / 10;
     border: 1px solid var(--cft-line);
     border-radius: 6px;
     object-fit: cover;
+    object-position: center 42%;
     filter: grayscale(1) contrast(1.08);
   }
 
-  .hero-media figcaption,
-  .proof-people figcaption {
+  .hero-media figcaption {
     margin-top: 10px;
     color: #eee6da;
     font-size: 0.82rem;
@@ -300,7 +406,8 @@ const { mode = "article" } = Astro.props;
   }
 
   .programs,
-  .fighter-proof,
+  .coach-section,
+  .fighters,
   .social-proof,
   .video-location,
   .location-section {
@@ -311,8 +418,7 @@ const { mode = "article" } = Astro.props;
     border-top: 1px solid var(--cft-line);
   }
 
-  .fighter-proof h3,
-  .social-proof h3,
+  .coach-copy h3,
   .location-panel h3 {
     margin: 0 0 16px;
     color: var(--cft-ink);
@@ -357,7 +463,9 @@ const { mode = "article" } = Astro.props;
   }
 
   .program-grid p,
-  .proof-copy p,
+  .coach-copy p,
+  .coach-grid p,
+  .fighter-grid p,
   .social-copy p,
   .location-panel p {
     color: #ddd5c9;
@@ -369,41 +477,84 @@ const { mode = "article" } = Astro.props;
     margin-bottom: 18px;
   }
 
-  .fighter-proof {
+  .coach-section {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
-    align-items: center;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+    align-items: stretch;
     gap: 34px;
     border-top: 1px solid var(--cft-line);
   }
 
-  .proof-copy p {
+  .coach-copy {
+    align-self: center;
+  }
+
+  .coach-copy p {
     max-width: 520px;
   }
 
-  .fighter-proof h3 {
+  .coach-copy h3 {
     font-weight: 620;
     text-transform: none;
   }
 
-  .proof-people {
+  .coach-grid,
+  .fighter-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
   }
 
-  .proof-people figure {
-    margin: 0;
+  .coach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .proof-people img {
+  .coach-grid article,
+  .fighter-grid article {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--cft-line);
+    border-radius: 6px;
+    background: var(--cft-panel);
+  }
+
+  .coach-grid img,
+  .fighter-grid img {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 5;
-    border: 1px solid var(--cft-line);
-    border-radius: 6px;
     object-fit: cover;
     filter: grayscale(1) contrast(1.08);
+  }
+
+  .fighters {
+    border-top: 1px solid var(--cft-line);
+  }
+
+  .fighter-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coach-grid h4,
+  .coach-grid p,
+  .fighter-grid h4,
+  .fighter-grid p {
+    margin-inline: 16px;
+  }
+
+  .coach-grid h4,
+  .fighter-grid h4 {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    color: var(--cft-ink);
+    font-size: 0.98rem;
+    text-transform: uppercase;
+  }
+
+  .coach-grid p,
+  .fighter-grid p {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
   }
 
   .social-proof {
@@ -488,9 +639,20 @@ const { mode = "article" } = Astro.props;
       display: none;
     }
 
+    .mobile-menu {
+      display: block;
+    }
+
+    .preview-nav > .nav-cta {
+      display: none;
+    }
+
     .hero-grid,
-    .fighter-proof,
     .location-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .coach-section {
       grid-template-columns: 1fr;
     }
 
@@ -499,11 +661,12 @@ const { mode = "article" } = Astro.props;
     }
 
     .hero-media img {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 11;
     }
 
     .program-grid,
-    .proof-people {
+    .coach-grid,
+    .fighter-grid {
       grid-template-columns: 1fr;
     }
 
@@ -519,8 +682,8 @@ const { mode = "article" } = Astro.props;
     }
 
     .preview-nav {
-      align-items: flex-start;
-      flex-direction: column;
+      align-items: center;
+      flex-direction: row;
       padding-bottom: 14px;
     }
 
@@ -529,7 +692,8 @@ const { mode = "article" } = Astro.props;
     }
 
     .programs,
-    .fighter-proof,
+    .coach-section,
+    .fighters,
     .social-proof,
     .video-location,
     .location-section {

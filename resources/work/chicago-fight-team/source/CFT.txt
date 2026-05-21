@@ -1,0 +1,343 @@
+https://chicagofightteam.org/
+
+
+Chicago Fight Team is one of the best MMA gyms in the world, dedicated to providing its members with high-quality training in various martial arts disciplines. Led by head coach Roberto Ramirez, the gym boasts a team of world-class trainers and fighters, including PFL world champion Louis Taylor, top 5 UFC contender Belal Muhammad, UFC veteran Horacio Gutierrez, and jiu-jitsu head coach and Black belt Nicasio Sanchez. Roberto Ramirez has been a prominent figure in the world of martial arts for over 20 years. He began his martial arts training in 1992 with JKD and later began training BJJ in 1994 when Renzo Gracie came to Chicago. In 1997, he met the legendary Carlson Gracie Sr., who invited him to train at his school in California. This invitation began a relationship that would last until Carlson's death in 2006. Eventually, Carlson relocated to Chicago, where Roberto trained in jiu-jitsu under his tutelage. Roberto's experience and knowledge of martial arts are unparalleled. He has also trained with Brazilian and Holland Muay Thai Champion Artur Mariano, which has helped him develop a well-rounded skill set that he now imparts to his students. Roberto is passionate about teaching and has a deep commitment to his students' success. Whether you want to become a fighter or just get in shape, Roberto Ramirez and the Chicago Fight Team can help you achieve your goals. In addition to Roberto, Chicago Fight Team has a team of experienced trainers and fighters.
+current UFC Champion Belal Muhammad, former PFL world champion Louis Taylor, and UFC veteran Horacio Gutierrez are all part of the team. These fighters bring a wealth of experience and knowledge to the gym, providing valuable guidance and training to the next generation of fighters. Chicago Fight Team also boasts a talented jiu-jitsu coach in Nicasio Sanchez, who is a Black belt and an expert in the art of Brazilian jiu-jitsu. Nicasio has trained extensively in Brazil and has competed at the highest level of competition. His expertise and knowledge of jiu-jitsu are invaluable to the team and its members. Chicago Fight Team's mission is to provide its members with the highest quality training in various martial arts disciplines. The gym offers classes in MMA, BJJ, and Muay Thai, catering to both beginners and experienced fighters. With a team of world-class trainers and fighters, Chicago Fight Team is dedicated to helping its members achieve their goals, whether it's becoming a professional fighter or getting in the best shape of their lives. In conclusion, Chicago Fight Team is one of the best MMA gyms in the world, offering high-quality training in various martial arts disciplines. Led by head coach Roberto Ramirez and a team of world-class trainers and fighters, the gym is dedicated to helping its members achieve their goals. Whether you're looking to become a professional fighter or just get in the best shape of your life, Chicago Fight Team has the expertise and knowledge to make it happen.
+
+Our program is designed for individuals of all levels who are passionate about learning and practicing Brazilian Jiu-Jitsu. Whether you are a beginner or an advanced practitioner, our world-class instructors are dedicated to helping you achieve your goals and become the best version of yourself. At Chicago Fight Team, we believe that Jiu-Jitsu is not just a sport but a way of life. Our program is based on the principles of respect, discipline, and perseverance, which we believe are essential for achieving success on and off the mat. We take pride in creating a positive and inclusive training environment where everyone is welcome, and our members are more than just training partners, but also part of our extended family. Our experienced instructors are passionate about sharing their knowledge and expertise with our members. They offer a structured curriculum that covers all aspects of Jiu-Jitsu, including fundamental techniques, advanced techniques, live sparring, and competition preparation. Our program also includes specialized classes, such as self-defense, women's only classes, and kids' classes, which are tailored to meet the specific needs of each group. At Chicago Fight Team, we believe that Jiu-Jitsu is not only a great workout but also an excellent way to improve your overall health and wellbeing. Our program will help you develop strength, flexibility, endurance, and agility, while also boosting your confidence, reducing stress, and enhancing your mental focus. We invite you to come and experience the world-class Jiu-Jitsu program at Chicago Fight Team. Whether you are looking to compete at the highest level, or just want to learn a new skill and meet new people, we have something for everyone. Sign up for a free trial today and discover the benefits of Jiu-Jitsu for yourself.
+
+
+The Chicago Fight Team's Jiu-Jitsu program has a rich history and a reputation for excellence. Founded by renowned Brazilian Jiu-Jitsu black belt and former fighter, our program has been a staple in the Chicago martial arts community for over two decades. Nicasio's passion for the art and dedication to his students have earned him numerous accolades and a reputation as one of the best Jiu-Jitsu coaches in the world. At Chicago Fight Team, we believe that Jiu-Jitsu is not just a martial art but a way of life. Our program is rooted in the tradition and philosophy of Brazilian Jiu-Jitsu, which emphasizes respect, discipline, and perseverance. Our instructors are committed to helping students not only master the techniques of the art but also apply its principles to their daily lives. If you're looking for a fun and challenging way to stay active, Jiu-Jitsu is an excellent option. It provides a full-body workout that improves strength, endurance, and flexibility. But the benefits of Jiu-Jitsu extend beyond physical fitness. The practice of Jiu-Jitsu promotes mental focus, stress relief, and increased self-confidence. Our kids' Jiu-Jitsu program is an excellent way to introduce your children to the world of martial arts. Our instructors are skilled in teaching children of all ages and levels. We believe that Jiu-Jitsu is an excellent tool for instilling discipline, respect, and confidence in young children. Our program also emphasizes safety, and we take great care to ensure that our students train in a supportive and nurturing environment. In conclusion, Chicago Fight Team's Jiu-Jitsu program offers an excellent opportunity for individuals of all ages to learn and practice Brazilian Jiu-Jitsu. Our program is designed to help you achieve your goals, whether you're looking to compete at the highest level or just looking to stay active and have fun. With our experienced instructors, world-class facilities, and welcoming community, we are confident that you will find everything you need to succeed in your Jiu-Jitsu journey at Chicago Fight Team. Sign up for a free trial today and discover the benefits of Jiu-Jitsu for yourself!
+https://images.tapology.com/gyms/logos/1168/profile/1168-chicago-fight-team.jpg?1656434969
+
+7750 Archer Rd, Justice, IL 60458
+1(773) 885-5700
+Home
+Schedule
+Jiu-Jitsu
+About CFT
+Home to World Champions
+Chicago Fight Team
+7750 Archer Rd, Justice, IL 60458
+
+Get Started Today
+Schedule your training session at Chicago Fight Team today!
+
+
+we are doing a redesign for CFT. They have a lot of great content but poor design. we will just do the homepage. and put this on indexlayer (as a post?) with a new categroy rebuild? idk that part but we want to preserve content maybe i go in browser inspect and download images get youtube links etc. but this is an mma gym where belal muhamad trained
+
+This is honestly a perfect IndexLayer case study.
+
+Chicago Fight Team already has the hardest part solved:
+
+real authority
+real history
+real fighters
+real media
+real community
+tons of authentic content
+strong local relevance
+association with Belal Muhammad
+
+The problem is exactly what you said:
+
+great substance
+weak presentation
+
+Which is actually ideal for a rebuild.
+
+What I Would Do
+
+Not a full rebuild.
+
+Just:
+
+homepage transformation
+
+while preserving:
+
+existing URLs
+existing media
+existing SEO equity
+existing YouTube embeds/content
+existing brand authenticity
+
+That aligns perfectly with IndexLayer’s philosophy:
+stable publishing + modern presentation.
+
+Smart Positioning For The Case Study
+
+I would absolutely put this on IndexLayer under the Work category and then the title can mention its a rebuild.
+
+
+
+Then each post becomes:
+
+the original problem
+what was preserved
+what was improved
+screenshots
+architecture notes
+design decisions
+performance/indexing considerations
+
+Very calm.
+Very transparent.
+Very “show the work.”
+
+The PERFECT Angle
+
+This is NOT:
+
+“we redesigned an mma website”
+
+The real story is:
+
+preserving authentic local authority while modernizing the publishing layer
+
+That’s powerful.
+
+Especially because MMA gyms often destroy authenticity with over-designed sites.
+
+CFT already has:
+
+grit
+history
+legitimacy
+real fighters
+real culture
+
+The redesign should amplify that —
+not sterilize it.
+
+Homepage Direction
+
+The homepage should feel:
+
+premium fight documentary
++
+minimal infrastructure design
+
+Not:
+
+flashy gym marketing
+generic fitness template
+neon UFC graphics
+
+More:
+
+black/white/neutral
+huge typography
+cinematic photography
+sparse layouts
+calm confidence
+
+Almost like:
+OpenAI meets
+A24 Films meets
+UFC Embedded
+
+What To Preserve
+
+I would absolutely preserve and reuse:
+
+1. Existing Images
+
+Especially:
+
+training photos
+fight shots
+mats/cage environment
+Belal imagery
+coaches
+authentic gym moments
+
+These are WAY more valuable than stock visuals.
+
+2. Existing YouTube Content
+
+Embed:
+
+fight clips
+promos
+training footage
+interviews
+
+This is huge trust/social proof.
+
+3. Existing Written Content
+
+You can rewrite structurally,
+but preserve:
+
+gym history
+fight pedigree
+coach credibility
+programs
+philosophy
+
+Google already understands some of this context.
+
+Homepage Structure
+
+Something extremely simple.
+
+Hero
+
+Large statement:
+
+Built Through Discipline.
+Forged In Chicago.
+
+Subtext:
+
+Chicago Fight Team is one of the city’s longest-standing MMA gyms — producing professional fighters, competitors, and everyday people looking to train seriously.
+
+Minimal CTA:
+
+Start Training
+View Programs
+
+Right side:
+
+cinematic grayscale training image
+OR
+muted looping training clip
+Section 2 — Credibility
+
+Minimal logo strip or stat blocks:
+
+UFC fighters
+Years training
+Chicago location
+Wrestling / MMA / Muay Thai / BJJ
+
+Could include Belal subtly.
+Don’t overdo it.
+
+Section 3 — Programs
+
+Clean card system:
+
+MMA
+Muay Thai
+Wrestling
+BJJ
+Kids
+Conditioning
+
+Minimal.
+Big typography.
+No clutter.
+
+Section 4 — The Gym
+
+Authentic documentary-style section.
+
+Large image.
+Simple paragraph.
+
+Talk about:
+
+real fight culture
+serious training
+all skill levels welcome
+community
+Section 5 — Video
+
+Embedded YouTube content.
+
+Very important.
+
+This adds:
+
+authenticity
+engagement
+crawlable content context
+media richness
+Section 6 — CTA
+
+Very simple.
+
+Train With Chicago Fight Team
+
+Schedule / contact.
+
+Technical Direction
+
+This is EXACTLY the type of project where your:
+
+HTML-first
+stable publishing
+minimal JS
+
+approach shines.
+
+You do NOT need:
+
+SPA behavior
+fancy animation frameworks
+overbuilt CMS logic
+
+Just:
+
+fast HTML
+clean media handling
+optimized images
+strong typography
+stable metadata
+good local schema
+clean URLs
+The Post On IndexLayer
+
+This could honestly become one of your strongest early pieces.
+
+Title idea:
+
+Rebuilding Chicago Fight Team:
+Preserving Authenticity While Modernizing The Web Experience
+
+or
+
+Why Most Gym Websites Lose Authenticity — And How We Avoided It
+
+or
+
+Modernizing Chicago Fight Team Without Losing Its Identity
+
+And the post itself should include:
+
+before screenshots
+design philosophy
+typography choices
+image handling
+performance considerations
+content preservation strategy
+why minimalism matters
+how authenticity beats over-design
+
+Very aligned with the IndexLayer aesthetic philosophy.
+
+One REALLY Important Thing
+
+Do NOT make it feel “AI-generated.”
+
+That’s the trap.
+
+This should feel:
+
+human
+gritty
+cinematic
+confident
+established
+
+Minimal polish.
+Maximum authenticity.
+
+That contrast is what will make it feel premium.
+
+
+---
+
+I also have all their images in a zip folder attached to 
