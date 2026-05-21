@@ -4,9 +4,9 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import { formatDate, getAllPublishedContent, getEntryPath } from "../lib/content";
 
-const title = "IndexLayer | Local Business Websites Built for Google Visibility";
+const title = "IndexLayer | Perfect Local Websites Built for Modern Search";
 const description =
-  "IndexLayer builds calm, fast local business websites with premium design, stable Google indexing, and clear Search Console visibility.";
+  "IndexLayer builds fast, premium local business websites with stable Google visibility, modern search foundations, and transparent technical proof.";
 
 const auditHref = "mailto:hello@indexlayer.pro?subject=Free%20Website%20Audit";
 
@@ -16,7 +16,7 @@ const businessJsonLd = {
   "@id": "https://indexlayer.pro/#business",
   name: "IndexLayer",
   url: "https://indexlayer.pro/",
-  logo: "https://indexlayer.pro/images/brand/indexlayer-mark.png",
+  logo: "https://indexlayer.pro/images/brand/indexlayer-logo.png",
   description,
   areaServed: {
     "@type": "Country",
@@ -53,67 +53,58 @@ const websiteJsonLd = {
 };
 
 const proofPoints = [
-  "Fast loading",
-  "Mobile optimized",
-  "Google Search Console setup",
-  "Stable indexing architecture",
-  "Transparent reporting",
+  "100-speed targets",
+  "Search-ready architecture",
+  "Cloudflare hosting",
+  "GSC transparency",
 ];
 
 const fixes = [
   {
     title: "Fast Pages",
-    text: "Lightweight websites that load quickly and feel polished on every device.",
+    text: "Lightweight builds tuned for speed, Core Web Vitals, and clean mobile behavior.",
+    visual: "100",
   },
   {
     title: "Premium Design",
-    text: "Clean, modern interfaces that make local businesses look trustworthy and professional.",
+    text: "Modern interfaces that make local businesses feel credible the moment they load.",
+    visual: "UI",
   },
   {
     title: "Stable SEO",
-    text: "HTML-first architecture, clean metadata, structured pages, and Google-friendly publishing systems.",
+    text: "Clean page identity, metadata, schema, sitemaps, and indexable HTML from day one.",
+    visual: "SEO",
   },
 ];
 
 const visibilityFeatures = [
-  "Google Search Console setup",
-  "Sitemap monitoring",
-  "Structured metadata",
-  "Local SEO pages",
-  "Internal linking",
-  "Schema markup",
+  "Search Console",
+  "Sitemaps",
+  "Schema",
+  "Local pages",
+  "Internal links",
   "Indexing audits",
-  "Reporting transparency",
 ];
 
 const fragileSignals = [
-  "Indexing instability",
-  "Duplicate pages",
   "Weak metadata",
-  "Poor local structure",
-  "Crawlability issues",
-  "Inconsistent publishing systems",
+  "Duplicate URLs",
+  "Thin local pages",
+  "Unclear crawl paths",
 ];
 
 const stableFocus = [
   "Stable HTML",
-  "Clean architecture",
-  "Predictable indexing",
-  "Transparent systems",
-];
-
-const process = [
-  ["Audit", "We review your current website, Google visibility, speed, and structure."],
-  ["Rebuild or Stabilize", "We improve your current website or build a modern replacement."],
-  ["Launch", "Fast, clean deployment with SEO foundations already in place."],
-  ["Monitor", "Transparent Search Console reporting and ongoing improvements."],
+  "Clean canonicals",
+  "Structured metadata",
+  "Clear sitemap logic",
 ];
 
 const founderNotes = [
-  "Fast, lightweight websites",
-  "Clean Google indexing",
-  "Modern design without bloated retainers",
-  "Transparent systems owners can understand",
+  "Chicago-based",
+  "Hands-on builds",
+  "Technical SEO",
+  "Transparent systems",
 ];
 
 const latestPosts = (await getAllPublishedContent()).slice(0, 4);
@@ -125,12 +116,12 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Websites for contractors, gyms, med spas, roofers, and local teams</p>
-        <h1>Local websites with clear Google visibility.</h1>
-        <p class="hero-line">Premium design. Fast pages. Stable search foundations.</p>
+        <p class="eyebrow">Modern websites for local search</p>
+        <h1>Perfect local websites.</h1>
+        <p class="hero-line">Built for Google, AI search, and real customers.</p>
         <p class="lede">
-          IndexLayer builds modern websites for local service businesses that need to look
-          trustworthy, load quickly, and give Google a clean story to understand.
+          Premium design, fast pages, and stable search architecture for local businesses that
+          need the web to work clearly.
         </p>
         <div class="actions">
           <a class="button primary" href="/work/">View Our Work</a>
@@ -143,53 +134,21 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
         </ul>
       </div>
 
-      <aside class="visual-panel hero-visual" aria-label="Local business website and visibility system">
-        <p class="panel-label">Website system</p>
-        <div class="mock-browser">
-          <div class="browser-bar">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="mock-layout">
-            <div class="mock-site">
-              <span>Local business website mockup</span>
-              <strong>Book more local customers</strong>
-              <div></div>
-            </div>
-            <div class="mock-metrics">
-              <div>
-                <span>Indexed pages</span>
-                <strong>42</strong>
-              </div>
-              <div>
-                <span>Performance</span>
-                <strong>98</strong>
-              </div>
-            </div>
-          </div>
-          <div class="visibility-card">
-            <span>Google visibility graph</span>
-            <div class="mini-chart" aria-hidden="true">
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-              <i></i>
-            </div>
-          </div>
-        </div>
+      <aside class="visual-panel hero-visual image-panel" aria-label="Search visibility dashboard preview">
+        <img
+          src="/images/home/search-console-abstract.png"
+          alt="Abstract search visibility dashboard with charts, indexing signals, and performance panels"
+          width="1536"
+          height="1024"
+        />
       </aside>
     </section>
 
     <section class="section">
-      <div class="section-intro">
-        <p class="eyebrow">What we fix</p>
-        <h2>Modern sites that feel good and hold up underneath.</h2>
-      </div>
       <div class="fix-grid">
         {fixes.map((fix) => (
           <article class="card fix-card">
+            <span class="fix-visual">{fix.visual}</span>
             <h3>{fix.title}</h3>
             <p>{fix.text}</p>
           </article>
@@ -200,10 +159,9 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     <section class="section split-section">
       <div class="section-copy">
         <p class="eyebrow">Google visibility</p>
-        <h2>Google Visibility Built In</h2>
+        <h2>Google visibility, built in.</h2>
         <p class="section-lede">
-          We do not just build websites. We build websites Google can consistently crawl,
-          understand, and index.
+          Every build ships with the search fundamentals most local websites are missing.
         </p>
         <div class="feature-grid">
           {visibilityFeatures.map((feature) => (
@@ -211,36 +169,33 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
           ))}
         </div>
       </div>
-      <aside class="visual-panel gsc-visual" aria-label="Google Search Console visibility snapshot">
-        <p class="panel-label">Visibility snapshot</p>
-        <div class="gsc-shell">
-          <div class="gsc-row">
-            <span>Pages indexed</span>
-            <strong>Growing steadily</strong>
-          </div>
-          <div class="gsc-row">
-            <span>Sitemap status</span>
-            <strong>Clean</strong>
-          </div>
-          <div class="gsc-row">
-            <span>Visibility insights</span>
-            <strong>Transparent</strong>
-          </div>
-          <div class="gsc-line" aria-hidden="true"></div>
-        </div>
+      <aside class="visual-panel gsc-visual image-panel" aria-label="Google Search Console style visibility snapshot">
+        <img
+          src="/images/home/search-console-abstract.png"
+          alt="Abstract analytics interface showing search visibility charts and page health indicators"
+          width="1536"
+          height="1024"
+        />
       </aside>
     </section>
 
     <section class="section problem-section">
       <div class="section-intro">
-        <p class="eyebrow">The problem</p>
-        <h2>Most modern websites look good. But their SEO foundation is fragile.</h2>
+        <p class="eyebrow">The difference</p>
+        <h2>Good-looking is not the same as search-ready.</h2>
         <p class="section-lede">
-          Many template-driven websites have a clean frontend while the publishing layer sends
-          confusing signals to Google.
+          A modern site still needs stable page identity, clean metadata, and crawlable structure.
         </p>
       </div>
-      <div class="problem-grid">
+      <div class="comparison-visual image-panel">
+        <img
+          src="/images/home/website-stability-comparison.png"
+          alt="Side-by-side website infrastructure comparison showing fragile signals next to a stable search-ready system"
+          width="1536"
+          height="1024"
+        />
+      </div>
+      <div class="problem-grid compact">
         <div class="card">
           <h3>What breaks</h3>
           <ul class="plain-list">
@@ -256,7 +211,6 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
               <li>{focus}</li>
             ))}
           </ul>
-          <blockquote>Beautiful frontend does not equal stable publishing infrastructure.</blockquote>
         </div>
       </div>
     </section>
@@ -264,75 +218,53 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     <section class="section offer-section">
       <div class="offer-card">
         <p class="eyebrow">The offer</p>
-        <h2>Cut Your Website Costs in Half</h2>
+        <h2>A better website, usually for less.</h2>
         <p>
-          If you are currently paying for website management, hosting, maintenance, SEO retainers,
-          or outdated web work, there is a good chance we can build something faster, cleaner,
-          and easier to understand for significantly less.
+          A premium local website with speed, SEO structure, hosting, and the functionality you
+          actually need. Hosted on Cloudflare, documented clearly, and built to outperform the
+          bloated setup many businesses already pay for.
         </p>
         <div class="offer-note">
-          <span>Our goal</span>
-          <strong>Deliver a better website experience for around 50% of what many businesses currently pay.</strong>
-          <p>Simple. Transparent. No bloated retainers.</p>
+          <span>Target outcome</span>
+          <strong>Beautiful design. 100-speed targets. Stable search foundations. Around 50% less than many current website retainers.</strong>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-intro">
-        <p class="eyebrow">Process</p>
-        <h2>How It Works</h2>
-      </div>
-      <div class="process-row">
-        {process.map(([name, text], index) => (
-          <article class="card process-card">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{name}</h3>
-            <p>{text}</p>
-          </article>
-        ))}
       </div>
     </section>
 
     <section id="about" class="section founder-section">
       <div class="founder-card">
-        <div class="founder-photo">
-          <img
-            src="/images/authors/mitch-argamasilla.jpeg"
-            alt="Mitch Argamasilla, founder of IndexLayer"
-            width="640"
-            height="640"
-          />
-        </div>
         <div class="founder-copy">
-          <p class="eyebrow">Meet the founder</p>
-          <h2>Hey, I’m Mitch.</h2>
+          <p class="eyebrow">Founder</p>
+          <div class="founder-identity">
+            <div class="founder-photo">
+              <img
+                src="/images/authors/mitch-argamasilla.jpeg"
+                alt="Mitch Argamasilla, founder of IndexLayer"
+                width="640"
+                height="640"
+              />
+            </div>
+            <h2>Mitch Argamasilla</h2>
+          </div>
           <p>
-            I started IndexLayer after rebuilding and debugging modern websites that looked good
-            on the surface but were fragile underneath.
-          </p>
-          <p>
-            These days I spend a lot of time driving around Chicago noticing local businesses with
-            outdated websites that deserve better. Sometimes the opportunity is obvious: slow pages,
-            broken mobile layouts, weak Google visibility, and retainers that do not make sense.
+            IndexLayer is built around a simple standard: local websites should look premium,
+            load fast, and give search engines a clean technical story.
           </p>
           <div class="founder-note-grid">
             {founderNotes.map((note) => (
               <span>{note}</span>
             ))}
           </div>
-          <p class="founder-quote">Cleaner. Faster. Simpler. Usually for less money.</p>
         </div>
       </div>
     </section>
 
     <section class="section posts-strip">
       <div class="section-copy">
-        <p class="eyebrow">Lab notes</p>
-        <h2>Where the work gets documented.</h2>
+        <p class="eyebrow">Proof</p>
+        <h2>Selected work.</h2>
         <p class="section-lede">
-          We publicly document indexing fixes, SEO architecture lessons, local business rebuilds,
-          practical website workflows, and Google Search Console insights.
+          Rebuilds, case studies, and technical notes from real local website work.
         </p>
         <a class="text-link" href="/posts/">Read the notes</a>
       </div>
@@ -354,7 +286,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
     <section id="contact" class="final-cta">
       <p class="eyebrow">Free website audit</p>
-      <h2>Ready for a website that looks better, loads faster, and gives Google a cleaner story?</h2>
+      <h2>Ready for a perfect local website?</h2>
       <a class="button primary" href={auditHref}>Free Website Audit</a>
     </section>
   </main>
@@ -376,17 +308,17 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   }
 
   h1 {
-    max-width: 760px;
+    max-width: 650px;
     margin-bottom: 18px;
-    font-size: clamp(3.4rem, 7vw, 6.7rem);
+    font-size: clamp(3.15rem, 6vw, 5.8rem);
     font-weight: 690;
     letter-spacing: 0;
-    line-height: 0.94;
+    line-height: 0.96;
   }
 
   h2 {
     margin-bottom: 0;
-    font-size: clamp(2.05rem, 4vw, 4.35rem);
+    font-size: clamp(2.05rem, 3.6vw, 3.75rem);
     font-weight: 660;
     letter-spacing: 0;
     line-height: 1.02;
@@ -400,11 +332,10 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(380px, 0.72fr);
+    grid-template-columns: minmax(0, 0.88fr) minmax(420px, 0.82fr);
     gap: 56px;
     align-items: center;
-    min-height: calc(100vh - 78px);
-    padding: 42px 0 72px;
+    padding: 88px 0 96px;
   }
 
   .hero-copy {
@@ -424,17 +355,17 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   .hero-line {
     margin-bottom: 22px;
     color: var(--ink);
-    font-size: clamp(1.42rem, 2.8vw, 2.45rem);
+    font-size: clamp(1.28rem, 2.4vw, 2.05rem);
     font-weight: 620;
     line-height: 1.1;
   }
 
   .lede,
   .section-lede {
-    max-width: 690px;
+    max-width: 620px;
     color: var(--muted);
-    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
-    line-height: 1.62;
+    font-size: clamp(1.02rem, 1.45vw, 1.15rem);
+    line-height: 1.58;
   }
 
   .lede {
@@ -568,12 +499,30 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   }
 
   .fix-card {
-    min-height: 230px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
     padding: 26px;
   }
 
+  .fix-visual {
+    width: 62px;
+    height: 62px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: auto;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(217, 234, 223, 0.8), rgba(255, 255, 255, 0.75)),
+      var(--soft);
+    color: var(--green-dark);
+    font-size: 1.05rem;
+    font-weight: 760;
+  }
+
   .fix-card p,
-  .process-card p,
   .post-card p,
   .founder-copy p,
   .offer-card p {
@@ -601,6 +550,31 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .visual-panel {
     padding: 18px;
+  }
+
+  .image-panel {
+    overflow: hidden;
+  }
+
+  .image-panel img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+  }
+
+  .hero-visual img {
+    aspect-ratio: 1.28;
+    object-fit: cover;
+  }
+
+  .comparison-visual {
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--card-shadow);
+    padding: 12px;
   }
 
   .panel-label {
@@ -766,6 +740,10 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     gap: 14px;
   }
 
+  .problem-grid.compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .problem-grid .card {
     padding: 26px;
   }
@@ -830,41 +808,18 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     margin-bottom: 0;
   }
 
-  .process-row {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .process-card {
-    min-height: 230px;
-    padding: 22px;
-  }
-
-  .process-card span {
-    display: inline-flex;
-    margin-bottom: 34px;
-    color: var(--green-dark);
-    background: var(--green-soft);
-    border-radius: 5px;
-    padding: 5px 8px;
-    font-size: 0.78rem;
-    font-weight: 760;
-  }
-
   .founder-card {
-    display: grid;
-    grid-template-columns: minmax(240px, 0.5fr) minmax(0, 1fr);
-    gap: 38px;
-    align-items: center;
-    max-width: 980px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 18px;
+    padding: 28px;
   }
 
   .founder-photo {
+    width: 74px;
+    flex: 0 0 74px;
     overflow: hidden;
-    border-radius: 6px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
     background: var(--soft);
   }
 
@@ -877,7 +832,18 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   }
 
   .founder-copy {
-    padding: 20px 18px 20px 0;
+    padding: 0;
+  }
+
+  .founder-identity {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .founder-identity h2 {
+    font-size: clamp(1.75rem, 3vw, 2.65rem);
   }
 
   .founder-copy p {
@@ -886,9 +852,9 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .founder-note-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
-    margin: 24px 0;
+    margin: 24px 0 0;
   }
 
   .founder-quote {
@@ -996,7 +962,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     }
 
     .hero {
-      min-height: auto;
+      padding-top: 56px;
     }
 
     .hero-visual,
@@ -1004,26 +970,33 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       max-width: 760px;
     }
 
-    .fix-grid,
-    .process-row {
+    .fix-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 760px) {
-    .problem-grid,
-    .founder-card {
+    .problem-grid {
       grid-template-columns: 1fr;
     }
 
+    .problem-grid.compact {
+      grid-template-columns: 1fr;
+    }
+
+    .founder-photo {
+      width: 64px;
+      flex-basis: 64px;
+    }
+
     .founder-copy {
-      padding: 8px 6px 10px;
+      padding: 0;
     }
   }
 
   @media (max-width: 640px) {
     main {
-      width: min(100% - 28px, 1180px);
+      width: min(100% - 28px, 520px);
     }
 
     h1 {
@@ -1045,6 +1018,11 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       padding: 38px 0 50px;
     }
 
+    .hero-line {
+      max-width: 18ch;
+      font-size: 1.22rem;
+    }
+
     .lede,
     .section-lede {
       font-size: 1rem;
@@ -1056,14 +1034,12 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
     .fix-grid,
     .feature-grid,
-    .process-row,
     .founder-note-grid,
     .mock-metrics {
       grid-template-columns: 1fr;
     }
 
-    .fix-card,
-    .process-card {
+    .fix-card {
       min-height: 0;
     }
 
@@ -1078,6 +1054,12 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
     .post-thumb {
       min-height: 86px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    main {
+      width: min(100% - 28px, 362px);
     }
   }
 </style>
