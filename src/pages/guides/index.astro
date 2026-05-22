@@ -1,17 +1,245 @@
 ---
-import ListingLayout from "../../layouts/ListingLayout.astro";
-import { getPostsByCategory } from "../../lib/content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import { formatDate, getEntryPath, getPostsByCategory } from "../../lib/content";
 
 const title = "Guides";
 const description =
-  "Pillar educational resources for stable indexable HTML, search visibility, and cleaner local business website architecture.";
+  "Evergreen guides for stable indexable HTML, search visibility, and cleaner local business website architecture.";
 const entries = await getPostsByCategory("Guide");
+
+const doctrine = [
+  "A page should have one stable URL, one canonical identity, and complete crawlable HTML.",
+  "Search Console symptoms should be traced back to publishing behavior, not treated as mystery errors.",
+  "Educational content should link into services, work examples, and future comparison pages.",
+];
 ---
 
-<ListingLayout
-  title={title}
-  description={description}
-  canonicalPath="/guides/"
-  entries={entries}
-  eyebrow="IndexLayer guides"
-/>
+<BaseLayout title={`${title} | IndexLayer`} description={description} canonicalPath="/guides/">
+  <SiteHeader />
+
+  <main class="guides-shell">
+    <section class="guides-hero">
+      <p class="eyebrow">IndexLayer guides</p>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </section>
+
+    <section class="doctrine-band" aria-labelledby="doctrine-heading">
+      <div>
+        <p class="eyebrow">Publishing doctrine</p>
+        <h2 id="doctrine-heading">Guides are the reference layer for the whole site.</h2>
+      </div>
+      <div class="doctrine-list">
+        {doctrine.map((item) => <p>{item}</p>)}
+      </div>
+    </section>
+
+    <section class="entry-grid" aria-label="Guides">
+      {entries.map((entry) => (
+        <a class="entry-card" href={getEntryPath(entry)}>
+          <span>{entry.data.category}</span>
+          <h2>{entry.data.title}</h2>
+          <p>{entry.data.preview ?? entry.data.description}</p>
+          <div>
+            <time datetime={entry.data.pubDate.toISOString()}>{formatDate(entry.data.pubDate)}</time>
+            <strong>{entry.data.authorName}</strong>
+          </div>
+        </a>
+      ))}
+    </section>
+
+    <section class="authority-links" aria-labelledby="guide-links-heading">
+      <div>
+        <p class="eyebrow">Related clusters</p>
+        <h2 id="guide-links-heading">Use guides to connect the proof.</h2>
+      </div>
+      <div class="authority-grid">
+        <a href="/services/seo-rescue/">
+          <span>Service</span>
+          SEO Rescue
+        </a>
+        <a href="/work/better-call-steve-seo-rescue/">
+          <span>Work</span>
+          Better Call Steve SEO Rescue
+        </a>
+        <a href="/compare/replit-vs-indexlayer/">
+          <span>Compare</span>
+          Replit vs IndexLayer
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .guides-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0 94px;
+  }
+
+  .guides-hero {
+    max-width: 900px;
+    margin-bottom: 54px;
+  }
+
+  .eyebrow,
+  .entry-card span,
+  .authority-grid span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.96;
+  }
+
+  h2 {
+    margin: 0;
+    letter-spacing: 0;
+  }
+
+  .guides-hero p,
+  .doctrine-list p,
+  .entry-card p {
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  .guides-hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  }
+
+  .doctrine-band,
+  .authority-links {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(320px, 0.65fr);
+    gap: 28px;
+    align-items: start;
+    margin: 0 0 46px;
+  }
+
+  .doctrine-band h2,
+  .authority-links h2 {
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+    line-height: 1.04;
+  }
+
+  .doctrine-list,
+  .authority-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .doctrine-list p,
+  .entry-card,
+  .authority-grid a {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .doctrine-list p {
+    margin: 0;
+    padding: 18px;
+  }
+
+  .entry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .entry-card {
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .entry-card:hover,
+  .authority-grid a:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .entry-card h2 {
+    margin: 18px 0 14px;
+    font-size: 1.55rem;
+    line-height: 1.08;
+  }
+
+  .entry-card p {
+    margin: 0 0 24px;
+  }
+
+  .entry-card div {
+    display: grid;
+    gap: 6px;
+    margin-top: auto;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .entry-card strong {
+    color: var(--ink);
+  }
+
+  .authority-links {
+    margin: 56px 0 0;
+  }
+
+  .authority-grid a {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    color: var(--ink);
+    font-weight: 720;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  @media (max-width: 940px) {
+    .doctrine-band,
+    .authority-links,
+    .entry-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .guides-shell {
+      width: min(100% - 28px, 1180px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+</style>

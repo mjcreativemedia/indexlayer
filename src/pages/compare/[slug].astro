@@ -1,0 +1,23 @@
+---
+import AuthorityDetailLayout from "../../layouts/AuthorityDetailLayout.astro";
+import { comparisons, findAuthorityCard } from "../../lib/authority";
+
+export function getStaticPaths() {
+  return comparisons.map((card) => ({
+    params: { slug: card.slug },
+    props: { card },
+  }));
+}
+
+const { slug } = Astro.params;
+const card = Astro.props.card ?? findAuthorityCard(comparisons, slug ?? "");
+---
+
+{card && (
+  <AuthorityDetailLayout
+    eyebrow="IndexLayer comparison"
+    sectionPath="/compare/"
+    card={card}
+    relatedHeading="Related comparison links"
+  />
+)}

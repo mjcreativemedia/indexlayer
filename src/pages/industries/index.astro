@@ -2,30 +2,16 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
+import { industries } from "../../lib/authority";
 
 const title = "Industries | IndexLayer";
 const description =
   "Industry-specific website architecture for local businesses that need pages built around real search demand, service intent, and crawlable proof.";
 
-const industries = [
-  {
-    id: "tree-removal-websites",
-    title: "Tree Removal Websites",
-    path: "/industries/tree-removal-websites/",
-    text: "Fast local service pages built around emergency intent, location trust, before-and-after proof, and clear quote paths.",
-  },
-  {
-    id: "life-insurance-websites",
-    title: "Life Insurance Websites",
-    path: "/industries/life-insurance-websites/",
-    text: "Trust-first funnels for brokers and agencies that need simple explanations, clean lead paths, and stable educational content.",
-  },
-  {
-    id: "martial-arts-websites",
-    title: "Martial Arts Websites",
-    path: "/industries/martial-arts-websites/",
-    text: "Gym websites that preserve real authority through coaches, programs, schedules, media, and local community signals.",
-  },
+const principles = [
+  "Local customers search by problem, service, location, urgency, and trust.",
+  "Industry pages need different proof, different conversion paths, and different content clusters.",
+  "AI-generated pages still need stable architecture before they can become reliable search assets.",
 ];
 ---
 
@@ -39,13 +25,34 @@ const industries = [
       <p>{description}</p>
     </section>
 
+    <section class="authority-band" aria-labelledby="industry-system-heading">
+      <div>
+        <p class="eyebrow">Programmatic foundation</p>
+        <h2 id="industry-system-heading">Industry pages are where scalable local SEO starts.</h2>
+      </div>
+      <p>
+        A tree service website, insurance funnel, and martial arts gym should not share the
+        same page logic with the nouns swapped. Each market has its own proof, search intent,
+        urgency, trust signals, and internal links. The structure has to respect that.
+      </p>
+    </section>
+
+    <section class="process-grid" aria-label="Industry page principles">
+      {principles.map((item, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <p>{item}</p>
+        </article>
+      ))}
+    </section>
+
     <section class="hub-grid" aria-label="Industries">
       {industries.map((industry) => (
-        <article id={industry.id} class="hub-card">
+        <a id={industry.slug} class="hub-card" href={industry.path}>
           <span>{industry.path}</span>
           <h2>{industry.title}</h2>
-          <p>{industry.text}</p>
-        </article>
+          <p>{industry.description}</p>
+        </a>
       ))}
     </section>
   </main>
@@ -60,13 +67,18 @@ const industries = [
     padding: 72px 0 94px;
   }
 
+  .hub-hero,
+  .authority-band {
+    max-width: 940px;
+  }
+
   .hub-hero {
-    max-width: 900px;
     margin-bottom: 54px;
   }
 
   .eyebrow,
-  .hub-card span {
+  .hub-card span,
+  .process-grid span {
     color: var(--green-dark);
     font-size: 0.74rem;
     font-weight: 760;
@@ -87,8 +99,17 @@ const industries = [
     line-height: 0.96;
   }
 
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.6vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
   .hub-hero p,
-  .hub-card p {
+  .authority-band p,
+  .hub-card p,
+  .process-grid p {
     color: var(--muted);
     line-height: 1.62;
   }
@@ -98,19 +119,65 @@ const industries = [
     font-size: clamp(1.05rem, 1.7vw, 1.24rem);
   }
 
+  .authority-band {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 18px;
+  }
+
+  .authority-band p {
+    margin: 0;
+    font-size: 1.04rem;
+  }
+
+  .process-grid,
   .hub-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
   }
 
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 0 46px;
+  }
+
+  .process-grid article,
   .hub-card {
-    min-height: 300px;
     border: 1px solid var(--line);
     border-radius: var(--radius-card);
     background: var(--card-bg);
     box-shadow: var(--card-shadow);
+  }
+
+  .process-grid article {
+    padding: 22px;
+  }
+
+  .process-grid p {
+    margin: 14px 0 0;
+  }
+
+  .hub-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hub-card {
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
     padding: 26px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .hub-card:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
   }
 
   .hub-card h2 {
@@ -124,6 +191,8 @@ const industries = [
   }
 
   @media (max-width: 940px) {
+    .authority-band,
+    .process-grid,
     .hub-grid {
       grid-template-columns: 1fr;
     }

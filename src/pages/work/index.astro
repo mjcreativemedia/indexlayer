@@ -5,8 +5,14 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import { formatDate, getEntryPath, getPostsByCategory } from "../../lib/content";
 
 const title = "Work";
-const description = "Rebuilds, rescues, audits, and local business website examples.";
+const description = "Rebuilds, rescues, audits, and local business website examples tied to stable publishing systems.";
 const entries = await getPostsByCategory("Work");
+
+const proofPoints = [
+  "Before and after thinking, not just finished screenshots.",
+  "Search architecture lessons from real route, canonical, and HTML problems.",
+  "Project pages that link back into services, guides, industries, and posts.",
+];
 ---
 
 <BaseLayout title={`${title} | IndexLayer`} description={description} canonicalPath="/work/">
@@ -35,6 +41,16 @@ const entries = await getPostsByCategory("Work");
       <img src="/images/work/chicago-fight-team/training-room-wide.jpeg" alt="Chicago Fight Team training room" />
     </section>
 
+    <section class="proof-system" aria-labelledby="proof-system-heading">
+      <div>
+        <p class="eyebrow">Proof system</p>
+        <h2 id="proof-system-heading">Work pages explain what changed and why it matters.</h2>
+      </div>
+      <div class="proof-list">
+        {proofPoints.map((point) => <p>{point}</p>)}
+      </div>
+    </section>
+
     <section class="entry-grid" aria-label="Work posts">
       {entries.map((entry) => (
         <a class="entry-card" href={getEntryPath(entry)}>
@@ -50,6 +66,27 @@ const entries = await getPostsByCategory("Work");
           </div>
         </a>
       ))}
+    </section>
+
+    <section class="authority-links" aria-labelledby="authority-links-heading">
+      <div>
+        <p class="eyebrow">Related clusters</p>
+        <h2 id="authority-links-heading">Connect the proof to the offer.</h2>
+      </div>
+      <div class="authority-grid">
+        <a href="/services/seo-rescue/">
+          <span>Service</span>
+          SEO Rescue
+        </a>
+        <a href="/guides/stable-indexable-html/">
+          <span>Guide</span>
+          Stable Indexable HTML
+        </a>
+        <a href="/compare/">
+          <span>Compare</span>
+          Website builders vs publishing systems
+        </a>
+      </div>
     </section>
   </main>
 
@@ -116,6 +153,41 @@ const entries = await getPostsByCategory("Work");
     padding: 28px;
   }
 
+  .proof-system,
+  .authority-links {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(320px, 0.65fr);
+    gap: 28px;
+    align-items: start;
+    margin: 42px 0;
+  }
+
+  .proof-system h2,
+  .authority-links h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .proof-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .proof-list p,
+  .authority-grid a {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .proof-list p {
+    margin: 0;
+    padding: 18px;
+  }
+
   .featured-work h2 {
     margin: 0 0 14px;
     font-size: clamp(2rem, 4vw, 3.5rem);
@@ -170,6 +242,41 @@ const entries = await getPostsByCategory("Work");
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
+  }
+
+  .authority-links {
+    margin-top: 56px;
+  }
+
+  .authority-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .authority-grid a {
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    color: var(--ink);
+    font-weight: 720;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .authority-grid a:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .authority-grid span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .entry-card {
@@ -242,7 +349,9 @@ const entries = await getPostsByCategory("Work");
   }
 
   @media (max-width: 820px) {
-    .featured-work {
+    .featured-work,
+    .proof-system,
+    .authority-links {
       grid-template-columns: 1fr;
     }
   }

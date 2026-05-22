@@ -2,37 +2,16 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import SiteHeader from "../../components/SiteHeader.astro";
+import { comparisons } from "../../lib/authority";
 
 const title = "Compare | IndexLayer";
 const description =
   "Comparison pages for businesses choosing between website builders, agency stacks, AI site tools, and IndexLayer's stable publishing approach.";
 
-const comparisons = [
-  {
-    title: "Wix vs IndexLayer",
-    path: "/compare/wix-vs-indexlayer/",
-    text: "For businesses comparing template convenience against cleaner technical control, performance, and search architecture.",
-  },
-  {
-    title: "Webflow vs IndexLayer",
-    path: "/compare/webflow-vs-indexlayer/",
-    text: "For teams weighing a visual builder against a hands-on static publishing system tuned for local search visibility.",
-  },
-  {
-    title: "Squarespace vs IndexLayer",
-    path: "/compare/squarespace-vs-indexlayer/",
-    text: "For local companies that want premium presentation without losing crawl clarity, page speed, or ownership of the publishing layer.",
-  },
-  {
-    title: "WordPress vs IndexLayer",
-    path: "/compare/wordpress-vs-indexlayer/",
-    text: "For businesses tired of plugin-heavy stacks, slow maintenance cycles, and unclear indexing behavior.",
-  },
-  {
-    title: "Replit vs IndexLayer",
-    path: "/compare/replit-vs-indexlayer/",
-    text: "For founders using AI site builders who need the final website to resolve, index, and scale like a stable production surface.",
-  },
+const framework = [
+  "Can Google see stable HTML, metadata, canonicals, and internal links?",
+  "Can the site expand into services, industries, comparisons, work, and posts without URL drift?",
+  "Does the platform make the business easier to understand, or only easier to edit?",
 ];
 ---
 
@@ -46,13 +25,34 @@ const comparisons = [
       <p>{description}</p>
     </section>
 
+    <section class="authority-band" aria-labelledby="compare-framework-heading">
+      <div>
+        <p class="eyebrow">Evaluation framework</p>
+        <h2 id="compare-framework-heading">Website builders are not the same as publishing systems.</h2>
+      </div>
+      <p>
+        Many tools can produce a good-looking page. The real comparison is whether the final
+        site has clean route identity, crawlable content, durable metadata, useful internal
+        links, and a structure that can grow without confusing users or search engines.
+      </p>
+    </section>
+
+    <section class="process-grid" aria-label="Comparison framework">
+      {framework.map((item, index) => (
+        <article>
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <p>{item}</p>
+        </article>
+      ))}
+    </section>
+
     <section class="hub-grid" aria-label="Comparison pages">
       {comparisons.map((comparison) => (
-        <article class="hub-card">
+        <a class="hub-card" href={comparison.path}>
           <span>{comparison.path}</span>
           <h2>{comparison.title}</h2>
-          <p>{comparison.text}</p>
-        </article>
+          <p>{comparison.description}</p>
+        </a>
       ))}
     </section>
   </main>
@@ -67,13 +67,18 @@ const comparisons = [
     padding: 72px 0 94px;
   }
 
+  .hub-hero,
+  .authority-band {
+    max-width: 960px;
+  }
+
   .hub-hero {
-    max-width: 920px;
     margin-bottom: 54px;
   }
 
   .eyebrow,
-  .hub-card span {
+  .hub-card span,
+  .process-grid span {
     color: var(--green-dark);
     font-size: 0.74rem;
     font-weight: 760;
@@ -94,8 +99,17 @@ const comparisons = [
     line-height: 0.96;
   }
 
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.6vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
   .hub-hero p,
-  .hub-card p {
+  .authority-band p,
+  .hub-card p,
+  .process-grid p {
     color: var(--muted);
     line-height: 1.62;
   }
@@ -105,19 +119,65 @@ const comparisons = [
     font-size: clamp(1.05rem, 1.7vw, 1.24rem);
   }
 
+  .authority-band {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 18px;
+  }
+
+  .authority-band p {
+    margin: 0;
+    font-size: 1.04rem;
+  }
+
+  .process-grid,
   .hub-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
   }
 
+  .process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0 0 46px;
+  }
+
+  .process-grid article,
   .hub-card {
-    min-height: 300px;
     border: 1px solid var(--line);
     border-radius: var(--radius-card);
     background: var(--card-bg);
     box-shadow: var(--card-shadow);
+  }
+
+  .process-grid article {
+    padding: 22px;
+  }
+
+  .process-grid p {
+    margin: 14px 0 0;
+  }
+
+  .hub-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hub-card {
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
     padding: 26px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .hub-card:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
   }
 
   .hub-card h2 {
@@ -131,8 +191,10 @@ const comparisons = [
   }
 
   @media (max-width: 940px) {
+    .authority-band,
+    .process-grid,
     .hub-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
     }
   }
 
@@ -144,10 +206,6 @@ const comparisons = [
 
     h1 {
       font-size: 3rem;
-    }
-
-    .hub-grid {
-      grid-template-columns: 1fr;
     }
   }
 </style>

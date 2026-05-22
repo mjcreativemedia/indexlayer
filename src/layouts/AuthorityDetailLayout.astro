@@ -1,0 +1,228 @@
+---
+import type { AuthorityCard } from "../lib/authority";
+import BaseLayout from "./BaseLayout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+export interface Props {
+  eyebrow: string;
+  sectionPath: string;
+  card: AuthorityCard;
+  relatedHeading?: string;
+}
+
+const { eyebrow, sectionPath, card, relatedHeading = "Related reading" } = Astro.props;
+---
+
+<BaseLayout
+  title={`${card.title} | IndexLayer`}
+  description={card.description}
+  canonicalPath={card.path}
+>
+  <SiteHeader />
+
+  <main class="detail-shell">
+    <section class="detail-hero">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{card.title}</h1>
+      <p>{card.description}</p>
+    </section>
+
+    <section class="detail-grid" aria-label={`${card.title} overview`}>
+      <article class="detail-copy">
+        <span>{card.path}</span>
+        <h2>Built as part of the publishing system.</h2>
+        <p>{card.intro}</p>
+      </article>
+
+      <aside class="signal-panel" aria-label="Key signals">
+        <span>What this page clarifies</span>
+        <ul>
+          {card.points.map((point) => <li>{point}</li>)}
+        </ul>
+      </aside>
+    </section>
+
+    <section class="related-links" aria-labelledby="related-heading">
+      <div>
+        <p class="eyebrow">Internal links</p>
+        <h2 id="related-heading">{relatedHeading}</h2>
+      </div>
+      <div class="related-grid">
+        {card.links.map((link) => (
+          <a href={link.href}>
+            <span>{link.href}</span>
+            <strong>{link.label}</strong>
+          </a>
+        ))}
+        <a href={sectionPath}>
+          <span>{sectionPath}</span>
+          <strong>Back to hub</strong>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .detail-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0 94px;
+  }
+
+  .detail-hero {
+    max-width: 930px;
+    margin-bottom: 54px;
+  }
+
+  .eyebrow,
+  .detail-copy span,
+  .signal-panel span,
+  .related-grid span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.96;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 3.6vw, 3.35rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .detail-hero p,
+  .detail-copy p,
+  .signal-panel li {
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  .detail-hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.55fr);
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+
+  .detail-copy,
+  .signal-panel,
+  .related-grid a {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .detail-copy,
+  .signal-panel {
+    padding: 28px;
+  }
+
+  .detail-copy h2 {
+    max-width: 720px;
+    margin: 20px 0 18px;
+  }
+
+  .detail-copy p {
+    max-width: 760px;
+    margin: 0;
+    font-size: 1.04rem;
+  }
+
+  .signal-panel ul {
+    display: grid;
+    gap: 14px;
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .signal-panel li {
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+
+  .related-links {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .related-grid a {
+    min-height: 132px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .related-grid a:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .related-grid strong {
+    margin-top: 18px;
+    color: var(--ink);
+    font-size: 1.12rem;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 900px) {
+    .detail-grid,
+    .related-links {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .detail-shell {
+      width: min(100% - 28px, 1180px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

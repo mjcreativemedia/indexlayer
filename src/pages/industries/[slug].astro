@@ -1,0 +1,23 @@
+---
+import AuthorityDetailLayout from "../../layouts/AuthorityDetailLayout.astro";
+import { findAuthorityCard, industries } from "../../lib/authority";
+
+export function getStaticPaths() {
+  return industries.map((card) => ({
+    params: { slug: card.slug },
+    props: { card },
+  }));
+}
+
+const { slug } = Astro.params;
+const card = Astro.props.card ?? findAuthorityCard(industries, slug ?? "");
+---
+
+{card && (
+  <AuthorityDetailLayout
+    eyebrow="IndexLayer industry"
+    sectionPath="/industries/"
+    card={card}
+    relatedHeading="Related industry links"
+  />
+)}
