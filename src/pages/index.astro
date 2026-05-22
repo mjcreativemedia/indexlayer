@@ -52,52 +52,39 @@ const websiteJsonLd = {
   },
 };
 
-const proofPoints = [
-  "100-speed targets",
-  "Search-ready architecture",
-  "Cloudflare hosting",
-  "GSC transparency",
-];
-
-const fixes = [
+const websiteSections = [
   {
-    title: "Fast Pages",
-    text: "Lightweight builds tuned for speed, Core Web Vitals, and clean mobile behavior.",
-    visual: "100",
+    eyebrow: "SEO Perfection",
+    title: "Built for Google visibility.",
+    text: "Clean technical foundations for local websites that need search engines to understand them clearly.",
+    visual: "GSC",
+    visualType: "google",
+    features: ["Complete structured data", "Clean sitemap logic", "Indexable HTML", "Stable canonicals", "Search Console clarity"],
   },
   {
-    title: "Premium Design",
-    text: "Modern interfaces that make local businesses feel credible the moment they load.",
+    eyebrow: "Performance",
+    title: "Blazing fast.",
+    text: "Lightweight pages tuned for clean loading, strong Core Web Vitals, and a faster customer experience.",
+    visual: "CWV",
+    visualType: "performance",
+    features: ["100-speed targets", "Core Web Vitals", "Lightweight pages", "Clean loading", "Fast mobile UX"],
+  },
+  {
+    eyebrow: "Design",
+    title: "World-class design.",
+    text: "Modern local websites that feel premium, build trust quickly, and help more visitors take action.",
     visual: "UI",
+    visualType: "design",
+    features: ["Premium UI", "Modern layouts", "Trust signals", "Conversion clarity", "Intentional spacing"],
   },
   {
-    title: "Stable SEO",
-    text: "Clean page identity, metadata, schema, sitemaps, and indexable HTML from day one.",
-    visual: "SEO",
+    eyebrow: "AI search",
+    title: "AI-search ready.",
+    text: "Structured content and entity signals built for discoverability across modern search surfaces.",
+    visual: "LLM",
+    visualType: "ai",
+    features: ["AI citation paths", "Semantic structure", "Trusted entity signals", "Structured content", "LLM discoverability"],
   },
-];
-
-const visibilityFeatures = [
-  "Search Console",
-  "Sitemaps",
-  "Schema",
-  "Local pages",
-  "Internal links",
-  "Indexing audits",
-];
-
-const fragileSignals = [
-  "Weak metadata",
-  "Duplicate URLs",
-  "Thin local pages",
-  "Unclear crawl paths",
-];
-
-const stableFocus = [
-  "Stable HTML",
-  "Clean canonicals",
-  "Structured metadata",
-  "Clear sitemap logic",
 ];
 
 const founderNotes = [
@@ -116,7 +103,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Modern websites for local search</p>
+        <p class="eyebrow hero-location">Chicago, USA</p>
         <h1>Perfect local websites.</h1>
         <p class="hero-line">Built for Google, AI search, and real customers.</p>
         <p class="lede">
@@ -127,106 +114,184 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
           <a class="button primary" href="/work/">View Our Work</a>
           <a class="button secondary" href={auditHref}>Free Website Audit</a>
         </div>
-        <ul class="proof-list" aria-label="IndexLayer website foundations">
-          {proofPoints.map((point) => (
-            <li>{point}</li>
-          ))}
-        </ul>
       </div>
 
-      <aside class="visual-panel hero-visual image-panel" aria-label="Search visibility dashboard preview">
-        <img
-          src="/images/home/search-console-abstract.png"
-          alt="Abstract search visibility dashboard with charts, indexing signals, and performance panels"
-          width="1536"
-          height="1024"
-        />
+      <aside class="hero-visual" aria-label="Minimal perfect local website visual">
+        <div class="hero-system" aria-hidden="true">
+          <div class="hero-browser">
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+            <span class="hero-dot"></span>
+            <div class="hero-page-mark"></div>
+            <div class="hero-page-line primary"></div>
+            <div class="hero-page-line"></div>
+            <div class="hero-page-grid">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="hero-signals">
+            <span><i></i>Fast</span>
+            <span><i></i>Indexed</span>
+            <span><i></i>Trusted</span>
+          </div>
+        </div>
       </aside>
     </section>
 
-    <section class="section">
-      <div class="fix-grid">
-        {fixes.map((fix) => (
-          <article class="card fix-card">
-            <span class="fix-visual">{fix.visual}</span>
-            <h3>{fix.title}</h3>
-            <p>{fix.text}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section split-section">
-      <div class="section-copy">
-        <p class="eyebrow">Google visibility</p>
-        <h2>Google visibility, built in.</h2>
-        <p class="section-lede">
-          Every build ships with the search fundamentals most local websites are missing.
-        </p>
-        <div class="feature-grid">
-          {visibilityFeatures.map((feature) => (
-            <span>{feature}</span>
-          ))}
-        </div>
-      </div>
-      <aside class="visual-panel gsc-visual image-panel" aria-label="Google Search Console style visibility snapshot">
-        <img
-          src="/images/home/search-console-abstract.png"
-          alt="Abstract analytics interface showing search visibility charts and page health indicators"
-          width="1536"
-          height="1024"
-        />
-      </aside>
-    </section>
-
-    <section class="section problem-section">
-      <div class="section-intro">
-        <p class="eyebrow">The difference</p>
-        <h2>Good-looking is not the same as search-ready.</h2>
-        <p class="section-lede">
-          A modern site still needs stable page identity, clean metadata, and crawlable structure.
-        </p>
-      </div>
-      <div class="comparison-visual image-panel">
-        <img
-          src="/images/home/website-stability-comparison.png"
-          alt="Side-by-side website infrastructure comparison showing fragile signals next to a stable search-ready system"
-          width="1536"
-          height="1024"
-        />
-      </div>
-      <div class="problem-grid compact">
-        <div class="card">
-          <h3>What breaks</h3>
-          <ul class="plain-list">
-            {fragileSignals.map((signal) => (
-              <li>{signal}</li>
+    {websiteSections.map((section, index) => (
+      <section class:list={["section", "website-section", index % 2 === 1 && "is-reversed"]}>
+        <div class="section-copy">
+          <p class="eyebrow">{section.eyebrow}</p>
+          <h2>{section.title}</h2>
+          <p class="section-lede">{section.text}</p>
+          <ul class="feature-pills" aria-label={`${section.title} foundations`}>
+            {section.features.map((feature) => (
+              <li>{feature}</li>
             ))}
           </ul>
         </div>
-        <div class="card focus-card">
-          <h3>What we stabilize</h3>
-          <ul class="plain-list">
-            {stableFocus.map((focus) => (
-              <li>{focus}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
+        <aside
+          class:list={[
+            "website-visual",
+            section.visualType === "google" && "search-system-visual",
+            section.visualType === "performance" && "performance-system-visual",
+            section.visualType === "design" && "design-system-visual",
+            section.visualType === "ai" && "ai-system-visual",
+          ]}
+          aria-label={`${section.title} visual concept`}
+        >
+          {section.visualType === "google" ? (
+            <div class="search-system">
+              <div class="serp-visual" aria-hidden="true">
+                <div class="search-query">tree removal near me</div>
+                <div class="serp-results">
+                  <span class="serp-line muted"></span>
+                  <div class="serp-result featured">
+                    <span class="rank-badge">
+                      <img src="/images/brand/indexlayer-icon.png" alt="" width="512" height="512" />
+                    </span>
+                    <span class="result-title"></span>
+                    <span class="result-meta"></span>
+                  </div>
+                  <span class="serp-line"></span>
+                  <span class="serp-line short"></span>
+                </div>
+                <span class="rise-path"></span>
+              </div>
+            </div>
+          ) : section.visualType === "performance" ? (
+            <div class="performance-system" aria-hidden="true">
+              <span class="perf-badge"><i></i>0.8s</span>
+              <div class="assembly-frame">
+                <span class="assembly-part nav"></span>
+                <span class="assembly-part hero"></span>
+                <span class="assembly-part copy"></span>
+                <span class="assembly-part card left"></span>
+                <span class="assembly-part card right"></span>
+              </div>
+              <span class="assembly-spark one"></span>
+              <span class="assembly-spark two"></span>
+            </div>
+          ) : section.visualType === "design" ? (
+            <div class="design-system" aria-hidden="true">
+              <span class="design-guide vertical"></span>
+              <span class="design-guide horizontal"></span>
+              <div class="design-frame">
+                <div class="design-block hero-block"></div>
+                <div class="design-columns">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="design-row">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <span class="balance-node left"></span>
+              <span class="balance-node right"></span>
+            </div>
+          ) : section.visualType === "ai" ? (
+            <div class="ai-system" aria-hidden="true">
+              <span class="trust-badge"><i></i>Trusted source</span>
+              <div class="entity-node">Website</div>
+              <div class="agent-node">AI</div>
+              <div class="answer-node">Answer</div>
+              <span class="ai-flow entity-to-agent"></span>
+              <span class="ai-flow agent-to-answer"></span>
+            </div>
+          ) : (
+            <>
+              <span class="visual-kicker">Visual concept</span>
+              <strong>{section.visual}</strong>
+              <div class="visual-tags">
+                {section.features.map((feature) => (
+                  <span>{feature}</span>
+                ))}
+              </div>
+            </>
+          )}
+        </aside>
+      </section>
+    ))}
 
     <section class="section offer-section">
-      <div class="offer-card">
-        <p class="eyebrow">The offer</p>
-        <h2>A better website, usually for less.</h2>
-        <p>
-          A premium local website with speed, SEO structure, hosting, and the functionality you
-          actually need. Hosted on Cloudflare, documented clearly, and built to outperform the
-          bloated setup many businesses already pay for.
-        </p>
-        <div class="offer-note">
-          <span>Target outcome</span>
-          <strong>Beautiful design. 100-speed targets. Stable search foundations. Around 50% less than many current website retainers.</strong>
+      <div class="offer-shell">
+        <div class="offer-intro">
+          <p class="eyebrow">The offer</p>
+          <h2>An upgraded website for 2026 and beyond. For less than you pay now.</h2>
+          <p>
+            Modern local websites with premium design, stable search foundations, Cloudflare
+            hosting, and transparent infrastructure — often for less than traditional agency
+            retainers.
+          </p>
+        </div>
+        <div class="offer-comparison" role="table" aria-label="Traditional agency compared with IndexLayer">
+          <div class="comparison-header" role="row">
+            <span role="columnheader">Traditional Agency</span>
+            <span role="columnheader">IndexLayer</span>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">
+              <span aria-hidden="true">Traditional Agency</span>
+              Slow WordPress stack
+            </div>
+            <div role="cell">
+              <span aria-hidden="true">IndexLayer</span>
+              Lightweight HTML-first
+            </div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">
+              <span aria-hidden="true">Traditional Agency</span>
+              Monthly retainers
+            </div>
+            <div role="cell">
+              <span aria-hidden="true">IndexLayer</span>
+              Simple infrastructure
+            </div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">
+              <span aria-hidden="true">Traditional Agency</span>
+              Plugin-heavy
+            </div>
+            <div role="cell">
+              <span aria-hidden="true">IndexLayer</span>
+              Clean architecture
+            </div>
+          </div>
+          <div class="comparison-row" role="row">
+            <div role="cell">
+              <span aria-hidden="true">Traditional Agency</span>
+              Weak indexing
+            </div>
+            <div role="cell">
+              <span aria-hidden="true">IndexLayer</span>
+              Stable search systems
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -352,6 +417,18 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     text-transform: uppercase;
   }
 
+  .hero-location {
+    width: fit-content;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.56);
+    padding: 0 11px;
+    letter-spacing: 0.08em;
+  }
+
   .hero-line {
     margin-bottom: 22px;
     color: var(--ink);
@@ -370,6 +447,118 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .lede {
     margin-bottom: 32px;
+  }
+
+  .hero-visual {
+    min-height: 430px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background:
+      radial-gradient(circle at 50% 42%, rgba(67, 120, 87, 0.12), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(237, 242, 237, 0.56)),
+      var(--soft);
+    box-shadow: var(--card-shadow);
+  }
+
+  .hero-system {
+    min-height: 430px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(24px, 4vw, 44px);
+  }
+
+  .hero-browser {
+    width: min(78%, 430px);
+    min-height: 254px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow:
+      0 20px 52px rgba(22, 38, 33, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78);
+    padding: 20px;
+  }
+
+  .hero-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: rgba(22, 38, 33, 0.18);
+  }
+
+  .hero-page-mark {
+    width: 52px;
+    height: 52px;
+    margin: 42px auto 24px;
+    border-radius: 14px;
+    background: var(--ink);
+  }
+
+  .hero-page-line {
+    width: 48%;
+    height: 10px;
+    margin: 12px auto 0;
+    border-radius: 999px;
+    background: rgba(22, 38, 33, 0.1);
+  }
+
+  .hero-page-line.primary {
+    width: 64%;
+    height: 14px;
+    background: var(--ink);
+  }
+
+  .hero-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .hero-page-grid span {
+    min-height: 46px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(67, 120, 87, 0.12), rgba(255, 255, 255, 0.32)),
+      rgba(237, 242, 237, 0.64);
+  }
+
+  .hero-signals {
+    position: absolute;
+    right: clamp(22px, 4vw, 44px);
+    bottom: clamp(22px, 4vw, 38px);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hero-signals span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 5px 10px;
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .hero-signals i {
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.72);
   }
 
   .actions {
@@ -418,17 +607,17 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     color: var(--green-dark);
   }
 
-  .proof-list {
+  .feature-pills {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin: 0;
+    margin: -8px 0 0;
     padding: 0;
     color: var(--muted);
     list-style: none;
   }
 
-  .proof-list li {
+  .feature-pills li {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -440,7 +629,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     font-size: 0.86rem;
   }
 
-  .proof-list li::before,
+  .feature-pills li::before,
   .plain-list li::before {
     content: "";
     width: 6px;
@@ -481,9 +670,739 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     margin-bottom: 28px;
   }
 
+  .website-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(360px, 0.78fr);
+    gap: clamp(34px, 6vw, 76px);
+    align-items: center;
+  }
+
+  .website-section.is-reversed .section-copy {
+    order: 2;
+  }
+
+  .website-section.is-reversed .website-visual {
+    order: 1;
+  }
+
+  .website-visual {
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(237, 242, 237, 0.48)),
+      var(--soft);
+    padding: clamp(20px, 3.4vw, 34px);
+  }
+
+  .visual-kicker {
+    color: var(--green-dark);
+    font-size: 0.72rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .website-visual strong {
+    color: var(--ink);
+    font-size: clamp(3.6rem, 8vw, 6.8rem);
+    font-weight: 760;
+    letter-spacing: 0;
+    line-height: 0.92;
+  }
+
+  .visual-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .visual-tags span {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    padding: 7px 11px;
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .search-system-visual {
+    overflow: hidden;
+    border-color: var(--line);
+    background:
+      radial-gradient(circle at 50% 52%, rgba(67, 120, 87, 0.13), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(237, 242, 237, 0.55)),
+      var(--soft);
+    padding: 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 22px 70px rgba(22, 38, 33, 0.14);
+  }
+
+  .search-system {
+    min-height: 100%;
+    padding: clamp(20px, 3.4vw, 34px);
+  }
+
+  .serp-visual {
+    position: relative;
+    min-height: 318px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 7px;
+    background:
+      radial-gradient(circle at 52% 42%, rgba(67, 120, 87, 0.12), transparent 38%),
+      rgba(255, 255, 255, 0.42);
+  }
+
+  .search-query {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    width: min(72%, 320px);
+    min-height: 40px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    padding: 0 18px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .search-query::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.72);
+  }
+
+  .serp-results {
+    position: absolute;
+    left: 50%;
+    top: 98px;
+    width: min(76%, 350px);
+    transform: translateX(-50%);
+  }
+
+  .serp-line,
+  .serp-result {
+    display: block;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 12px 30px rgba(22, 38, 33, 0.04);
+  }
+
+  .serp-line {
+    height: 42px;
+    margin-bottom: 12px;
+  }
+
+  .serp-line.muted {
+    opacity: 0.45;
+  }
+
+  .serp-line.short {
+    width: 72%;
+    opacity: 0.5;
+  }
+
+  .serp-result {
+    position: relative;
+    min-height: 76px;
+    margin-bottom: 12px;
+    padding: 16px 18px 16px 62px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:
+      0 18px 44px rgba(22, 38, 33, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    animation: resultRise 4.2s ease-in-out infinite;
+  }
+
+  .rank-badge {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    transform: translateY(-50%);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 9px;
+    background: var(--ink);
+  }
+
+  .rank-badge img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+  }
+
+  .result-title,
+  .result-meta {
+    display: block;
+    border-radius: 999px;
+  }
+
+  .result-title {
+    width: 72%;
+    height: 12px;
+    margin-top: 6px;
+    background: var(--ink);
+  }
+
+  .result-meta {
+    width: 48%;
+    height: 9px;
+    margin-top: 12px;
+    background: rgba(67, 120, 87, 0.2);
+  }
+
+  .rise-path {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    width: 1px;
+    height: 82px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, transparent, rgba(70, 216, 132, 0.76), transparent);
+  }
+
+  .rise-path::after {
+    content: "";
+    position: absolute;
+    left: -3px;
+    bottom: 4px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.88);
+    animation: risePulse 4.2s ease-in-out infinite;
+  }
+
+  @keyframes resultRise {
+    0%,
+    22% {
+      transform: translateY(18px);
+    }
+
+    48%,
+    100% {
+      transform: translateY(-16px);
+    }
+  }
+
+  @keyframes risePulse {
+    0%,
+    22% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+
+    45% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(-72px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .serp-result,
+    .rise-path::after {
+      animation: none;
+    }
+  }
+
+  .performance-system-visual {
+    overflow: hidden;
+    border-color: var(--line);
+    background:
+      radial-gradient(circle at 70% 44%, rgba(67, 120, 87, 0.12), transparent 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(237, 242, 237, 0.55)),
+      var(--soft);
+    padding: 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 22px 70px rgba(22, 38, 33, 0.14);
+  }
+
+  .performance-system {
+    position: relative;
+    min-height: 318px;
+    margin: clamp(20px, 3.4vw, 34px);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 7px;
+    background:
+      rgba(255, 255, 255, 0.42);
+  }
+
+  .perf-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    padding: 5px 10px;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .perf-badge i {
+    width: 7px;
+    height: 7px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.8);
+  }
+
+  .assembly-frame {
+    position: absolute;
+    top: 82px;
+    left: 50%;
+    z-index: 2;
+    width: min(68%, 320px);
+    min-height: 184px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 18px 42px rgba(22, 38, 33, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    padding: 18px;
+  }
+
+  .assembly-part {
+    position: absolute;
+    display: block;
+    border-radius: 8px;
+    background: rgba(22, 38, 33, 0.1);
+    animation: assemblePart 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  }
+
+  .assembly-part.nav {
+    top: 18px;
+    left: 18px;
+    width: calc(100% - 36px);
+    height: 12px;
+    border-radius: 999px;
+    background: var(--ink);
+    --from-x: 0;
+    --from-y: -26px;
+  }
+
+  .assembly-part.hero {
+    top: 52px;
+    left: 50%;
+    width: 48%;
+    height: 44px;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(180deg, rgba(67, 120, 87, 0.16), rgba(255, 255, 255, 0.28)),
+      rgba(237, 242, 237, 0.72);
+    --from-x: -70px;
+    --from-y: 0;
+  }
+
+  .assembly-part.copy {
+    top: 112px;
+    left: 50%;
+    width: 58%;
+    height: 10px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    --from-x: 76px;
+    --from-y: 0;
+  }
+
+  .assembly-part.card {
+    bottom: 18px;
+    width: calc(50% - 24px);
+    height: 42px;
+    background: rgba(67, 120, 87, 0.13);
+  }
+
+  .assembly-part.card.left {
+    left: 18px;
+    --from-x: -50px;
+    --from-y: 32px;
+  }
+
+  .assembly-part.card.right {
+    right: 18px;
+    --from-x: 50px;
+    --from-y: 32px;
+    animation-delay: 0.08s;
+  }
+
+  .assembly-spark {
+    position: absolute;
+    z-index: 3;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.88);
+    animation: assemblySpark 2.8s ease-in-out infinite;
+  }
+
+  .assembly-spark.one {
+    top: 76px;
+    left: 24%;
+  }
+
+  .assembly-spark.two {
+    right: 24%;
+    bottom: 76px;
+    animation-delay: 0.14s;
+  }
+
+  @keyframes assemblePart {
+    0% {
+      opacity: 0;
+      translate: var(--from-x) var(--from-y);
+      scale: 0.96;
+    }
+
+    28% {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+
+    100% {
+      opacity: 1;
+      translate: 0 0;
+      scale: 1;
+    }
+  }
+
+  @keyframes assemblySpark {
+    0%,
+    18% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    34% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    62%,
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .assembly-part,
+    .assembly-spark {
+      animation: none;
+    }
+  }
+
+  .design-system-visual {
+    overflow: hidden;
+    border-color: var(--line);
+    background:
+      radial-gradient(circle at 50% 46%, rgba(67, 120, 87, 0.11), transparent 31%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(237, 242, 237, 0.55)),
+      var(--soft);
+    padding: 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 22px 70px rgba(22, 38, 33, 0.14);
+  }
+
+  .design-system {
+    position: relative;
+    min-height: 318px;
+    margin: clamp(20px, 3.4vw, 34px);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 7px;
+    background:
+      rgba(255, 255, 255, 0.42);
+  }
+
+  .design-guide {
+    position: absolute;
+    z-index: 1;
+    background: rgba(67, 120, 87, 0.22);
+  }
+
+  .design-guide.vertical {
+    top: 26px;
+    bottom: 26px;
+    left: 50%;
+    width: 1px;
+  }
+
+  .design-guide.horizontal {
+    top: 50%;
+    left: 28px;
+    right: 28px;
+    height: 1px;
+  }
+
+  .design-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: min(66%, 300px);
+    min-height: 218px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      0 18px 42px rgba(22, 38, 33, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    padding: 18px;
+  }
+
+  .hero-block {
+    width: 52%;
+    height: 42px;
+    margin: 0 auto 18px;
+    border-radius: 8px;
+    background: var(--ink);
+  }
+
+  .design-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .design-columns span {
+    min-height: 72px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(67, 120, 87, 0.14), rgba(255, 255, 255, 0.3)),
+      rgba(237, 242, 237, 0.62);
+  }
+
+  .design-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+  }
+
+  .design-row span {
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(22, 38, 33, 0.1);
+  }
+
+  .balance-node {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 12px;
+    height: 12px;
+    border: 1px solid rgba(70, 216, 132, 0.42);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.84);
+    transform: translateY(-50%);
+  }
+
+  .balance-node.left {
+    left: 18%;
+  }
+
+  .balance-node.right {
+    right: 18%;
+    background: #46d884;
+    box-shadow: 0 0 22px rgba(70, 216, 132, 0.48);
+  }
+
+  .ai-system-visual {
+    overflow: hidden;
+    border-color: var(--line);
+    background:
+      radial-gradient(circle at 48% 46%, rgba(67, 120, 87, 0.12), transparent 32%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(237, 242, 237, 0.55)),
+      var(--soft);
+    padding: 0;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 22px 70px rgba(22, 38, 33, 0.14);
+  }
+
+  .ai-system {
+    position: relative;
+    min-height: 318px;
+    margin: clamp(20px, 3.4vw, 34px);
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 7px;
+    background:
+      rgba(255, 255, 255, 0.42);
+  }
+
+  .trust-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    padding: 5px 10px;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .trust-badge i {
+    width: 7px;
+    height: 7px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.8);
+  }
+
+  .entity-node,
+  .agent-node,
+  .answer-node {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow:
+      0 18px 42px rgba(22, 38, 33, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.76);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 690;
+  }
+
+  .entity-node {
+    top: 128px;
+    left: 9%;
+    min-width: 100px;
+    min-height: 42px;
+    border-radius: 10px;
+  }
+
+  .agent-node {
+    top: 114px;
+    left: 50%;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: white;
+    transform: translateX(-50%);
+  }
+
+  .answer-node {
+    top: 128px;
+    right: 9%;
+    min-width: 94px;
+    min-height: 42px;
+    border-radius: 10px;
+  }
+
+  .ai-flow {
+    position: absolute;
+    z-index: 1;
+    top: 149px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(70, 216, 132, 0.78), transparent);
+  }
+
+  .ai-flow::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 10%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #46d884;
+    box-shadow: 0 0 18px rgba(70, 216, 132, 0.88);
+    animation: trustFlow 3.1s ease-in-out infinite;
+  }
+
+  .entity-to-agent {
+    left: 28%;
+    width: 20%;
+  }
+
+  .agent-to-answer {
+    right: 28%;
+    width: 20%;
+  }
+
+  .agent-to-answer::after {
+    animation-delay: 0.9s;
+  }
+
+  @keyframes trustFlow {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+
+    24% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(118px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ai-flow::after {
+      animation: none;
+      opacity: 0.8;
+    }
+  }
+
   .card,
   .visual-panel,
-  .offer-card,
   .founder-card,
   .post-card {
     background: rgba(255, 255, 255, 0.78);
@@ -524,8 +1443,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   .fix-card p,
   .post-card p,
-  .founder-copy p,
-  .offer-card p {
+  .founder-copy p {
     color: var(--muted);
   }
 
@@ -561,11 +1479,6 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     width: 100%;
     height: auto;
     border-radius: 7px;
-  }
-
-  .hero-visual img {
-    aspect-ratio: 1.28;
-    object-fit: cover;
   }
 
   .comparison-visual {
@@ -776,47 +1689,99 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     padding: 78px 0;
   }
 
-  .offer-card {
-    max-width: 980px;
+  .offer-shell {
+    max-width: 1120px;
     margin: 0 auto;
-    padding: clamp(28px, 5vw, 58px);
   }
 
-  .offer-card > p {
-    max-width: 760px;
-    margin-top: 24px;
-    font-size: 1.1rem;
-    line-height: 1.65;
+  .offer-intro {
+    max-width: 900px;
+    margin-bottom: 34px;
   }
 
-  .offer-note {
-    margin-top: 34px;
+  .offer-intro h2 {
+    max-width: 860px;
+  }
+
+  .offer-intro p:not(.eyebrow) {
+    max-width: 820px;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.45vw, 1.16rem);
+    line-height: 1.58;
+  }
+
+  .offer-comparison {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  .comparison-header,
+  .comparison-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .comparison-header {
+    background: var(--ink);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .comparison-header span,
+  .comparison-row div {
+    padding: 18px clamp(18px, 3vw, 30px);
+  }
+
+  .comparison-header span + span {
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .comparison-row div + div {
+    border-left: 1px solid rgba(22, 38, 33, 0.1);
+  }
+
+  .comparison-row {
+    min-height: 76px;
     border-top: 1px solid var(--line);
-    padding-top: 26px;
   }
 
-  .offer-note strong {
-    max-width: 760px;
+  .comparison-row div {
     display: block;
-    margin: 8px 0 12px;
-    font-size: clamp(1.35rem, 2.7vw, 2.35rem);
-    font-weight: 640;
-    line-height: 1.12;
+    color: var(--muted);
+    font-size: clamp(1.08rem, 1.5vw, 1.24rem);
+    font-weight: 610;
+    line-height: 1.28;
   }
 
-  .offer-note p {
-    margin-bottom: 0;
+  .comparison-row div + div {
+    background: var(--soft);
+    color: var(--ink);
+    font-weight: 720;
+  }
+
+  .comparison-row div span {
+    display: none;
+  }
+
+  .comparison-row div + div span {
+    color: var(--green-dark);
   }
 
   .founder-card {
     max-width: 720px;
     margin: 0 auto;
-    padding: 28px;
+    padding: 24px;
   }
 
   .founder-photo {
-    width: 74px;
-    flex: 0 0 74px;
+    width: 56px;
+    flex: 0 0 56px;
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 50%;
@@ -838,12 +1803,12 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   .founder-identity {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 18px;
+    gap: 14px;
+    margin-bottom: 14px;
   }
 
   .founder-identity h2 {
-    font-size: clamp(1.75rem, 3vw, 2.65rem);
+    font-size: clamp(1.55rem, 2.5vw, 2.22rem);
   }
 
   .founder-copy p {
@@ -853,8 +1818,14 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   .founder-note-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
-    margin: 24px 0 0;
+    gap: 8px;
+    margin: 18px 0 0;
+  }
+
+  .founder-note-grid span {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 0.88rem;
   }
 
   .founder-quote {
@@ -956,9 +1927,15 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
   @media (max-width: 1100px) {
     .hero,
+    .website-section,
     .split-section,
     .posts-strip {
       grid-template-columns: 1fr;
+    }
+
+    .website-section.is-reversed .section-copy,
+    .website-section.is-reversed .website-visual {
+      order: initial;
     }
 
     .hero {
@@ -984,9 +1961,35 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       grid-template-columns: 1fr;
     }
 
+    .comparison-header {
+      display: none;
+    }
+
+    .comparison-row {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison-row div {
+      padding: 16px 18px;
+    }
+
+    .comparison-row div + div {
+      border-top: 1px solid var(--line);
+      border-left: 0;
+    }
+
+    .comparison-row div span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.68rem;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .founder-photo {
-      width: 64px;
-      flex-basis: 64px;
+      width: 52px;
+      flex-basis: 52px;
     }
 
     .founder-copy {
@@ -1018,6 +2021,22 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       padding: 38px 0 50px;
     }
 
+    .hero-visual,
+    .hero-system {
+      min-height: 350px;
+    }
+
+    .hero-browser {
+      width: min(88%, 330px);
+      min-height: 218px;
+    }
+
+    .hero-signals {
+      left: 22px;
+      right: 22px;
+      justify-content: center;
+    }
+
     .hero-line {
       max-width: 18ch;
       font-size: 1.22rem;
@@ -1026,6 +2045,97 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     .lede,
     .section-lede {
       font-size: 1rem;
+    }
+
+    .website-visual {
+      min-height: 250px;
+    }
+
+    .serp-visual {
+      min-height: 280px;
+    }
+
+    .search-query {
+      width: 78%;
+      font-size: 0.76rem;
+    }
+
+    .serp-results {
+      width: 82%;
+      top: 88px;
+    }
+
+    .serp-result {
+      min-height: 68px;
+      padding-left: 56px;
+    }
+
+    .performance-system {
+      min-height: 280px;
+    }
+
+    .assembly-frame {
+      width: 74%;
+      min-height: 160px;
+    }
+
+    .assembly-part.hero {
+      width: 54%;
+    }
+
+    .design-system {
+      min-height: 280px;
+    }
+
+    .design-frame {
+      width: 72%;
+      min-height: 196px;
+    }
+
+    .design-columns span {
+      min-height: 62px;
+    }
+
+    .ai-system {
+      min-height: 280px;
+    }
+
+    .entity-node,
+    .answer-node {
+      min-width: 78px;
+      min-height: 38px;
+      font-size: 0.74rem;
+    }
+
+    .entity-node {
+      left: 6%;
+    }
+
+    .answer-node {
+      right: 6%;
+    }
+
+    .agent-node {
+      width: 62px;
+      height: 62px;
+    }
+
+    .ai-flow {
+      top: 147px;
+    }
+
+    .entity-to-agent {
+      left: 27%;
+      width: 18%;
+    }
+
+    .agent-to-answer {
+      right: 27%;
+      width: 18%;
+    }
+
+    .ai-flow::after {
+      animation-name: trustFlowMobile;
     }
 
     .button {
@@ -1060,6 +2170,22 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   @media (max-width: 500px) {
     main {
       width: min(100% - 28px, 362px);
+    }
+  }
+
+  @keyframes trustFlowMobile {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+
+    24% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(62px);
     }
   }
 </style>
