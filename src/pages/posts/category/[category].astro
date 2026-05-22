@@ -1,5 +1,6 @@
 ---
 import ListingLayout from "../../../layouts/ListingLayout.astro";
+import RedirectLayout from "../../../layouts/RedirectLayout.astro";
 import { categoryMeta, getAllPublishedPosts } from "../../../lib/content";
 
 export async function getStaticPaths() {
@@ -17,12 +18,17 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 const meta = categoryMeta[category];
 const entries = (await getAllPublishedPosts()).filter((entry) => entry.data.category === category);
+const shouldRedirectCategory = category === "Work" || category === "Guide";
 ---
 
-<ListingLayout
-  title={meta.label}
-  description={meta.description}
-  canonicalPath={meta.path}
-  entries={entries}
-  eyebrow="IndexLayer category"
-/>
+{shouldRedirectCategory ? (
+  <RedirectLayout from={`/posts/category/${meta.slug}/`} to={meta.path} />
+) : (
+  <ListingLayout
+    title={meta.label}
+    description={meta.description}
+    canonicalPath={meta.path}
+    entries={entries}
+    eyebrow="IndexLayer category"
+  />
+)}

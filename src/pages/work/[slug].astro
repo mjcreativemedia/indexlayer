@@ -5,9 +5,9 @@ import { getAllPublishedPosts, getRelatedEntries } from "../../lib/content";
 
 export async function getStaticPaths() {
   const entries = await getAllPublishedPosts();
-  const guideEntries = entries.filter((entry) => entry.data.category === "Guide");
+  const workEntries = entries.filter((entry) => entry.data.category === "Work");
 
-  return guideEntries.map((entry) => ({
+  return workEntries.map((entry) => ({
     params: { slug: entry.data.slug },
     props: {
       entry,

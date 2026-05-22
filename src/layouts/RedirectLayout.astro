@@ -21,7 +21,7 @@ const fromUrl = new URL(from, site).href;
     <link rel="canonical" href={targetUrl} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="redirect-page">
     <main>
       <p>This page has moved.</p>
       <a href={to}>Continue to the new page</a>
@@ -38,7 +38,7 @@ const fromUrl = new URL(from, site).href;
       sans-serif;
   }
 
-  body {
+  body.redirect-page {
     display: grid;
     min-height: 100vh;
     margin: 0;

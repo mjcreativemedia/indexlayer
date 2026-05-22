@@ -243,7 +243,7 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
   .footer-columns {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px;
   }
 
@@ -295,10 +295,6 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
       display: none;
     }
 
-    .nav-secondary {
-      display: none;
-    }
-
     .site-footer {
       align-items: flex-start;
       grid-template-columns: 1fr;
@@ -318,7 +314,7 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
     .site-nav {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, max-content));
+      grid-template-columns: repeat(3, minmax(0, max-content));
       align-items: center;
       row-gap: 12px;
     }

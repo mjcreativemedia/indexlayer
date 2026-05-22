@@ -10,13 +10,13 @@ export const categoryMeta: Record<
   Work: {
     label: "Work",
     slug: "work",
-    path: "/posts/category/work/",
+    path: "/work/",
     description: "Rebuilds, rescues, audits, and local business website examples.",
   },
   Guide: {
     label: "Guide",
     slug: "guide",
-    path: "/posts/category/guide/",
+    path: "/guides/",
     description: "Practical guides for local business websites and search visibility.",
   },
   "Lab Note": {
@@ -36,16 +36,38 @@ export const categoryMeta: Record<
 export const postIndexMeta = {
   label: "Posts",
   path: "/posts/",
-  description: "Case studies, guides, lessons, audits, and updates from local business website work.",
+  description: "Lab notes, audits, lessons, and updates from local business website work.",
 };
 
 export function getEntryPath(entryOrSlug: PostEntry | string, slug?: string) {
   const postSlug = typeof entryOrSlug === "string" ? (slug ?? entryOrSlug) : entryOrSlug.data.slug;
+  if (typeof entryOrSlug !== "string") {
+    if (entryOrSlug.data.category === "Work") {
+      return `/work/${postSlug}/`;
+    }
+
+    if (entryOrSlug.data.category === "Guide") {
+      return `/guides/${postSlug}/`;
+    }
+  }
+
   return `/posts/${postSlug}/`;
 }
 
 export function getCategoryPath(category: PostCategory) {
   return categoryMeta[category].path;
+}
+
+export function getEntrySectionMeta(entry: PostEntry) {
+  if (entry.data.category === "Work") {
+    return categoryMeta.Work;
+  }
+
+  if (entry.data.category === "Guide") {
+    return categoryMeta.Guide;
+  }
+
+  return postIndexMeta;
 }
 
 export function getCategoryBySlug(slug: string) {

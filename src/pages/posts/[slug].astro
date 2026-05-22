@@ -1,7 +1,8 @@
 ---
 import { render } from "astro:content";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
-import { getAllPublishedPosts, getRelatedEntries } from "../../lib/content";
+import RedirectLayout from "../../layouts/RedirectLayout.astro";
+import { getAllPublishedPosts, getEntryPath, getRelatedEntries } from "../../lib/content";
 
 export async function getStaticPaths() {
   const entries = await getAllPublishedPosts();
@@ -17,8 +18,13 @@ export async function getStaticPaths() {
 
 const { entry, related } = Astro.props;
 const { Content } = await render(entry);
+const isMigratedEntry = entry.data.category === "Work" || entry.data.category === "Guide";
 ---
 
-<ArticleLayout entry={entry} related={related}>
-  <Content />
-</ArticleLayout>
+{isMigratedEntry ? (
+  <RedirectLayout from={`/posts/${entry.data.slug}/`} to={getEntryPath(entry)} />
+) : (
+  <ArticleLayout entry={entry} related={related}>
+    <Content />
+  </ArticleLayout>
+)}

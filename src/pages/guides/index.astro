@@ -1,6 +1,17 @@
 ---
-import RedirectLayout from "../../layouts/RedirectLayout.astro";
-import { legacyListingRedirects } from "../../lib/legacyRedirects";
+import ListingLayout from "../../layouts/ListingLayout.astro";
+import { getPostsByCategory } from "../../lib/content";
+
+const title = "Guides";
+const description =
+  "Pillar educational resources for stable indexable HTML, search visibility, and cleaner local business website architecture.";
+const entries = await getPostsByCategory("Guide");
 ---
 
-<RedirectLayout from="/guides/" to={legacyListingRedirects.guides} />
+<ListingLayout
+  title={title}
+  description={description}
+  canonicalPath="/guides/"
+  entries={entries}
+  eyebrow="IndexLayer guides"
+/>

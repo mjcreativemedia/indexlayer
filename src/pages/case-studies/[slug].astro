@@ -1,15 +1,21 @@
 ---
 import RedirectLayout from "../../layouts/RedirectLayout.astro";
 import { legacyPostRedirects } from "../../lib/legacyRedirects";
+import { getAllPublishedPosts, getEntryPath } from "../../lib/content";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const entries = await getAllPublishedPosts();
+
   return legacyPostRedirects["case-studies"].map((slug) => ({
     params: { slug },
-    props: { slug },
+    props: {
+      slug,
+      to: getEntryPath(entries.find((entry) => entry.data.slug === slug) ?? slug),
+    },
   }));
 }
 
-const { slug } = Astro.props;
+const { slug, to } = Astro.props;
 ---
 
-<RedirectLayout from={`/case-studies/${slug}/`} to={`/posts/${slug}/`} />
+<RedirectLayout from={`/case-studies/${slug}/`} to={to} />

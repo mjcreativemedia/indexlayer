@@ -2,7 +2,9 @@
 import ListingLayout from "../../layouts/ListingLayout.astro";
 import { getAllPublishedPosts, postIndexMeta } from "../../lib/content";
 
-const entries = await getAllPublishedPosts();
+const entries = (await getAllPublishedPosts()).filter(
+  (entry) => entry.data.category !== "Work" && entry.data.category !== "Guide",
+);
 ---
 
 <ListingLayout

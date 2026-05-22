@@ -1,6 +1,6 @@
 ---
 import type { PostEntry } from "../lib/content";
-import { formatDate, getEntryPath, postIndexMeta } from "../lib/content";
+import { formatDate, getEntryPath, getEntrySectionMeta } from "../lib/content";
 import BaseLayout from "./BaseLayout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
@@ -12,6 +12,7 @@ export interface Props {
 
 const { entry, related } = Astro.props;
 const canonicalPath = getEntryPath(entry);
+const sectionMeta = getEntrySectionMeta(entry);
 const site = Astro.site ?? new URL("https://indexlayer.pro");
 const canonicalUrl = new URL(canonicalPath, site).href;
 const title = `${entry.data.title} | IndexLayer`;
@@ -68,8 +69,8 @@ const breadcrumbsJsonLd = {
     {
       "@type": "ListItem",
       position: 2,
-      name: postIndexMeta.label,
-      item: new URL(postIndexMeta.path, site).href,
+      name: sectionMeta.label,
+      item: new URL(sectionMeta.path, site).href,
     },
     {
       "@type": "ListItem",

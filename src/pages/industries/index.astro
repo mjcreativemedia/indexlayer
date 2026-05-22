@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+
+const title = "Industries | IndexLayer";
+const description =
+  "Industry-specific website architecture for local businesses that need pages built around real search demand, service intent, and crawlable proof.";
+
+const industries = [
+  {
+    id: "tree-removal-websites",
+    title: "Tree Removal Websites",
+    path: "/industries/tree-removal-websites/",
+    text: "Fast local service pages built around emergency intent, location trust, before-and-after proof, and clear quote paths.",
+  },
+  {
+    id: "life-insurance-websites",
+    title: "Life Insurance Websites",
+    path: "/industries/life-insurance-websites/",
+    text: "Trust-first funnels for brokers and agencies that need simple explanations, clean lead paths, and stable educational content.",
+  },
+  {
+    id: "martial-arts-websites",
+    title: "Martial Arts Websites",
+    path: "/industries/martial-arts-websites/",
+    text: "Gym websites that preserve real authority through coaches, programs, schedules, media, and local community signals.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/industries/">
+  <SiteHeader />
+
+  <main class="hub-shell">
+    <section class="hub-hero">
+      <p class="eyebrow">IndexLayer industries</p>
+      <h1>Industries</h1>
+      <p>{description}</p>
+    </section>
+
+    <section class="hub-grid" aria-label="Industries">
+      {industries.map((industry) => (
+        <article id={industry.id} class="hub-card">
+          <span>{industry.path}</span>
+          <h2>{industry.title}</h2>
+          <p>{industry.text}</p>
+        </article>
+      ))}
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .hub-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0 94px;
+  }
+
+  .hub-hero {
+    max-width: 900px;
+    margin-bottom: 54px;
+  }
+
+  .eyebrow,
+  .hub-card span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.96;
+  }
+
+  .hub-hero p,
+  .hub-card p {
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  .hub-hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  }
+
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .hub-card {
+    min-height: 300px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 26px;
+  }
+
+  .hub-card h2 {
+    margin: 18px 0 14px;
+    font-size: 1.65rem;
+    line-height: 1.08;
+  }
+
+  .hub-card p {
+    margin: 0;
+  }
+
+  @media (max-width: 940px) {
+    .hub-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hub-shell {
+      width: min(100% - 28px, 1180px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
+</style>

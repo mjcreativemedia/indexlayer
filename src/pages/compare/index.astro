@@ -1,0 +1,153 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+
+const title = "Compare | IndexLayer";
+const description =
+  "Comparison pages for businesses choosing between website builders, agency stacks, AI site tools, and IndexLayer's stable publishing approach.";
+
+const comparisons = [
+  {
+    title: "Wix vs IndexLayer",
+    path: "/compare/wix-vs-indexlayer/",
+    text: "For businesses comparing template convenience against cleaner technical control, performance, and search architecture.",
+  },
+  {
+    title: "Webflow vs IndexLayer",
+    path: "/compare/webflow-vs-indexlayer/",
+    text: "For teams weighing a visual builder against a hands-on static publishing system tuned for local search visibility.",
+  },
+  {
+    title: "Squarespace vs IndexLayer",
+    path: "/compare/squarespace-vs-indexlayer/",
+    text: "For local companies that want premium presentation without losing crawl clarity, page speed, or ownership of the publishing layer.",
+  },
+  {
+    title: "WordPress vs IndexLayer",
+    path: "/compare/wordpress-vs-indexlayer/",
+    text: "For businesses tired of plugin-heavy stacks, slow maintenance cycles, and unclear indexing behavior.",
+  },
+  {
+    title: "Replit vs IndexLayer",
+    path: "/compare/replit-vs-indexlayer/",
+    text: "For founders using AI site builders who need the final website to resolve, index, and scale like a stable production surface.",
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonicalPath="/compare/">
+  <SiteHeader />
+
+  <main class="hub-shell">
+    <section class="hub-hero">
+      <p class="eyebrow">IndexLayer comparisons</p>
+      <h1>Compare</h1>
+      <p>{description}</p>
+    </section>
+
+    <section class="hub-grid" aria-label="Comparison pages">
+      {comparisons.map((comparison) => (
+        <article class="hub-card">
+          <span>{comparison.path}</span>
+          <h2>{comparison.title}</h2>
+          <p>{comparison.text}</p>
+        </article>
+      ))}
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .hub-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 72px 0 94px;
+  }
+
+  .hub-hero {
+    max-width: 920px;
+    margin-bottom: 54px;
+  }
+
+  .eyebrow,
+  .hub-card span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3.2rem, 7vw, 6.2rem);
+    font-weight: 690;
+    letter-spacing: 0;
+    line-height: 0.96;
+  }
+
+  .hub-hero p,
+  .hub-card p {
+    color: var(--muted);
+    line-height: 1.62;
+  }
+
+  .hub-hero p {
+    margin: 0;
+    font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  }
+
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .hub-card {
+    min-height: 300px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    padding: 26px;
+  }
+
+  .hub-card h2 {
+    margin: 18px 0 14px;
+    font-size: 1.65rem;
+    line-height: 1.08;
+  }
+
+  .hub-card p {
+    margin: 0;
+  }
+
+  @media (max-width: 940px) {
+    .hub-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hub-shell {
+      width: min(100% - 28px, 1180px);
+      padding: 48px 0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .hub-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -9,6 +9,6 @@ export const legacyPostRedirects = {
 
 export const legacyListingRedirects = {
   "case-studies": "/work/",
-  guides: "/posts/category/guide/",
-  lab: "/posts/category/lab-note/",
+  guides: "/guides/",
+  lab: "/posts/",
 } as const;
