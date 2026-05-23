@@ -63,6 +63,56 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
   </head>
   <body>
     <slot />
+    <dialog class="coming-soon-modal" aria-labelledby="coming-soon-title">
+      <div class="coming-soon-card">
+        <button class="coming-soon-close" type="button" aria-label="Close coming soon modal">
+          ×
+        </button>
+        <img
+          class="coming-soon-logo"
+          src="/images/brand/indexlayer-logo.png"
+          alt="IndexLayer"
+          width="136"
+          height="33"
+        />
+        <p class="coming-soon-kicker">Coming soon</p>
+        <h2 id="coming-soon-title">This is almost ready.</h2>
+        <p>
+          The IndexLayer portal and audit intake are being prepared. For now, the site is focused
+          on the public architecture, proof, and launch content.
+        </p>
+      </div>
+    </dialog>
+    <script>
+      const modal = document.querySelector(".coming-soon-modal");
+      const modalCard = modal?.querySelector(".coming-soon-card");
+      const closeButton = modal?.querySelector(".coming-soon-close");
+      const triggers = document.querySelectorAll("[data-coming-soon-trigger]");
+
+      const openModal = () => {
+        if (!(modal instanceof HTMLDialogElement)) return;
+        if (!modal.open) modal.showModal();
+      };
+
+      const closeModal = () => {
+        if (!(modal instanceof HTMLDialogElement)) return;
+        modal.close();
+      };
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          openModal();
+        });
+      });
+
+      closeButton?.addEventListener("click", closeModal);
+      modal?.addEventListener("click", (event) => {
+        if (event.target === modal || !modalCard?.contains(event.target)) {
+          closeModal();
+        }
+      });
+    </script>
   </body>
 </html>
 
@@ -139,7 +189,7 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
   }
 
   .brand-mark {
-    width: 154px;
+    width: 116px;
     height: auto;
     display: block;
     object-fit: contain;
@@ -274,6 +324,81 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     color: var(--green-dark);
   }
 
+  .coming-soon-modal {
+    width: min(100% - 32px, 460px);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow);
+    padding: 0;
+    color: var(--ink);
+  }
+
+  .coming-soon-modal::backdrop {
+    background: rgba(20, 24, 22, 0.36);
+    backdrop-filter: blur(8px);
+  }
+
+  .coming-soon-card {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    padding: 34px 30px 32px;
+    text-align: center;
+  }
+
+  .coming-soon-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .coming-soon-close:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+  }
+
+  .coming-soon-logo {
+    width: 136px;
+    height: auto;
+    margin-bottom: 28px;
+  }
+
+  .coming-soon-kicker {
+    margin: 0 0 10px;
+    color: var(--green-dark);
+    font-size: 0.72rem;
+    font-weight: 760;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .coming-soon-card h2 {
+    margin: 0;
+    font-size: clamp(1.55rem, 4vw, 2.08rem);
+    line-height: 1.08;
+  }
+
+  .coming-soon-card p:not(.coming-soon-kicker) {
+    max-width: 34ch;
+    margin: 16px 0 0;
+    color: var(--muted);
+    line-height: 1.58;
+  }
+
   @media (max-width: 640px) {
     .site-header,
     .site-footer {
@@ -311,7 +436,7 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     }
 
     .brand-mark {
-      width: 148px;
+      width: 111px;
     }
 
     .nav-group {
