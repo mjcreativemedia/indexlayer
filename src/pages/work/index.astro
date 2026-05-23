@@ -5,13 +5,28 @@ import SiteHeader from "../../components/SiteHeader.astro";
 import { formatDate, getEntryPath, getPostsByCategory } from "../../lib/content";
 
 const title = "Work";
-const description = "Rebuilds, rescues, audits, and local business website examples tied to stable publishing systems.";
+const description = "Selected local website rebuilds, SEO rescues, and funnel builds from IndexLayer.";
 const entries = await getPostsByCategory("Work");
 
-const proofPoints = [
-  "Before and after thinking, not just finished screenshots.",
-  "Search architecture lessons from real route, canonical, and HTML problems.",
-  "Project pages that link back into services, guides, industries, and posts.",
+const projectProof = [
+  {
+    label: "Homepage rebuild",
+    title: "Chicago Fight Team",
+    text: "A real MMA, BJJ, and Muay Thai gym with coaches, fighters, history, photos, video, and local authority. The rebuild direction keeps that proof and makes the first screen clearer.",
+    href: "/work/chicago-fight-team/",
+  },
+  {
+    label: "SEO rescue",
+    title: "Better Call Steve",
+    text: "A polished local service website revealed the deeper issue: route identity, crawler-visible HTML, metadata, canonicals, and sitemap parity were all part of the search story.",
+    href: "/work/better-call-steve-seo-rescue/",
+  },
+  {
+    label: "Funnel build",
+    title: "MyCornerstonePlan",
+    text: "A life insurance funnel shaped around trust, education, simple page structure, and one clear path from buyer questions back to contact.",
+    href: "/work/mycornerstoneplan-seo-ready-life-insurance-funnel/",
+  },
 ];
 ---
 
@@ -22,7 +37,10 @@ const proofPoints = [
     <section class="work-hero">
       <p class="eyebrow">IndexLayer work</p>
       <h1>{title}</h1>
-      <p>{description}</p>
+      <p>
+        Real examples from local websites, rescue projects, and funnel builds. Each project
+        shows the visible page and the publishing decisions underneath it.
+      </p>
     </section>
 
     <section class="featured-work" aria-labelledby="featured-heading">
@@ -41,13 +59,19 @@ const proofPoints = [
       <img src="/images/work/chicago-fight-team/training-room-wide.jpeg" alt="Chicago Fight Team training room" />
     </section>
 
-    <section class="proof-system" aria-labelledby="proof-system-heading">
+    <section class="project-proof" aria-labelledby="project-proof-heading">
       <div>
-        <p class="eyebrow">Proof system</p>
-        <h2 id="proof-system-heading">Work pages explain what changed and why it matters.</h2>
+        <p class="eyebrow">Selected proof</p>
+        <h2 id="project-proof-heading">The work has to show what changed.</h2>
       </div>
       <div class="proof-list">
-        {proofPoints.map((point) => <p>{point}</p>)}
+        {projectProof.map((project) => (
+          <a href={project.href}>
+            <span>{project.label}</span>
+            <strong>{project.title}</strong>
+            <p>{project.text}</p>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -71,7 +95,7 @@ const proofPoints = [
     <section class="authority-links" aria-labelledby="authority-links-heading">
       <div>
         <p class="eyebrow">Related clusters</p>
-        <h2 id="authority-links-heading">Connect the proof to the offer.</h2>
+        <h2 id="authority-links-heading">Where the work connects.</h2>
       </div>
       <div class="authority-grid">
         <a href="/services/seo-rescue/">
@@ -153,7 +177,7 @@ const proofPoints = [
     padding: 28px;
   }
 
-  .proof-system,
+  .project-proof,
   .authority-links {
     display: grid;
     grid-template-columns: minmax(0, 0.75fr) minmax(320px, 0.65fr);
@@ -162,7 +186,7 @@ const proofPoints = [
     margin: 42px 0;
   }
 
-  .proof-system h2,
+  .project-proof h2,
   .authority-links h2 {
     margin: 0;
     font-size: clamp(2rem, 3.6vw, 3.5rem);
@@ -175,7 +199,7 @@ const proofPoints = [
     gap: 12px;
   }
 
-  .proof-list p,
+  .proof-list a,
   .authority-grid a {
     border: 1px solid var(--line);
     border-radius: var(--radius-card);
@@ -183,9 +207,41 @@ const proofPoints = [
     box-shadow: var(--card-shadow);
   }
 
+  .proof-list a {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 20px;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .proof-list a:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .proof-list span {
+    color: var(--green-dark);
+    font-size: 0.74rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .proof-list strong {
+    color: var(--ink);
+    font-size: 1.18rem;
+    line-height: 1.2;
+  }
+
   .proof-list p {
     margin: 0;
-    padding: 18px;
+    color: var(--muted);
+    line-height: 1.58;
   }
 
   .featured-work h2 {
@@ -350,7 +406,7 @@ const proofPoints = [
 
   @media (max-width: 820px) {
     .featured-work,
-    .proof-system,
+    .project-proof,
     .authority-links {
       grid-template-columns: 1fr;
     }

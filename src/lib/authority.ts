@@ -1,11 +1,24 @@
+export type AuthorityLink = {
+  label: string;
+  href: string;
+};
+
 export type AuthorityCard = {
   slug: string;
   title: string;
   path: string;
   description: string;
-  intro: string;
-  points: string[];
-  links: { label: string; href: string }[];
+  problem: string;
+  fit: string[];
+  deliverables: string[];
+  proofLinks: AuthorityLink[];
+  relatedLinks: AuthorityLink[];
+  exampleProject?: {
+    label: string;
+    title: string;
+    text: string;
+    href: string;
+  };
 };
 
 export const services: AuthorityCard[] = [
@@ -15,18 +28,34 @@ export const services: AuthorityCard[] = [
     path: "/services/local-business-websites/",
     description:
       "Premium static-first websites for local companies that need fast pages, clear offers, strong trust signals, and stable crawlable HTML.",
-    intro:
-      "IndexLayer builds local business websites as publishing systems first: fast pages, clear routes, complete metadata, useful internal links, and content that can be expanded without creating canonical drift.",
-    points: [
-      "Offer pages that explain the business quickly and give visitors a clear next step.",
-      "HTML-first architecture with stable canonicals, sitemap coverage, and crawlable internal links.",
-      "Design that feels premium without depending on a heavy plugin or builder stack.",
+    problem:
+      "Many local business websites look fine on the surface but make visitors work too hard: unclear offers, slow pages, buried proof, weak mobile paths, and content that cannot grow without turning into a mess.",
+    fit: [
+      "A local business needs a sharper website before investing in more content or paid traffic.",
+      "The current site feels generic, slow, hard to update, or disconnected from real customer intent.",
+      "The business wants service, industry, work, and educational pages to share one clean structure.",
     ],
-    links: [
-      { label: "See selected work", href: "/work/" },
-      { label: "Read Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    deliverables: [
+      "A fast homepage and core service pages with clear positioning, proof, next actions, and crawlable HTML.",
+      "Stable metadata, canonical URLs, sitemap coverage, internal links, and reusable page patterns.",
+      "A publishing base that can expand into posts, guides, comparison pages, and industry pages without URL drift.",
+    ],
+    proofLinks: [
+      { label: "Chicago Fight Team project", href: "/work/chicago-fight-team/" },
+      { label: "Chicago Fight Team rebuild notes", href: "/work/chicago-fight-team-homepage-rebuild/" },
+      { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    ],
+    relatedLinks: [
+      { label: "SEO Rescue", href: "/services/seo-rescue/" },
+      { label: "Martial Arts Websites", href: "/industries/martial-arts-websites/" },
       { label: "Compare website builders", href: "/compare/" },
     ],
+    exampleProject: {
+      label: "Example",
+      title: "Chicago Fight Team",
+      text: "The gym already had real authority: coaches, fighters, history, footage, and a physical local presence. The rebuild direction preserves that proof and makes it easier to understand quickly.",
+      href: "/work/chicago-fight-team/",
+    },
   },
   {
     slug: "seo-rescue",
@@ -34,18 +63,34 @@ export const services: AuthorityCard[] = [
     path: "/services/seo-rescue/",
     description:
       "Repair work for sites with indexing, canonical, rendering, sitemap, or internal linking problems that make Google confidence harder to earn.",
-    intro:
-      "SEO rescue starts by separating visible frontend quality from publishing reliability. A site can look finished and still leak search confidence through unstable routes, incomplete HTML, weak internal links, or conflicting canonical signals.",
-    points: [
-      "Diagnose crawl symptoms such as alternate canonical, crawled not indexed, soft 404, and duplicate page identity.",
-      "Map the issue back to route, metadata, sitemap, rendering, and internal link behavior.",
-      "Rebuild the publishing layer so Google has one clear version of each important page.",
+    problem:
+      "A site can look polished and still leak crawl confidence through route drift, incomplete crawler-visible HTML, conflicting canonicals, weak sitemap coverage, or unclear internal links.",
+    fit: [
+      "Google Search Console shows alternate canonical, crawled not indexed, duplicate, soft 404, or sitemap mismatch signals.",
+      "The site was built with a heavy app stack, AI builder, page builder, or layered publishing setup and search visibility is unstable.",
+      "You need a clear repair path before rebuilding everything from scratch.",
     ],
-    links: [
+    deliverables: [
+      "A crawl and page identity review across routes, canonicals, metadata, sitemap, and internal links.",
+      "A prioritized repair map that separates content problems from publishing architecture problems.",
+      "Implementation recommendations for stabilizing the pages Google should trust.",
+    ],
+    proofLinks: [
       { label: "Better Call Steve SEO Rescue", href: "/work/better-call-steve-seo-rescue/" },
       { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
-      { label: "Search Console audits", href: "/services/search-console-audits/" },
+      { label: "Search Console Audits", href: "/services/search-console-audits/" },
     ],
+    relatedLinks: [
+      { label: "Replit vs IndexLayer", href: "/compare/replit-vs-indexlayer/" },
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Posts", href: "/posts/" },
+    ],
+    exampleProject: {
+      label: "Proof",
+      title: "Better Call Steve",
+      text: "That project exposed the difference between a good-looking frontend and a stable publishing layer. The useful lesson was not cosmetic. It was route identity, HTML output, metadata, canonicals, and sitemap parity.",
+      href: "/work/better-call-steve-seo-rescue/",
+    },
   },
   {
     slug: "search-console-audits",
@@ -53,17 +98,27 @@ export const services: AuthorityCard[] = [
     path: "/services/search-console-audits/",
     description:
       "Plain-English diagnosis of Search Console symptoms, including excluded pages, duplicate canonicals, soft 404s, and crawl mismatches.",
-    intro:
-      "A Search Console audit is useful when it turns reports into architecture decisions. IndexLayer reads GSC as evidence of how Google is interpreting the publishing system, not just as a list of warnings.",
-    points: [
-      "Review excluded pages, canonical choices, sitemap parity, and crawl behavior.",
-      "Identify which symptoms are content issues and which are publishing system issues.",
-      "Create a prioritized repair path tied to routes, templates, metadata, and internal links.",
+    problem:
+      "Search Console reports are easy to misread as isolated warnings. The useful question is what those reports say about the way the site publishes pages.",
+    fit: [
+      "You see excluded, duplicate, alternate canonical, discovered, or crawled-not-indexed pages and need to know what matters.",
+      "Your sitemap and internal links do not clearly match the pages you want indexed.",
+      "You want a practical diagnosis before paying for broad SEO work.",
     ],
-    links: [
-      { label: "SEO rescue", href: "/services/seo-rescue/" },
+    deliverables: [
+      "A review of index coverage, sitemap behavior, canonical choices, and important page templates.",
+      "A short list of the routes that deserve repair first.",
+      "A plain-English explanation of whether each issue is content, technical, structural, or harmless.",
+    ],
+    proofLinks: [
       { label: "Better Call Steve case study", href: "/work/better-call-steve-seo-rescue/" },
-      { label: "Posts and notes", href: "/posts/" },
+      { label: "SEO Rescue", href: "/services/seo-rescue/" },
+      { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    ],
+    relatedLinks: [
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Posts", href: "/posts/" },
     ],
   },
 ];
@@ -75,17 +130,27 @@ export const industries: AuthorityCard[] = [
     path: "/industries/tree-removal-websites/",
     description:
       "Fast local service pages built around emergency intent, location trust, before-and-after proof, and clear quote paths.",
-    intro:
-      "Tree removal sites need to resolve urgent local intent. The page structure has to make emergency service, service area, proof, safety, and estimate paths obvious to both visitors and crawlers.",
-    points: [
-      "Service pages for emergency tree removal, trimming, stump grinding, and storm cleanup.",
-      "Local trust signals such as service areas, project proof, reviews, insurance, and response expectations.",
-      "Fast mobile pages that make calling or requesting an estimate easy.",
+    problem:
+      "Tree removal searches are urgent and local. A generic contractor template usually hides the things customers need first: service area, emergency response, proof of work, insurance, estimates, and clear ways to call.",
+    fit: [
+      "A tree service needs clearer pages for emergency tree removal, trimming, stump grinding, or storm cleanup.",
+      "The current site does not make service area, trust, response expectations, or quote paths obvious.",
+      "The business wants a structure that can later expand into city pages without becoming thin or duplicated.",
     ],
-    links: [
-      { label: "Local business websites", href: "/services/local-business-websites/" },
-      { label: "SEO rescue", href: "/services/seo-rescue/" },
-      { label: "Compare website platforms", href: "/compare/" },
+    deliverables: [
+      "A homepage and service page structure for emergency intent, service categories, local trust, and quote requests.",
+      "Reusable sections for before-and-after proof, service areas, equipment, insurance, FAQs, and reviews.",
+      "Internal links that support future service and location pages without inventing fake content.",
+    ],
+    proofLinks: [
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
+      { label: "SEO Rescue", href: "/services/seo-rescue/" },
+      { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    ],
+    relatedLinks: [
+      { label: "Wix vs IndexLayer", href: "/compare/wix-vs-indexlayer/" },
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Industries", href: "/industries/" },
     ],
   },
   {
@@ -94,18 +159,34 @@ export const industries: AuthorityCard[] = [
     path: "/industries/life-insurance-websites/",
     description:
       "Trust-first funnels for brokers and agencies that need simple explanations, clean lead paths, and stable educational content.",
-    intro:
-      "Life insurance sites need to feel calm, trustworthy, and clear. The structure should support quote intent, education, eligibility questions, and advisor credibility without burying the next step.",
-    points: [
-      "Landing pages for quote requests, policy education, family protection, and broker positioning.",
-      "Clear explanations that reduce confusion without sounding like generic finance content.",
-      "A content system that can grow into guides, FAQs, and comparison pages.",
+    problem:
+      "Life insurance buyers often arrive confused, cautious, and skeptical. The website has to explain the offer calmly, show why the advisor is trustworthy, and make the next step feel low-pressure.",
+    fit: [
+      "A broker or agency needs a cleaner funnel for education, quote requests, and advisor credibility.",
+      "The site needs to publish guides or FAQs without turning into scattered blog content.",
+      "The business wants a static-first foundation that can grow into search pages over time.",
     ],
-    links: [
+    deliverables: [
+      "A trust-first homepage and funnel structure for quote intent, policy education, and contact actions.",
+      "FAQ and guide patterns that support real buyer questions without generic finance filler.",
+      "Internal links from educational content back to the core funnel.",
+    ],
+    proofLinks: [
       { label: "MyCornerstonePlan work", href: "/work/mycornerstoneplan-seo-ready-life-insurance-funnel/" },
-      { label: "Local business websites", href: "/services/local-business-websites/" },
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
       { label: "Guides", href: "/guides/" },
     ],
+    relatedLinks: [
+      { label: "Search Console Audits", href: "/services/search-console-audits/" },
+      { label: "Squarespace vs IndexLayer", href: "/compare/squarespace-vs-indexlayer/" },
+      { label: "Industries", href: "/industries/" },
+    ],
+    exampleProject: {
+      label: "Related work",
+      title: "MyCornerstonePlan",
+      text: "The life insurance funnel shows the cleaner side of the IndexLayer method: static-first pages, clear educational structure, and one path back to the core offer.",
+      href: "/work/mycornerstoneplan-seo-ready-life-insurance-funnel/",
+    },
   },
   {
     slug: "martial-arts-websites",
@@ -113,18 +194,34 @@ export const industries: AuthorityCard[] = [
     path: "/industries/martial-arts-websites/",
     description:
       "Gym websites that preserve real authority through coaches, programs, schedules, media, and local community signals.",
-    intro:
-      "Martial arts gyms often already have the strongest material: coaches, students, fighters, classes, photos, and local reputation. The website has to make that authority easier to understand in the first few seconds.",
-    points: [
-      "Program pages for BJJ, MMA, Muay Thai, kids classes, beginners, and competition training.",
-      "Real media and coach history presented without burying users in long undifferentiated blocks.",
-      "Mobile-first paths to schedule, contact, trial classes, and location details.",
+    problem:
+      "Martial arts gyms often have real authority offline, but their websites bury it in long copy, generic fitness language, weak mobile structure, or media that is hard to scan.",
+    fit: [
+      "A gym needs clearer program pages for BJJ, MMA, Muay Thai, kids classes, beginners, or competition training.",
+      "The site should show real coaches, fighters, training media, schedule, location, and community proof quickly.",
+      "The business wants a site that feels local and credible instead of like a generic gym template.",
     ],
-    links: [
+    deliverables: [
+      "A homepage structure that leads with gym identity, programs, location, real media, and next actions.",
+      "Program sections that make classes, skill levels, and reasons to train easy to understand.",
+      "Crawlable pages for local search while preserving the gym's actual voice and proof.",
+    ],
+    proofLinks: [
       { label: "Chicago Fight Team project", href: "/work/chicago-fight-team/" },
       { label: "Chicago Fight Team rebuild notes", href: "/work/chicago-fight-team-homepage-rebuild/" },
-      { label: "Local business websites", href: "/services/local-business-websites/" },
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
     ],
+    relatedLinks: [
+      { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+      { label: "Webflow vs IndexLayer", href: "/compare/webflow-vs-indexlayer/" },
+      { label: "Industries", href: "/industries/" },
+    ],
+    exampleProject: {
+      label: "Proof",
+      title: "Chicago Fight Team",
+      text: "Chicago Fight Team already had the hard part: real coaches, fighters, photos, video, history, and a physical training culture. The rebuild direction is about making that authority visible faster.",
+      href: "/work/chicago-fight-team/",
+    },
   },
 ];
 
@@ -135,17 +232,27 @@ export const comparisons: AuthorityCard[] = [
     path: "/compare/wix-vs-indexlayer/",
     description:
       "A comparison for businesses weighing template convenience against technical control, search architecture, and publishing stability.",
-    intro:
-      "Wix can be useful when speed and simplicity matter most. IndexLayer is for businesses that want the website treated as a search-indexed publishing system with cleaner control over HTML, routes, canonicals, internal links, and long-term content growth.",
-    points: [
-      "Wix prioritizes visual editing and convenience; IndexLayer prioritizes stable crawlable publishing.",
-      "IndexLayer is a better fit when service pages, industry pages, and comparison pages need to scale cleanly.",
-      "The tradeoff is less drag-and-drop control in exchange for a more deliberate search foundation.",
+    problem:
+      "Wix is convenient for getting a polished page online quickly. The tradeoff appears when a local business needs more control over page structure, internal links, service pages, and long-term search growth.",
+    fit: [
+      "Wix is a good fit when the site is mostly a simple brochure and the owner wants drag-and-drop editing.",
+      "IndexLayer is a better fit when services, industries, guides, work, and comparison pages need to support search.",
+      "The choice depends on whether the site is mainly a visual presence or a growing publishing asset.",
     ],
-    links: [
-      { label: "Local business websites", href: "/services/local-business-websites/" },
+    deliverables: [
+      "A custom static-first website with deliberate URL structure, metadata, sitemap behavior, and internal links.",
+      "A content architecture that can grow without relying on temporary taxonomy folders.",
+      "A clearer path from service pages and proof pages to contact.",
+    ],
+    proofLinks: [
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
       { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
       { label: "Work examples", href: "/work/" },
+    ],
+    relatedLinks: [
+      { label: "Squarespace vs IndexLayer", href: "/compare/squarespace-vs-indexlayer/" },
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Compare hub", href: "/compare/" },
     ],
   },
   {
@@ -154,17 +261,27 @@ export const comparisons: AuthorityCard[] = [
     path: "/compare/webflow-vs-indexlayer/",
     description:
       "A comparison for teams choosing between a visual website builder and an HTML-first local search publishing system.",
-    intro:
-      "Webflow gives teams a polished visual design surface. IndexLayer focuses on the parts local businesses usually need most after launch: route stability, indexing clarity, content expansion, and internal link strategy.",
-    points: [
-      "Webflow is strong for visual control; IndexLayer is stronger for service-led search architecture.",
-      "IndexLayer is built around durable URL folders for services, industries, comparisons, work, and posts.",
-      "The goal is not just a good-looking page. The goal is a page Google and customers can understand consistently.",
+    problem:
+      "Webflow is strong for visual design control. IndexLayer is narrower: it is built for local businesses that need clean service architecture, fast pages, proof, and search-friendly publishing decisions.",
+    fit: [
+      "Webflow is a good fit when visual editing and design ownership are the main goals.",
+      "IndexLayer is a better fit when search structure, page speed, internal linking, and content scaling matter more than editor flexibility.",
+      "Both can produce polished pages; the question is who owns the publishing discipline after launch.",
     ],
-    links: [
-      { label: "Services", href: "/services/" },
+    deliverables: [
+      "Static-first implementation focused on fast HTML output and clear page identity.",
+      "Commercial pages that connect services, industries, work proof, and guides.",
+      "A smaller system with fewer moving parts between the business and the crawler.",
+    ],
+    proofLinks: [
+      { label: "Chicago Fight Team project", href: "/work/chicago-fight-team/" },
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
       { label: "Industries", href: "/industries/" },
-      { label: "Compare pages", href: "/compare/" },
+    ],
+    relatedLinks: [
+      { label: "Squarespace vs IndexLayer", href: "/compare/squarespace-vs-indexlayer/" },
+      { label: "Wix vs IndexLayer", href: "/compare/wix-vs-indexlayer/" },
+      { label: "Compare hub", href: "/compare/" },
     ],
   },
   {
@@ -173,17 +290,27 @@ export const comparisons: AuthorityCard[] = [
     path: "/compare/squarespace-vs-indexlayer/",
     description:
       "A comparison for local businesses choosing between polished templates and a custom publishing system built for search growth.",
-    intro:
-      "Squarespace is often enough for a simple brochure site. IndexLayer is for local businesses that need the site to become a durable search asset with service pages, topical guides, work proof, and future comparison or industry pages.",
-    points: [
-      "Squarespace is convenient for a small static presence; IndexLayer is designed for structured growth.",
-      "IndexLayer gives more control over how content, canonicals, metadata, and internal links work together.",
-      "The right choice depends on whether the site is only a brochure or a long-term search surface.",
+    problem:
+      "Squarespace is useful for simple, polished brochure sites. The limitation shows up when a business needs service pages, proof pages, education, comparisons, and local search architecture to work together.",
+    fit: [
+      "Squarespace is a good fit for a small static presence with minimal search ambition.",
+      "IndexLayer is a better fit when the site needs to become a long-term search and trust asset.",
+      "The decision is less about design quality and more about how much the site needs to publish and rank.",
     ],
-    links: [
-      { label: "Local business websites", href: "/services/local-business-websites/" },
-      { label: "Industries", href: "/industries/" },
-      { label: "Posts", href: "/posts/" },
+    deliverables: [
+      "A custom structure for homepage, services, industries, work, posts, guides, and comparison pages.",
+      "Cleaner control over metadata, internal links, page speed, and canonical behavior.",
+      "A more deliberate content map for businesses that plan to grow.",
+    ],
+    proofLinks: [
+      { label: "MyCornerstonePlan work", href: "/work/mycornerstoneplan-seo-ready-life-insurance-funnel/" },
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
+      { label: "Guides", href: "/guides/" },
+    ],
+    relatedLinks: [
+      { label: "Wix vs IndexLayer", href: "/compare/wix-vs-indexlayer/" },
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Compare hub", href: "/compare/" },
     ],
   },
   {
@@ -192,17 +319,27 @@ export const comparisons: AuthorityCard[] = [
     path: "/compare/wordpress-vs-indexlayer/",
     description:
       "A comparison for businesses tired of plugin-heavy WordPress stacks, maintenance drag, and unclear indexing behavior.",
-    intro:
-      "WordPress can power almost anything, but local business sites often inherit too much complexity from themes, plugins, page builders, and hosting layers. IndexLayer keeps the publishing surface lighter and more predictable.",
-    points: [
-      "WordPress offers flexibility; IndexLayer offers a narrower, cleaner system for local search pages.",
-      "IndexLayer avoids plugin dependence for core metadata, performance, sitemap, and route behavior.",
-      "The result is less machinery between the business, the customer, and the crawler.",
+    problem:
+      "WordPress can power almost anything, but local sites often inherit too much machinery: themes, plugins, page builders, caching layers, security updates, and inconsistent SEO behavior.",
+    fit: [
+      "WordPress is a good fit when the business needs a CMS-heavy site, many editors, or deep plugin functionality.",
+      "IndexLayer is a better fit when the business needs a faster, simpler, service-led site with fewer moving parts.",
+      "The tradeoff is less plugin flexibility in exchange for a cleaner publishing surface.",
     ],
-    links: [
-      { label: "SEO rescue", href: "/services/seo-rescue/" },
-      { label: "Search Console audits", href: "/services/search-console-audits/" },
+    deliverables: [
+      "Static-first pages for the commercial and content surfaces that matter most.",
+      "No plugin dependency for core metadata, sitemap, canonical, performance, or internal link behavior.",
+      "A clearer maintenance story for small local business websites.",
+    ],
+    proofLinks: [
+      { label: "SEO Rescue", href: "/services/seo-rescue/" },
+      { label: "Search Console Audits", href: "/services/search-console-audits/" },
       { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    ],
+    relatedLinks: [
+      { label: "Wix vs IndexLayer", href: "/compare/wix-vs-indexlayer/" },
+      { label: "Replit vs IndexLayer", href: "/compare/replit-vs-indexlayer/" },
+      { label: "Compare hub", href: "/compare/" },
     ],
   },
   {
@@ -211,17 +348,27 @@ export const comparisons: AuthorityCard[] = [
     path: "/compare/replit-vs-indexlayer/",
     description:
       "A comparison for founders using AI site builders who need the final website to resolve, index, and scale like a stable production surface.",
-    intro:
-      "AI site builders can move fast, but the output still has to behave like a production website. IndexLayer focuses on the publishing discipline that makes AI-assisted sites easier for Google and customers to trust.",
-    points: [
-      "AI can create useful frontend momentum, but route identity and crawlable HTML still need discipline.",
-      "IndexLayer reviews the output through sitemap, canonical, metadata, rendering, and internal link behavior.",
-      "This is the gap between a generated page and a stable local business website.",
+    problem:
+      "AI builders can create a usable-looking frontend quickly. The risk is that the final website still needs production discipline: stable routes, crawlable HTML, metadata, canonicals, sitemap parity, and internal links.",
+    fit: [
+      "Replit or AI builders are a good fit for fast prototypes, demos, and early frontend momentum.",
+      "IndexLayer is a better fit when the website has to become a stable local business asset.",
+      "The best path may be using AI for momentum, then hardening the result into a clean publishing surface.",
     ],
-    links: [
-      { label: "SEO rescue", href: "/services/seo-rescue/" },
+    deliverables: [
+      "A review of the generated site as a real publishing system, not just a browser screenshot.",
+      "Repairs or rebuilds for page identity, crawlable content, metadata, sitemap, and internal links.",
+      "A stable architecture that can support service, industry, comparison, work, and post pages.",
+    ],
+    proofLinks: [
+      { label: "SEO Rescue", href: "/services/seo-rescue/" },
       { label: "Better Call Steve case study", href: "/work/better-call-steve-seo-rescue/" },
-      { label: "Posts", href: "/posts/" },
+      { label: "Stable Indexable HTML", href: "/guides/stable-indexable-html/" },
+    ],
+    relatedLinks: [
+      { label: "WordPress vs IndexLayer", href: "/compare/wordpress-vs-indexlayer/" },
+      { label: "Local Business Websites", href: "/services/local-business-websites/" },
+      { label: "Compare hub", href: "/compare/" },
     ],
   },
 ];
