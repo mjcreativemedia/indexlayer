@@ -2,27 +2,43 @@
   <a class="brand" href="/" aria-label="IndexLayer home">
     <img class="brand-mark" src="/images/brand/indexlayer-logo.png" alt="" width="951" height="229" />
   </a>
-  <nav class="site-nav" aria-label="Primary navigation">
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-controls="primary-navigation"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav id="primary-navigation" class="site-nav" aria-label="Primary navigation">
     <div class="nav-main">
       <a href="/work/">Work</a>
       <div class="nav-group">
-        <a href="/services/" aria-haspopup="true">Services</a>
+        <a class="nav-parent" href="/services/" aria-haspopup="true">Services</a>
+        <button class="nav-submenu-toggle" type="button" aria-expanded="false">Services</button>
         <div class="nav-menu">
+          <a href="/services/">Services overview</a>
           <a href="/services/local-business-websites/">Local Business Websites</a>
           <a href="/services/seo-rescue/">SEO Rescue</a>
           <a href="/services/search-console-audits/">Search Console Audits</a>
         </div>
       </div>
       <div class="nav-group">
-        <a href="/industries/" aria-haspopup="true">Industries</a>
+        <a class="nav-parent" href="/industries/" aria-haspopup="true">Industries</a>
+        <button class="nav-submenu-toggle" type="button" aria-expanded="false">Industries</button>
         <div class="nav-menu">
+          <a href="/industries/">Industries overview</a>
           <a href="/industries/tree-removal-websites/">Tree Removal</a>
           <a href="/industries/life-insurance-websites/">Insurance</a>
           <a href="/industries/martial-arts-websites/">Martial Arts</a>
         </div>
       </div>
       <div class="nav-group">
-        <a href="/posts/" aria-haspopup="true">Posts</a>
+        <a class="nav-parent" href="/posts/" aria-haspopup="true">Posts</a>
+        <button class="nav-submenu-toggle" type="button" aria-expanded="false">Posts</button>
         <div class="nav-menu">
           <a href="/posts/">All Posts</a>
           <a href="/guides/">Guides</a>
