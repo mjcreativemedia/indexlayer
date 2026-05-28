@@ -171,9 +171,29 @@ const jsonLdItems = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
   }
 
   body {
+    position: relative;
     margin: 0;
     min-width: 320px;
     line-height: 1.5;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+    background-image:
+      radial-gradient(rgba(20, 24, 22, 0.28) 0.6px, transparent 0.75px),
+      radial-gradient(rgba(20, 24, 22, 0.18) 0.45px, transparent 0.65px);
+    background-position:
+      0 0,
+      2px 3px;
+    background-size:
+      5px 5px,
+      9px 9px;
+    opacity: 0.16;
+    mix-blend-mode: multiply;
   }
 
   a {
