@@ -2,11 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
-import { formatDate, getAllPublishedContent, getEntryPath } from "../lib/content";
+import { formatDate, getAllPublishedContent, getEntryPath, getPostsByCategory } from "../lib/content";
 
-const title = "IndexLayer | Perfect Local Websites Built for Modern Search";
+const title = "IndexLayer | AI-Built Local Business Websites";
 const description =
-  "IndexLayer builds fast, premium local business websites with stable Google visibility, modern search foundations, and transparent technical proof.";
+  "IndexLayer designs and builds modern local business websites with clean publishing architecture, fast performance, and search-ready foundations.";
 
 const auditHref = "mailto:hello@indexlayer.pro?subject=Free%20Website%20Audit";
 
@@ -52,38 +52,82 @@ const websiteJsonLd = {
   },
 };
 
-const websiteSections = [
+const projectOverrides = {
+  "chicago-fight-team-homepage-rebuild": {
+    client: "Chicago Fight Team",
+    type: "MMA Gym",
+    href: "/work/chicago-fight-team/",
+    visual: "fight-team",
+    image: "/images/work/chicago-fight-team/homepage.png",
+    outcome:
+      "Modernized the brand presence with clearer mobile structure, real media, and stronger local trust.",
+  },
+  "better-call-steve-seo-rescue": {
+    client: "Better Call Steve",
+    type: "Emergency Plumbing",
+    visual: "service",
+    image: "/images/work/better-call-steve/homepage.png",
+    outcome:
+      "Rebuilt the publishing foundation around crawl consistency, route identity, and search visibility.",
+  },
+  "mycornerstoneplan-seo-ready-life-insurance-funnel": {
+    client: "MyCornerstonePlan",
+    type: "Insurance",
+    visual: "insurance",
+    image: "/images/work/mycornerstoneplan/homepage.png",
+    outcome:
+      "Built an SEO-ready lead generation funnel with structured landing pages and a calm conversion path.",
+  },
+  "muscle-wolfgang-fitness": {
+    client: "Muscle Wolfgang Fitness",
+    type: "Training & Recovery",
+    visual: "fitness",
+    image: "/images/work/muscle-wolfgang-fitness/homepage.png",
+    outcome:
+      "Created a focused local site around client proof, direct coaching, recovery services, and contact.",
+  },
+};
+
+const workOrder = [
+  "chicago-fight-team-homepage-rebuild",
+  "better-call-steve-seo-rescue",
+  "mycornerstoneplan-seo-ready-life-insurance-funnel",
+  "muscle-wolfgang-fitness",
+];
+
+const workEntries = await getPostsByCategory("Work");
+const featuredWork = workEntries
+  .sort((a, b) => {
+    const aIndex = workOrder.indexOf(a.data.slug);
+    const bIndex = workOrder.indexOf(b.data.slug);
+    return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+  })
+  .map((entry) => {
+    const override = projectOverrides[entry.data.slug as keyof typeof projectOverrides];
+
+    return {
+      title: override?.client ?? entry.data.client ?? entry.data.title,
+      type: override?.type ?? entry.data.projectType ?? "Local business website",
+      text: override?.outcome ?? entry.data.outcome ?? entry.data.preview ?? entry.data.description,
+      href: override?.href ?? getEntryPath(entry),
+      image: override?.image,
+      visual: override?.visual ?? "default",
+      tags: entry.data.stack.slice(0, 3),
+    };
+  });
+
+const workAttributes = [
   {
-    eyebrow: "SEO Perfection",
-    title: "Built for Google visibility.",
-    text: "Clean technical foundations for local websites that need search engines to understand them clearly.",
-    visual: "GSC",
-    visualType: "google",
-    features: ["Complete structured data", "Clean sitemap logic", "Indexable HTML", "Stable canonicals", "Search Console clarity"],
+    title: "Indexable by default.",
+    text: "Static-first pages, stable URLs, clean metadata, canonicals, schema, and sitemaps that make the site easier for search systems to read.",
   },
   {
-    eyebrow: "Performance",
-    title: "Blazing fast.",
-    text: "Lightweight pages tuned for clean loading, strong Core Web Vitals, and a faster customer experience.",
-    visual: "CWV",
-    visualType: "performance",
-    features: ["100-speed targets", "Core Web Vitals", "Lightweight pages", "Clean loading", "Fast mobile UX"],
+    title: "Designed around proof.",
+    text: "The page structure leads with real work: photos, services, location signals, client trust, and the clearest next step.",
   },
   {
-    eyebrow: "Design",
-    title: "Excellent customer experience.",
-    text: "Modern local websites that feel premium, build trust quickly, and help more visitors take action.",
-    visual: "UI",
-    visualType: "design",
-    features: ["Premium UI", "Modern layouts", "Trust signals", "Conversion clarity", "Intentional spacing"],
-  },
-  {
-    eyebrow: "AI search",
-    title: "AI-search ready.",
-    text: "Structured content and entity signals built for discoverability across modern search surfaces.",
-    visual: "LLM",
-    visualType: "ai",
-    features: ["AI citation paths", "Semantic structure", "Trusted entity signals", "Structured content", "LLM discoverability"],
+    title: "Built to grow slowly.",
+    text: "The homepage does not need to carry every idea. Case studies, service pages, and lab notes can be added one strong page at a time.",
   },
 ];
 
@@ -94,7 +138,27 @@ const founderNotes = [
   "Transparent systems",
 ];
 
-const latestPosts = (await getAllPublishedContent()).slice(0, 4);
+const serviceCards = [
+  {
+    title: "Website Builds",
+    text: "Modern local business websites with premium presentation, crawlable HTML, and search-ready foundations.",
+    href: "/services/local-business-websites/",
+  },
+  {
+    title: "SEO Rescue",
+    text: "Stabilization for sites with indexing problems, metadata drift, sitemap issues, or fragile client-rendered pages.",
+    href: "/services/seo-rescue/",
+  },
+  {
+    title: "Publishing Audits",
+    text: "A plain-language review of how Google sees the site: routes, HTML, canonicals, schema, sitemap, and internal links.",
+    href: auditHref,
+  },
+];
+
+const latestPosts = (await getAllPublishedContent())
+  .filter((entry) => entry.data.category !== "Work")
+  .slice(0, 3);
 ---
 
 <BaseLayout title={title} description={description} jsonLd={[businessJsonLd, websiteJsonLd]}>
@@ -103,16 +167,16 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow hero-location">📍 Chicago, USA</p>
-        <h1>Perfect local websites.</h1>
-        <p class="hero-line">Built for Google, AI search, and real customers.</p>
+        <p class="eyebrow hero-location">Chicago, USA</p>
+        <h1>AI-built local business websites.</h1>
+        <p class="hero-line">Structured for stable search visibility.</p>
         <p class="lede">
-          Premium design, fast pages, and stable search architecture for local businesses that
-          need the web to work clearly.
+          We design and build modern websites for local businesses with clean publishing
+          architecture, fast performance, and search-ready foundations.
         </p>
         <div class="actions">
-          <a class="button primary" href="/work/">View Our Work</a>
-          <a class="button secondary" href={auditHref} data-coming-soon-trigger>Free Website Audit</a>
+          <a class="button primary" href="#work">View Work</a>
+          <a class="button secondary" href="/posts/">Read Lab Notes</a>
         </div>
       </div>
 
@@ -145,165 +209,97 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
       </aside>
     </section>
 
-    {websiteSections.map((section, index) => (
-      <section class:list={["section", "website-section", index % 2 === 1 && "is-reversed"]}>
-        <div class="section-copy">
-          <p class="eyebrow">{section.eyebrow}</p>
-          <h2>{section.title}</h2>
-          <p class="section-lede">{section.text}</p>
-          <ul class="feature-pills" aria-label={`${section.title} foundations`}>
-            {section.features.map((feature) => (
-              <li>{feature}</li>
-            ))}
-          </ul>
-        </div>
-        <aside
-          class:list={[
-            "website-visual",
-            "outcome-visual",
-            section.visualType === "google" && "serp-outcome-visual",
-            section.visualType === "performance" && "speed-outcome-visual",
-            section.visualType === "design" && "design-outcome-visual",
-            section.visualType === "ai" && "answer-outcome-visual",
-          ]}
-          aria-label={`${section.title} visual concept`}
-        >
-          {section.visualType === "google" ? (
-            <div class="outcome-scene serp-outcome" aria-hidden="true">
-              <div class="serp-card">
-                <div class="serp-search"><span></span>service near me</div>
-                <div class="serp-list">
-                  <div class="serp-row muted"></div>
-                  <div class="serp-business">
-                    <span>Best match</span>
-                    <strong>Your business</strong>
-                    <em>Open now · trusted locally</em>
-                  </div>
-                  <div class="serp-row"></div>
-                  <div class="serp-row short"></div>
-                </div>
-              </div>
-            </div>
-          ) : section.visualType === "performance" ? (
-            <div class="outcome-scene speed-outcome" aria-hidden="true">
-              <div class="phone-preview">
-                <span class="outcome-badge"><i></i>Fast</span>
-                <div class="phone-speaker"></div>
-                <div class="phone-hero"></div>
-                <div class="phone-line strong"></div>
-                <div class="phone-line"></div>
-                <div class="phone-actions">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          ) : section.visualType === "design" ? (
-            <div class="outcome-scene design-outcome" aria-hidden="true">
-              <div class="premium-page">
-                <div class="premium-hero">
-                  <span></span>
-                </div>
-                <div class="premium-copy">
-                  <span class="wide"></span>
-                  <span></span>
-                </div>
-                <div class="trust-strip">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          ) : section.visualType === "ai" ? (
-            <div class="outcome-scene answer-outcome" aria-hidden="true">
-              <div class="question-card">Who should I call?</div>
-              <div class="answer-card">
-                <span class="outcome-badge"><i></i>Referenced</span>
-                <strong>Your business</strong>
-                <p>A clear local option for this customer.</p>
-              </div>
-            </div>
-          ) : (
-            <>
-              <span class="visual-kicker">Visual concept</span>
-              <strong>{section.visual}</strong>
-              <div class="visual-tags">
-                {section.features.map((feature) => (
-                  <span>{feature}</span>
-                ))}
-              </div>
-            </>
-          )}
-        </aside>
-      </section>
-    ))}
+    <section id="work" class="section work-section" aria-labelledby="work-heading">
+      <div class="section-intro">
+        <p class="eyebrow">Featured work</p>
+        <h2 id="work-heading">Clients and projects.</h2>
+        <p class="section-lede">
+          Real websites, rebuilds, funnels, and search rescue work. Proof comes first, then
+          the architecture behind it.
+        </p>
+      </div>
 
-    <section class="section offer-section">
-      <div class="offer-shell">
-        <div class="offer-intro">
-          <p class="eyebrow">The offer</p>
-          <h2>An upgraded website for 2026 and beyond. For less than you pay now.</h2>
-          <p>
-            Modern local websites with premium design, stable search foundations, Cloudflare
-            hosting, and transparent infrastructure — often for less than traditional agency
-            retainers.
-          </p>
-        </div>
-        <div class="offer-comparison" role="table" aria-label="Traditional agency compared with IndexLayer">
-          <div class="comparison-header" role="row">
-            <span role="columnheader">Traditional Agency</span>
-            <span role="columnheader">
-              <img
-                class="comparison-logo"
-                src="/images/brand/indexlayer-logo.png"
-                alt="IndexLayer"
-                width="951"
-                height="229"
-              />
-            </span>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">
-              <span aria-hidden="true">Traditional Agency</span>
-              Slow WordPress stack
+      <div class="work-grid">
+        {featuredWork.map((project) => (
+          <a class="work-card" href={project.href}>
+            <div class:list={["work-screenshot", `visual-${project.visual}`]} aria-hidden="true">
+              <div class="screen-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              {project.image ? (
+                <img src={project.image} alt="" loading="lazy" />
+              ) : (
+                <div class="screen-layout">
+                  <div class="screen-hero"></div>
+                  <div class="screen-copy">
+                    <span class="wide"></span>
+                    <span></span>
+                  </div>
+                  <div class="screen-strip">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              )}
             </div>
-            <div role="cell">
-              <span aria-hidden="true">IndexLayer</span>
-              Lightweight HTML-first
+            <div class="work-card-copy">
+              <span>{project.type}</span>
+              <h3>{project.title}</h3>
+              <p>{project.text}</p>
+              {project.tags.length > 0 && (
+                <ul aria-label={`${project.title} stack`}>
+                  {project.tags.map((tag) => (
+                    <li>{tag}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">
-              <span aria-hidden="true">Traditional Agency</span>
-              Monthly retainers
-            </div>
-            <div role="cell">
-              <span aria-hidden="true">IndexLayer</span>
-              Simple infrastructure
-            </div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">
-              <span aria-hidden="true">Traditional Agency</span>
-              Plugin-heavy
-            </div>
-            <div role="cell">
-              <span aria-hidden="true">IndexLayer</span>
-              Clean architecture
-            </div>
-          </div>
-          <div class="comparison-row" role="row">
-            <div role="cell">
-              <span aria-hidden="true">Traditional Agency</span>
-              Weak indexing
-            </div>
-            <div role="cell">
-              <span aria-hidden="true">IndexLayer</span>
-              Stable search systems
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="work-footer">
+        <p>
+          The next client pages can be added one at a time as stronger case studies, with real
+          screenshots replacing these preview frames as each project is documented.
+        </p>
+        <a class="text-link" href="/work/">View all work</a>
+      </div>
+    </section>
+
+    <section class="section method-section" aria-labelledby="method-heading">
+      <div class="section-copy">
+        <p class="eyebrow">How we build</p>
+        <h2 id="method-heading">The infrastructure matters after the work is clear.</h2>
+        <p class="section-lede">
+          Search architecture is still the edge. It just belongs behind the proof, not ahead of it.
+        </p>
+      </div>
+      <div class="method-grid">
+        {workAttributes.map((attribute) => (
+          <article class="method-card">
+            <h3>{attribute.title}</h3>
+            <p>{attribute.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section services-section" aria-labelledby="services-heading">
+      <div class="section-intro compact">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-heading">Three ways we help.</h2>
+      </div>
+      <div class="service-grid">
+        {serviceCards.map((service) => (
+          <a class="service-card" href={service.href}>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -337,12 +333,13 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
     <section class="section posts-strip">
       <div class="section-copy">
-        <p class="eyebrow">Proof</p>
-        <h2>Selected work.</h2>
+        <p class="eyebrow">Lab notes</p>
+        <h2>Lab notes and field reports.</h2>
         <p class="section-lede">
-          Work, posts, and guides from the publishing system behind IndexLayer.
+          Notes on stable HTML, Search Console diagnostics, publishing systems, and what we
+          learn while building client sites.
         </p>
-        <a class="text-link" href="/work/">View the proof</a>
+        <a class="text-link" href="/posts/">Read the notes</a>
       </div>
       <div class="post-list">
         {latestPosts.map((entry) => (
@@ -362,7 +359,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
 
     <section id="contact" class="final-cta">
       <p class="eyebrow">Free website audit</p>
-      <h2>Ready for a perfect local website?</h2>
+      <h2>Ready for a clearer local website?</h2>
       <a class="button primary" href={auditHref} data-coming-soon-trigger>Free Website Audit</a>
     </section>
   </main>
@@ -757,6 +754,239 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
   .section-copy .section-lede {
     margin-top: 22px;
     margin-bottom: 28px;
+  }
+
+  .section-intro.compact {
+    max-width: 680px;
+  }
+
+  .work-section {
+    padding-top: 72px;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .work-card,
+  .method-card,
+  .service-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: var(--card-shadow);
+  }
+
+  .work-card {
+    display: grid;
+    overflow: hidden;
+    transition:
+      border-color 160ms ease,
+      color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .work-card:hover,
+  .service-card:hover {
+    border-color: var(--green);
+    color: var(--green-dark);
+    transform: translateY(-2px);
+  }
+
+  .work-screenshot {
+    position: relative;
+    min-height: 275px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(237, 242, 237, 0.58)),
+      var(--soft);
+  }
+
+  .screen-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    gap: 6px;
+    border-bottom: 1px solid rgba(22, 38, 33, 0.08);
+    background: rgba(255, 255, 255, 0.82);
+    padding: 12px;
+  }
+
+  .screen-bar span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(22, 38, 33, 0.22);
+  }
+
+  .work-screenshot img {
+    width: 100%;
+    height: 100%;
+    min-height: 275px;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  .screen-layout {
+    display: grid;
+    gap: 18px;
+    padding: 58px 22px 22px;
+  }
+
+  .screen-hero {
+    min-height: 122px;
+    border-radius: 8px;
+    background:
+      linear-gradient(135deg, rgba(22, 38, 33, 0.9), rgba(67, 120, 87, 0.54)),
+      var(--ink);
+  }
+
+  .screen-copy {
+    display: grid;
+    gap: 10px;
+  }
+
+  .screen-copy span {
+    width: 54%;
+    height: 11px;
+    border-radius: 999px;
+    background: rgba(22, 38, 33, 0.14);
+  }
+
+  .screen-copy .wide {
+    width: 74%;
+    height: 14px;
+    background: var(--ink);
+  }
+
+  .screen-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .screen-strip span {
+    min-height: 50px;
+    border: 1px solid rgba(22, 38, 33, 0.08);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  .visual-service .screen-hero {
+    background:
+      linear-gradient(135deg, rgba(14, 65, 91, 0.92), rgba(67, 120, 87, 0.5)),
+      var(--ink);
+  }
+
+  .visual-insurance .screen-hero {
+    background:
+      linear-gradient(135deg, rgba(57, 80, 104, 0.92), rgba(217, 234, 223, 0.8)),
+      var(--ink);
+  }
+
+  .visual-fitness .screen-hero {
+    background:
+      linear-gradient(135deg, rgba(42, 45, 39, 0.92), rgba(121, 142, 94, 0.6)),
+      var(--ink);
+  }
+
+  .work-card-copy {
+    display: flex;
+    min-height: 235px;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .work-card-copy > span {
+    margin-bottom: 12px;
+    color: var(--green-dark);
+    font-size: 0.72rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .work-card-copy h3 {
+    font-size: clamp(1.18rem, 1.6vw, 1.42rem);
+  }
+
+  .work-card-copy p,
+  .work-footer p,
+  .method-card p,
+  .service-card p {
+    color: var(--muted);
+    line-height: 1.56;
+  }
+
+  .work-card-copy ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: auto 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .work-card-copy li {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    padding: 5px 8px;
+    color: var(--muted);
+    font-size: 0.74rem;
+    font-weight: 650;
+  }
+
+  .work-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 26px;
+  }
+
+  .work-footer p {
+    max-width: 720px;
+    margin: 0;
+  }
+
+  .method-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(420px, 0.92fr);
+    gap: clamp(34px, 6vw, 72px);
+    align-items: start;
+  }
+
+  .method-grid,
+  .service-grid {
+    display: grid;
+    gap: 12px;
+  }
+
+  .method-card,
+  .service-card {
+    padding: 24px;
+  }
+
+  .method-card h3,
+  .service-card h3 {
+    font-size: 1.12rem;
+  }
+
+  .method-card p,
+  .service-card p {
+    margin-bottom: 0;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .website-section {
@@ -1571,6 +1801,7 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     .hero,
     .website-section,
     .split-section,
+    .method-section,
     .posts-strip {
       grid-template-columns: 1fr;
     }
@@ -1589,6 +1820,14 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     }
 
     .fix-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -1637,6 +1876,18 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     .founder-copy {
       padding: 0;
     }
+
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .work-footer {
+      display: grid;
+    }
+
+    .work-card-copy {
+      min-height: 0;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1666,6 +1917,19 @@ const latestPosts = (await getAllPublishedContent()).slice(0, 4);
     .hero-visual,
     .hero-outcome {
       min-height: 350px;
+    }
+
+    .work-screenshot,
+    .work-screenshot img {
+      min-height: 220px;
+    }
+
+    .screen-layout {
+      padding: 52px 16px 16px;
+    }
+
+    .screen-hero {
+      min-height: 96px;
     }
 
     .outcome-scene {
